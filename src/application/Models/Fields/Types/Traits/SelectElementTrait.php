@@ -71,9 +71,8 @@ trait SelectElementTrait
         $form->getElement('select_no_value')->setValue($model->getOption('select_no_value'));
     }
 
-
     /**
-     * @var $form OrganizersForm
+     * @param $form
      */
     public function adminSaveToModel($form)
     {
