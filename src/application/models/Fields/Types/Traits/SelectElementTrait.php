@@ -2,14 +2,12 @@
 
 namespace ByTIC\FormBuilder\Application\Models\FormFields\Types\Traits;
 
-use KM42\Register\Modules\Organizers\Library\Forms\ModelForm as OrganizersForm;
-use Race_FormField as RaceField;
+//use KM42\Register\Modules\Organizers\Library\Forms\ModelForm as OrganizersForm;
+//use Race_FormField as RaceField;
 
 /**
- * Class SelectElementTrait
- * @package KM42\Register\Models\Races\FormFields\Types\Traits
- *
- * @method RaceField getItem()
+ * Trait SelectElementTrait
+ * @package ByTIC\FormBuilder\Application\Models\FormFields\Types\Traits
  */
 trait SelectElementTrait
 {
