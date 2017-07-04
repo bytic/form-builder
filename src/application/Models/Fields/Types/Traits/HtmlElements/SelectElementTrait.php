@@ -1,7 +1,8 @@
 <?php
 
-namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits;
+namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements;
 
+use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
 use Nip_Form_Element_Select as FormSelect;
 use Nip_Form_Model as NipModelForm;
 
