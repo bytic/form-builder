@@ -1,0 +1,26 @@
+{
+  "name": "bytic/form-builder",
+  "type": "library",
+  "license": "MIT",
+  "description": "Form builder module for bytic library",
+  "keywords": [],
+  "homepage": "https://github.com/ByTIC/form-builder",
+  "authors": [
+    {
+      "name": "Gabriel Solomon",
+      "email": "hello@gabrielsolomon.ro"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "ByTIC\\FormBuilder\\Application\\Models": "src/application/models"
+    }
+  },
+  "require": {
+    "php": "^7.0",
+    "bytic/framework": "dev-develop",
+    "bytic/request-detective": "dev-develop"
+  },
+  "require-dev": {
+  }
+}
