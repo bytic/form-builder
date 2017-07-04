@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\FormBuilder\Application\Models\FormFields\Types\Traits;
+namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits;
 
 use ByTIC\FormBuilder\Application\Modules\Frontend\Forms\Traits\DynamicFormTrait;
 

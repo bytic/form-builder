@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\FormBuilder\Application\Models\FormFields\Types\Traits;
+namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits;
 
 //use KM42\Register\Modules\Organizers\Library\Forms\ModelForm as OrganizersForm;
 //use Race_FormField as RaceField;
