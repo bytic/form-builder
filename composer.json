@@ -13,7 +13,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "ByTIC\\FormBuilder\\Application\\Models\\": "src/application/models"
+      "ByTIC\\FormBuilder\\Application\\": "src/application"
     }
   },
   "require": {
