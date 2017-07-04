@@ -3,18 +3,16 @@
 namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits;
 
 use ByTIC\FormBuilder\Application\Modules\Frontend\Forms\Traits\DynamicFormTrait;
+use Nip_Form_Element_Abstract as FormElement;
+use Nip_Form_Model as Form;
 
 /**
- * Trait AbstractElementTrait
+ * Trait AbstractTypeTrait
  * @package ByTIC\FormBuilder\Application\Models\FormFields\Types\Traits
  */
-trait AbstractElementTrait
+trait AbstractTypeTrait
 {
-    protected $inputType = 'input';
-
-    protected $inputRole = 'custom';
-
-    protected $canDelete = true;
+    use AbstractTypeInterfaceTrait;
 
     /**
      * @return string
@@ -33,8 +31,8 @@ trait AbstractElementTrait
     }
 
     /**
-     * @var DynamicFormTrait|\Nip_Form_Model $form
-     * @return \Nip_Form_Element_Abstract
+     * @var DynamicFormTrait|Form $form
+     * @return FormElement
      */
     public function addFormInput($form)
     {
@@ -67,12 +65,12 @@ trait AbstractElementTrait
     }
 
     /**
-     * @param Form_Element $input
+     * @param FormElement $input
      * @return mixed
      */
     public function initFormInput($input)
     {
-        /** @var DefaultForm $form */
+        /** @var Form $form */
         $form = $input->getForm();
         $input->getData($this->getItemValue($form->getModel()), 'model');
 
@@ -101,14 +99,14 @@ trait AbstractElementTrait
     }
 
     /**
-     * @var $form DefaultForm
+     * @var $form Form
      */
     public function processValidation($form)
     {
     }
 
     /**
-     * @param DefaultForm|DefaultCompetitorForm $form
+     * @param Form $form
      */
     public function saveToModel($form)
     {
@@ -116,7 +114,7 @@ trait AbstractElementTrait
     }
 
     /**
-     * @param DynamicFormTrait $form
+     * @param DynamicFormTrait|Form $form
      * @return \Nip\Records\Record
      */
     protected function getModelFromForm($form)
@@ -125,7 +123,7 @@ trait AbstractElementTrait
     }
 
     /**
-     * @param DefaultForm $form
+     * @param Form $form
      * @param string $requester
      * @return mixed
      */
@@ -135,21 +133,21 @@ trait AbstractElementTrait
     }
 
     /**
-     * @var $form OrganizersForm
+     * @var $form Form
      */
     public function adminGetDataFromModel($form)
     {
     }
 
     /**
-     * @var $form OrganizersForm
+     * @var $form Form
      */
     public function adminProcessValidation($form)
     {
     }
 
     /**
-     * @var $form OrganizersForm
+     * @var $form Form
      */
     public function adminSaveToModel($form)
     {
@@ -164,9 +162,14 @@ trait AbstractElementTrait
         return $this->getItemValue($model);
     }
 
+
+    // --------------------------------------------- //
+    // --------------- GETTERS & SETTERS ----------- //
+    // --------------------------------------------- //
+
     /**
-     * @param DefaultForm $form
-     * @param DefaultForm $siblingForm
+     * @param Form $form
+     * @param Form $siblingForm
      * @return $this
      */
     public function populateFormFromSibling($form, $siblingForm)
@@ -178,6 +181,51 @@ trait AbstractElementTrait
         }
         return $this;
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function setInputType($value)
+    {
+        $this->inputType = $value;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->inputRole;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function setRole($role)
+    {
+        $this->inputRole = $role;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function setCanDelete(bool $canDelete)
+    {
+        $this->canDelete = $canDelete;
+    }
+
+    /**
+     * @return bool
+     */
+    public function canDelete()
+    {
+        return $this->canDelete === true;
+    }
+
+
+    // --------------------------------------------- //
+    // ---------------      DEFAULTS     ----------- //
+    // --------------------------------------------- //
 
     /**
      * @return string
@@ -195,31 +243,12 @@ trait AbstractElementTrait
         return 'no';
     }
 
-
-    // --------------- GETTERS & SETTERS ----------- //
-
     /**
-     * @return []
+     * @return array
      */
     public function getDefaultOptions()
     {
         return [];
-    }
-
-    /**
-     * @return string
-     */
-    public function getRole()
-    {
-        return $this->inputRole;
-    }
-
-    /**
-     * @return bool
-     */
-    public function canDelete()
-    {
-        return $this->canDelete === true;
     }
 
     /**
