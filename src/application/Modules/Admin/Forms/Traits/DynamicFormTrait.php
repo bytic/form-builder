@@ -1,10 +1,10 @@
 <?php
 
-namespace ByTIC\FormBuilder\Application\Modules\Frontend\Forms\Traits;
+namespace ByTIC\FormBuilder\Application\Modules\Admin\Forms\Traits;
 
 /**
  * Trait DynamicFormTrait
- * @package ByTIC\FormBuilder\Application\Modules\Frontend\Forms\Traits
+ * @package ByTIC\FormBuilder\Application\Modules\Admin\Forms\Traits
  */
 trait DynamicFormTrait
 {

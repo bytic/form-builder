@@ -1,6 +1,10 @@
 <?php
 
-namespace ByTIC\FormBuilder\Application\Models\FormFields\Types\Traits;
+namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements;
+
+use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
+use Nip_Form_Element_Select as FormSelect;
+use Nip_Form_Model as NipModelForm;
 
 //use KM42\Register\Modules\Organizers\Library\Forms\ModelForm as OrganizersForm;
 //use Race_FormField as RaceField;
@@ -11,16 +15,18 @@ namespace ByTIC\FormBuilder\Application\Models\FormFields\Types\Traits;
  */
 trait SelectElementTrait
 {
+    use AbstractTypeInterfaceTrait;
+
     /**
      * SelectElement constructor.
      */
     public function __construct()
     {
-        $this->inputType = 'select';
+        $this->setInputType('select');
     }
 
     /**
-     * @param \Nip_Form_Element_Select $input
+     * @param FormSelect $input
      * @return mixed
      */
     public function initFormInput($input)
@@ -32,7 +38,7 @@ trait SelectElementTrait
     }
 
     /**
-     * @param \Nip_Form_Element_Select $input
+     * @param FormSelect $input
      */
     protected function initFormInputDefaultOption($input)
     {
@@ -43,7 +49,7 @@ trait SelectElementTrait
     }
 
     /**
-     * @param \Nip_Form_Element_Select $input
+     * @param FormSelect $input
      */
     protected function initFormInputOptions($input)
     {
@@ -56,7 +62,7 @@ trait SelectElementTrait
     }
 
     /**
-     * @var $form OrganizersForm
+     * @var $form NipModelForm
      */
     public function adminGetDataFromModel($form)
     {
@@ -72,7 +78,7 @@ trait SelectElementTrait
     }
 
     /**
-     * @param $form
+     * @inheritdoc
      */
     public function adminSaveToModel($form)
     {
