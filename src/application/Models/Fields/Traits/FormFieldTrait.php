@@ -14,6 +14,8 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeTrait;
  * @property string $help
  * @property string $mandatory
  * @property string $visible
+ * @property string $listing
+ * @property string $filter
  *
  */
 trait FormFieldTrait

@@ -1,6 +1,8 @@
 <?php
 
-namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits;
+namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\CustomElements;
+
+use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
 
 /**
  * Trait AbstractCustomElementTrait
@@ -17,5 +19,4 @@ trait AbstractCustomElementTrait
     {
         return $this->getName() . '-' . sha1($this->getItem()->id);
     }
-
 }

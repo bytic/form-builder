@@ -2,6 +2,7 @@
 
 namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits;
 
+use ByTIC\FormBuilder\Application\Modules\Admin\Forms\Traits\FieldFormTrait;
 use ByTIC\FormBuilder\Application\Modules\Frontend\Forms\Traits\DynamicFormTrait;
 use Nip_Form_Element_Abstract as FormElement;
 use Nip_Form_Model as Form;
@@ -147,7 +148,7 @@ trait AbstractTypeTrait
     }
 
     /**
-     * @var $form Form
+     * @var $form Form|FieldFormTrait
      */
     public function adminSaveToModel($form)
     {
