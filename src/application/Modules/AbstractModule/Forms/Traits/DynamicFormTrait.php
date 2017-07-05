@@ -16,15 +16,19 @@ trait DynamicFormTrait
      */
     protected $_fields;
 
-
     public function getDataFromModel()
     {
+        $this->getDataFromModelFields();
+        parent::getDataFromModel();
+    }
+
+    public function getDataFromModelFields()
+    {
+
         $fields = $this->getFields();
         foreach ($fields as $field) {
             $field->addFormInput($this);
         }
-
-        parent::getDataFromModel();
     }
 
     /**
