@@ -96,6 +96,16 @@ trait AbstractCustomElementTrait
      */
     abstract protected function getNewModelField($model);
 
+    public function populateFormFromSibling($form, $siblingForm)
+    {
+        $input = $form->getElement($this->getFormName());
+        $inputSibling = $siblingForm->getElementByLabel($this->getItem()->getLabel());
+        if ($inputSibling) {
+            $input->getData($inputSibling->getValue('model'), 'model');
+        }
+        return $this;
+    }
+
     /**
      * @inheritdoc
      */

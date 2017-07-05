@@ -4,9 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab6d6f0768a210ae54b91392e08207be",
+  "hash": "61ecd56244e01f0d20277aff5428db09",
+  "content-hash": "fdc89321868b4950629225b936be0493",
     "packages": [
         {
+          "name": "bytic/common",
+          "version": "dev-develop",
+          "source": {
+            "type": "git",
+            "url": "https://github.com/ByTIC/Common.git",
+            "reference": "2f88bc43b91a577647b2c95feda20ef1edae579e"
+          },
+          "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ByTIC/Common/zipball/2f88bc43b91a577647b2c95feda20ef1edae579e",
+            "reference": "2f88bc43b91a577647b2c95feda20ef1edae579e",
+            "shasum": ""
+          },
+          "require": {
+            "bytic/framework": "dev-develop",
+            "bytic/medialibrary": "dev-release/0.9.0",
+            "bytic/request-detective": "dev-develop",
+            "omnipay/common": "~2.5",
+            "php": "^7.0",
+            "setasign/fpdi-tcpdf": "^1.6"
+          },
+          "require-dev": {
+            "codeception/codeception": "2.2.*",
+            "codeception/mockery-module": "0.2.*",
+            "squizlabs/php_codesniffer": "2.*"
+          },
+          "type": "library",
+          "autoload": {
+            "psr-4": {
+              "ByTIC\\Common\\Tests\\Page\\": "tests/_support/Page",
+              "ByTIC\\Common\\Tests\\Helper\\": "tests/_support/Helper",
+              "ByTIC\\Common\\": "src/"
+            }
+          },
+          "notification-url": "https://packagist.org/downloads/",
+          "authors": [
+            {
+              "name": "Gabriel Solomon",
+              "email": "hello@gabrielsolomon.ro"
+            }
+          ],
+          "description": "Common Classes used by Nip Framework",
+          "time": "2017-07-05 07:28:38"
+        },
+      {
             "name": "bytic/framework",
             "version": "dev-develop",
             "source": {
@@ -76,6 +122,49 @@
             "time": "2017-07-01 16:20:53"
         },
         {
+          "name": "bytic/medialibrary",
+          "version": "dev-release/0.9.0",
+          "source": {
+            "type": "git",
+            "url": "https://github.com/ByTIC/MediaLibrary.git",
+            "reference": "cc1a5cb95836b7a29bc9c772c73bfaae5525876c"
+          },
+          "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ByTIC/MediaLibrary/zipball/cc1a5cb95836b7a29bc9c772c73bfaae5525876c",
+            "reference": "cc1a5cb95836b7a29bc9c772c73bfaae5525876c",
+            "shasum": ""
+          },
+          "require": {
+            "bytic/framework": "dev-develop",
+            "bytic/request-detective": "dev-develop",
+            "php": "^7.0"
+          },
+          "require-dev": {
+            "codeception/codeception": "2.2.*",
+            "codeception/mockery-module": "0.2.*",
+            "squizlabs/php_codesniffer": "2.*"
+          },
+          "type": "library",
+          "autoload": {
+            "psr-4": {
+              "ByTIC\\MediaLibrary\\": "src/"
+            }
+          },
+          "notification-url": "https://packagist.org/downloads/",
+          "license": [
+            "MIT"
+          ],
+          "authors": [
+            {
+              "name": "Gabriel Solomon",
+              "email": "hello@gabrielsolomon.ro"
+            }
+          ],
+          "description": "Media Library used by Nip Framework",
+          "time": "2017-06-18 19:32:40"
+        },
+      {
             "name": "bytic/request-detective",
             "version": "dev-develop",
             "source": {
@@ -148,7 +237,7 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
-            "time": "2017-02-14T19:40:03+00:00"
+          "time": "2017-02-14 19:40:03"
         },
         {
             "name": "filp/whoops",
@@ -209,7 +298,103 @@
                 "whoops",
                 "zf2"
             ],
-            "time": "2017-06-03T18:33:07+00:00"
+          "time": "2017-06-03 18:33:07"
+        },
+      {
+        "name": "guzzle/guzzle",
+        "version": "v3.9.3",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/guzzle/guzzle3.git",
+          "reference": "0645b70d953bc1c067bbc8d5bc53194706b628d9"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/0645b70d953bc1c067bbc8d5bc53194706b628d9",
+          "reference": "0645b70d953bc1c067bbc8d5bc53194706b628d9",
+          "shasum": ""
+        },
+        "require": {
+          "ext-curl": "*",
+          "php": ">=5.3.3",
+          "symfony/event-dispatcher": "~2.1"
+        },
+        "replace": {
+          "guzzle/batch": "self.version",
+          "guzzle/cache": "self.version",
+          "guzzle/common": "self.version",
+          "guzzle/http": "self.version",
+          "guzzle/inflection": "self.version",
+          "guzzle/iterator": "self.version",
+          "guzzle/log": "self.version",
+          "guzzle/parser": "self.version",
+          "guzzle/plugin": "self.version",
+          "guzzle/plugin-async": "self.version",
+          "guzzle/plugin-backoff": "self.version",
+          "guzzle/plugin-cache": "self.version",
+          "guzzle/plugin-cookie": "self.version",
+          "guzzle/plugin-curlauth": "self.version",
+          "guzzle/plugin-error-response": "self.version",
+          "guzzle/plugin-history": "self.version",
+          "guzzle/plugin-log": "self.version",
+          "guzzle/plugin-md5": "self.version",
+          "guzzle/plugin-mock": "self.version",
+          "guzzle/plugin-oauth": "self.version",
+          "guzzle/service": "self.version",
+          "guzzle/stream": "self.version"
+        },
+        "require-dev": {
+          "doctrine/cache": "~1.3",
+          "monolog/monolog": "~1.0",
+          "phpunit/phpunit": "3.7.*",
+          "psr/log": "~1.0",
+          "symfony/class-loader": "~2.1",
+          "zendframework/zend-cache": "2.*,<2.3",
+          "zendframework/zend-log": "2.*,<2.3"
+        },
+        "suggest": {
+          "guzzlehttp/guzzle": "Guzzle 5 has moved to a new package name. The package you have installed, Guzzle 3, is deprecated."
+        },
+        "type": "library",
+        "extra": {
+          "branch-alias": {
+            "dev-master": "3.9-dev"
+          }
+        },
+        "autoload": {
+          "psr-0": {
+            "Guzzle": "src/",
+            "Guzzle\\Tests": "tests/"
+          }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+          "MIT"
+        ],
+        "authors": [
+          {
+            "name": "Michael Dowling",
+            "email": "mtdowling@gmail.com",
+            "homepage": "https://github.com/mtdowling"
+          },
+          {
+            "name": "Guzzle Community",
+            "homepage": "https://github.com/guzzle/guzzle/contributors"
+          }
+        ],
+        "description": "PHP HTTP client. This library is deprecated in favor of https://packagist.org/packages/guzzlehttp/guzzle",
+        "homepage": "http://guzzlephp.org/",
+        "keywords": [
+          "client",
+          "curl",
+          "framework",
+          "http",
+          "http client",
+          "rest",
+          "web service"
+        ],
+        "abandoned": "guzzlehttp/guzzle",
+        "time": "2015-03-18 18:23:50"
         },
         {
             "name": "html2text/html2text",
@@ -246,7 +431,7 @@
                 "GPLv2"
             ],
             "description": "Converts HTML to formatted plain text",
-            "time": "2017-05-15T01:50:59+00:00"
+          "time": "2017-05-15 01:50:59"
         },
         {
             "name": "http-interop/http-middleware",
@@ -298,7 +483,7 @@
                 "request",
                 "response"
             ],
-            "time": "2017-01-14T15:23:42+00:00"
+          "time": "2017-01-14 15:23:42"
         },
         {
             "name": "league/container",
@@ -363,7 +548,7 @@
                 "provider",
                 "service"
             ],
-            "time": "2017-05-10T09:20:27+00:00"
+          "time": "2017-05-10 09:20:27"
         },
         {
             "name": "league/flysystem",
@@ -446,7 +631,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2017-04-28T10:15:08+00:00"
+          "time": "2017-04-28 10:15:08"
         },
         {
             "name": "maximebf/debugbar",
@@ -507,7 +692,7 @@
                 "debug",
                 "debugbar"
             ],
-            "time": "2017-01-05T08:46:19+00:00"
+          "time": "2017-01-05 08:46:19"
         },
         {
             "name": "monolog/monolog",
@@ -585,7 +770,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2017-06-19T01:22:40+00:00"
+          "time": "2017-06-19 01:22:40"
         },
         {
             "name": "nesbot/carbon",
@@ -638,7 +823,105 @@
                 "datetime",
                 "time"
             ],
-            "time": "2017-01-16T07:55:07+00:00"
+          "time": "2017-01-16 07:55:07"
+        },
+      {
+        "name": "omnipay/common",
+        "version": "2.5.2",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/thephpleague/omnipay-common.git",
+          "reference": "54910f2ece6b1be64f5e53e2111dd1254d50ee49"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://api.github.com/repos/thephpleague/omnipay-common/zipball/54910f2ece6b1be64f5e53e2111dd1254d50ee49",
+          "reference": "54910f2ece6b1be64f5e53e2111dd1254d50ee49",
+          "shasum": ""
+        },
+        "require": {
+          "guzzle/guzzle": "~3.9",
+          "php": ">=5.3.2",
+          "symfony/http-foundation": "~2.1|~3.0"
+        },
+        "require-dev": {
+          "omnipay/tests": "~2.0",
+          "squizlabs/php_codesniffer": "~1.5"
+        },
+        "type": "library",
+        "extra": {
+          "branch-alias": {
+            "dev-master": "2.5.x-dev"
+          },
+          "gateways": [
+            "AuthorizeNet_AIM",
+            "AuthorizeNet_SIM",
+            "Buckaroo_CreditCard",
+            "Buckaroo_Ideal",
+            "Buckaroo_PayPal",
+            "CardSave",
+            "Coinbase",
+            "Dummy",
+            "Eway_Rapid",
+            "FirstData_Connect",
+            "GoCardless",
+            "Manual",
+            "Migs_ThreeParty",
+            "Migs_TwoParty",
+            "Mollie",
+            "MultiSafepay",
+            "Netaxept",
+            "NetBanx",
+            "PayFast",
+            "Payflow_Pro",
+            "PaymentExpress_PxPay",
+            "PaymentExpress_PxPost",
+            "PayPal_Express",
+            "PayPal_Pro",
+            "Pin",
+            "SagePay_Direct",
+            "SagePay_Server",
+            "SecurePay_DirectPost",
+            "Stripe",
+            "TargetPay_Directebanking",
+            "TargetPay_Ideal",
+            "TargetPay_Mrcash",
+            "WorldPay"
+          ]
+        },
+        "autoload": {
+          "psr-0": {
+            "Omnipay\\Common\\": "src/"
+          },
+          "classmap": [
+            "src/Omnipay/Omnipay.php"
+          ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+          "MIT"
+        ],
+        "authors": [
+          {
+            "name": "Adrian Macneil",
+            "email": "adrian@adrianmacneil.com"
+          },
+          {
+            "name": "Omnipay Contributors",
+            "homepage": "https://github.com/thephpleague/omnipay-common/contributors"
+          }
+        ],
+        "description": "Common components for Omnipay payment processing library",
+        "homepage": "https://github.com/thephpleague/omnipay-common",
+        "keywords": [
+          "gateway",
+          "merchant",
+          "omnipay",
+          "pay",
+          "payment",
+          "purchase"
+        ],
+        "time": "2016-11-07 06:10:23"
         },
         {
             "name": "psr/container",
@@ -687,7 +970,7 @@
                 "container-interop",
                 "psr"
             ],
-            "time": "2017-02-14T16:28:37+00:00"
+          "time": "2017-02-14 16:28:37"
         },
         {
             "name": "psr/http-message",
@@ -737,7 +1020,7 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06T14:39:51+00:00"
+          "time": "2016-08-06 14:39:51"
         },
         {
             "name": "psr/log",
@@ -784,7 +1067,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+          "time": "2016-10-10 12:19:37"
         },
         {
             "name": "sendgrid/php-http-client",
@@ -836,7 +1119,7 @@
                 "rest",
                 "sendgrid"
             ],
-            "time": "2017-05-05T06:15:41+00:00"
+          "time": "2017-05-05 06:15:41"
         },
         {
             "name": "sendgrid/sendgrid",
@@ -882,7 +1165,103 @@
                 "send",
                 "sendgrid"
             ],
-            "time": "2017-06-30T04:48:44+00:00"
+          "time": "2017-06-30 04:48:44"
+        },
+      {
+        "name": "setasign/fpdi",
+        "version": "1.6.2",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/Setasign/FPDI.git",
+          "reference": "a6ad58897a6d97cc2d2cd2adaeda343b25a368ea"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://api.github.com/repos/Setasign/FPDI/zipball/a6ad58897a6d97cc2d2cd2adaeda343b25a368ea",
+          "reference": "a6ad58897a6d97cc2d2cd2adaeda343b25a368ea",
+          "shasum": ""
+        },
+        "suggest": {
+          "setasign/fpdf": "FPDI will extend this class but as it is also possible to use \"tecnickcom/tcpdf\" as an alternative there's no fixed dependency configured.",
+          "setasign/fpdi-fpdf": "Use this package to automatically evaluate dependencies to FPDF.",
+          "setasign/fpdi-tcpdf": "Use this package to automatically evaluate dependencies to TCPDF."
+        },
+        "type": "library",
+        "autoload": {
+          "classmap": [
+            "filters/",
+            "fpdi.php",
+            "fpdf_tpl.php",
+            "fpdi_pdf_parser.php",
+            "pdf_context.php"
+          ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+          "MIT"
+        ],
+        "authors": [
+          {
+            "name": "Jan Slabon",
+            "email": "jan.slabon@setasign.com",
+            "homepage": "https://www.setasign.com"
+          }
+        ],
+        "description": "FPDI is a collection of PHP classes facilitating developers to read pages from existing PDF documents and use them as templates in FPDF. Because it is also possible to use FPDI with TCPDF, there are no fixed dependencies defined. Please see suggestions for packages which evaluates the dependencies automatically.",
+        "homepage": "https://www.setasign.com/fpdi",
+        "keywords": [
+          "fpdf",
+          "fpdi",
+          "pdf"
+        ],
+        "time": "2017-05-11 14:25:49"
+      },
+      {
+        "name": "setasign/fpdi-tcpdf",
+        "version": "1.6.1",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/Setasign/FPDI-TCPDF.git",
+          "reference": "871699d429fcbad6dc809d57c7c8026fd7f41e93"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://api.github.com/repos/Setasign/FPDI-TCPDF/zipball/871699d429fcbad6dc809d57c7c8026fd7f41e93",
+          "reference": "871699d429fcbad6dc809d57c7c8026fd7f41e93",
+          "shasum": ""
+        },
+        "require": {
+          "setasign/fpdi": "1.6.*",
+          "tecnickcom/tcpdf": "6.2.*"
+        },
+        "conflict": {
+          "setasign/fpdf": "1.*"
+        },
+        "type": "library",
+        "autoload": {
+          "classmap": [
+            "fpdi_bridge.php"
+          ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+          "MIT"
+        ],
+        "authors": [
+          {
+            "name": "Jan Slabon",
+            "email": "jan.slabon@setasign.com",
+            "homepage": "https://www.setasign.com"
+          }
+        ],
+        "description": "Kind of metadata package for dependencies of the latest versions of FPDI and TCPDF.",
+        "homepage": "https://www.setasign.com/fpdi",
+        "keywords": [
+          "TCPDF",
+          "fpdi",
+          "pdf"
+        ],
+        "time": "2015-11-30 11:09:50"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -936,7 +1315,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2017-05-01T15:54:03+00:00"
+          "time": "2017-05-01 15:54:03"
         },
         {
             "name": "symfony/debug",
@@ -992,34 +1371,31 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-06T14:51:55+00:00"
+          "time": "2017-06-06 14:51:55"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.3.3",
+          "version": "v2.8.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "67535f1e3fd662bdc68d7ba317c93eecd973617e"
+              "reference": "1377400fd641d7d1935981546aaef780ecd5bf6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/67535f1e3fd662bdc68d7ba317c93eecd973617e",
-                "reference": "67535f1e3fd662bdc68d7ba317c93eecd973617e",
+              "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/1377400fd641d7d1935981546aaef780ecd5bf6d",
+              "reference": "1377400fd641d7d1935981546aaef780ecd5bf6d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
-            },
-            "conflict": {
-                "symfony/dependency-injection": "<3.3"
+              "php": ">=5.3.9"
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/config": "~2.8|~3.0",
-                "symfony/dependency-injection": "~3.3",
-                "symfony/expression-language": "~2.8|~3.0",
-                "symfony/stopwatch": "~2.8|~3.0"
+              "symfony/config": "^2.0.5|~3.0.0",
+              "symfony/dependency-injection": "~2.6|~3.0.0",
+              "symfony/expression-language": "~2.6|~3.0.0",
+              "symfony/stopwatch": "~2.3|~3.0.0"
             },
             "suggest": {
                 "symfony/dependency-injection": "",
@@ -1028,7 +1404,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3-dev"
+                  "dev-master": "2.8-dev"
                 }
             },
             "autoload": {
@@ -1055,7 +1431,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-09T14:53:08+00:00"
+          "time": "2017-06-02 07:47:27"
         },
         {
             "name": "symfony/filesystem",
@@ -1104,7 +1480,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-24T09:29:48+00:00"
+          "time": "2017-06-24 09:29:48"
         },
         {
             "name": "symfony/finder",
@@ -1153,7 +1529,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-01T21:01:25+00:00"
+          "time": "2017-06-01 21:01:25"
         },
         {
             "name": "symfony/http-foundation",
@@ -1206,7 +1582,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-24T09:29:48+00:00"
+          "time": "2017-06-24 09:29:48"
         },
         {
             "name": "symfony/http-kernel",
@@ -1292,7 +1668,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-04T06:02:59+00:00"
+          "time": "2017-07-04 06:02:59"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1351,7 +1727,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-09T14:24:12+00:00"
+          "time": "2017-06-09 14:24:12"
         },
         {
             "name": "symfony/translation",
@@ -1416,7 +1792,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-24T16:45:30+00:00"
+          "time": "2017-06-24 16:45:30"
         },
         {
             "name": "symfony/var-dumper",
@@ -1484,7 +1860,70 @@
                 "debug",
                 "dump"
             ],
-            "time": "2017-06-24T09:29:48+00:00"
+          "time": "2017-06-24 09:29:48"
+        },
+      {
+        "name": "tecnickcom/tcpdf",
+        "version": "6.2.12",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/tecnickcom/TCPDF.git",
+          "reference": "2f732eaa91b5665274689b1d40b285a7bacdc37f"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/2f732eaa91b5665274689b1d40b285a7bacdc37f",
+          "reference": "2f732eaa91b5665274689b1d40b285a7bacdc37f",
+          "shasum": ""
+        },
+        "require": {
+          "php": ">=5.3.0"
+        },
+        "type": "library",
+        "autoload": {
+          "classmap": [
+            "fonts",
+            "config",
+            "include",
+            "tcpdf.php",
+            "tcpdf_parser.php",
+            "tcpdf_import.php",
+            "tcpdf_barcodes_1d.php",
+            "tcpdf_barcodes_2d.php",
+            "include/tcpdf_colors.php",
+            "include/tcpdf_filters.php",
+            "include/tcpdf_font_data.php",
+            "include/tcpdf_fonts.php",
+            "include/tcpdf_images.php",
+            "include/tcpdf_static.php",
+            "include/barcodes/datamatrix.php",
+            "include/barcodes/pdf417.php",
+            "include/barcodes/qrcode.php"
+          ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+          "LGPLv3"
+        ],
+        "authors": [
+          {
+            "name": "Nicola Asuni",
+            "email": "info@tecnick.com",
+            "homepage": "http://nicolaasuni.tecnick.com"
+          }
+        ],
+        "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
+        "homepage": "http://www.tcpdf.org/",
+        "keywords": [
+          "PDFD32000-2008",
+          "TCPDF",
+          "barcodes",
+          "datamatrix",
+          "pdf",
+          "pdf417",
+          "qrcode"
+        ],
+        "time": "2015-09-12 10:08:34"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -1534,7 +1973,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2016-09-01T10:05:43+00:00"
+          "time": "2016-09-01 10:05:43"
         }
     ],
     "packages-dev": [],
@@ -1542,6 +1981,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "bytic/framework": 20,
+      "bytic/common": 20,
+      "bytic/medialibrary": 20,
         "bytic/request-detective": 20
     },
     "prefer-stable": false,
