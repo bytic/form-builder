@@ -12,7 +12,9 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeTrait;
  */
 trait FormFieldsTrait
 {
-    use HasTypesTrait;
+    use HasTypesTrait {
+        HasTypesTrait::addType as addTypeTrait;
+    }
 
     protected $typesMatrix = null;
 
@@ -25,5 +27,15 @@ trait FormFieldsTrait
         $this->checkInitTypes();
 
         return isset($this->typesMatrix[$role]) ? $this->typesMatrix[$role] : null;
+    }
+
+    /**
+     * @param AbstractTypeTrait $object
+     */
+    public function addType($object)
+    {
+        /** @noinspection PhpParamsInspection */
+        $this->addTypeTrait($object);
+        $this->typesMatrix[$object->getRole()][$object->getName()] = $object;
     }
 }
