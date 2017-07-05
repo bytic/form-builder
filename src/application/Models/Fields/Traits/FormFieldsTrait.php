@@ -3,6 +3,7 @@
 namespace ByTIC\FormBuilder\Application\Models\Fields\Traits;
 
 use ByTIC\Common\Records\Traits\HasTypes\RecordsTrait as HasTypesTrait;
+use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeTrait;
 
 /**
  * Trait FormFieldsTrait
@@ -17,7 +18,7 @@ trait FormFieldsTrait
 
     /**
      * @param string $role
-     * @return AbstractType[]|null
+     * @return AbstractTypeTrait[]|null
      */
     public function getTypesByRole($role)
     {
