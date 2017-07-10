@@ -15,6 +15,14 @@ trait AbstractTypeTrait
 {
     use AbstractTypeInterfaceTrait;
 
+
+    /**
+     * AbstractTypeTrait constructor.
+     */
+    public function __construct()
+    {
+    }
+
     /**
      * @return string
      */

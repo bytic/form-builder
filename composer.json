@@ -19,6 +19,8 @@
   "require": {
     "php": "^7.0",
     "bytic/framework": "dev-develop",
+    "bytic/common": "dev-develop",
+    "bytic/medialibrary": "dev-release/0.9.0",
     "bytic/request-detective": "dev-develop"
   },
   "require-dev": {
