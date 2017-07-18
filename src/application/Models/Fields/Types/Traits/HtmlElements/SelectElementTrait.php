@@ -2,6 +2,7 @@
 
 namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements;
 
+use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
 use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
 use Nip_Form_Element_Select as FormSelect;
 use Nip_Form_Model as NipModelForm;
@@ -68,7 +69,8 @@ trait SelectElementTrait
     {
         parent::adminGetDataFromModel($form);
 
-        $model = $this->getModelFromForm($form);
+        /** @var FormFieldTrait $model */
+        $model = $form->getModel();
 
         $form->addTextarea('select_options', 'Select Options', true);
         $form->getElement('select_options')->setValue(implode("\n", $model->getOption('select_options')));
@@ -83,7 +85,9 @@ trait SelectElementTrait
     public function adminSaveToModel($form)
     {
         parent::adminSaveToModel($form);
-        $model = $this->getModelFromForm($form);
+
+        /** @var FormFieldTrait $model */
+        $model = $form->getModel();
 
         $values = $form->getElement('select_options')->getValue();
         $values = array_map('trim', explode("\n", $values));
