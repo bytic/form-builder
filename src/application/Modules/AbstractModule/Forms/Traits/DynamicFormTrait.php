@@ -24,7 +24,6 @@ trait DynamicFormTrait
 
     public function getDataFromModelFields()
     {
-
         $fields = $this->getFields();
         foreach ($fields as $field) {
             $field->addFormInput($this);
@@ -82,7 +81,7 @@ trait DynamicFormTrait
     /**
      * @return Record
      */
-    abstract function getModel();
+    abstract public function getModel();
 
     public function saveFormFields()
     {

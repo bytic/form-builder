@@ -11,6 +11,7 @@ use Nip\Records\RecordManager;
  * @package ByTIC\FormBuilder\Application\Modules\Admin\Forms\Traits
  *
  * @method Record|FormFieldTrait getModel()
+ * @method \Nip_Form_Element_Abstract getElement()
  */
 trait FieldFormTrait
 {
@@ -29,8 +30,13 @@ trait FieldFormTrait
 
         $this->initVisibleElement();
         $this->initMandatoryElement();
-        $this->initListingElement();
-        $this->initFilterElement();
+
+        if ($this->hasListingFlags()) {
+            $this->initListingElement();
+        }
+        if ($this->hasFilterFlags()) {
+            $this->initFilterElement();
+        }
 
         $this->addButton('save', translator()->translate('submit'));
     }
@@ -49,7 +55,22 @@ trait FieldFormTrait
         $this->mandatory->addOption('yes', translator()->translate('yes'))
             ->addOption('no', translator()->translate('no'))
             ->getRenderer()->setSeparator('');
+    }
 
+    /**
+     * @return bool
+     */
+    protected function hasListingFlags()
+    {
+        return count($this->getListingFlags());
+    }
+
+    /**
+     * @return array
+     */
+    protected function getListingFlags()
+    {
+        return [];
     }
 
     protected function initListingElement()
@@ -64,6 +85,22 @@ trait FieldFormTrait
      * @return RecordManager
      */
     abstract public function getModelManager();
+
+    /**
+     * @return bool
+     */
+    protected function hasFilterFlags()
+    {
+        return count($this->getFilterFlags());
+    }
+
+    /**
+     * @return array
+     */
+    protected function getFilterFlags()
+    {
+        return [];
+    }
 
     protected function initFilterElement()
     {
@@ -82,8 +119,12 @@ trait FieldFormTrait
 
         parent::getDataFromModel();
 
-        $this->listing->setValue($this->getModel()->getListingArray());
-        $this->filter->setValue($this->getModel()->getFilterArray());
+        if ($this->hasListingFlags()) {
+            $this->getElement('listing')->setValue($this->getModel()->getListingArray());
+        }
+        if ($this->hasFilterFlags()) {
+            $this->getElement('filter')->setValue($this->getModel()->getFilterArray());
+        }
         $this->getModel()->getType()->adminGetDataFromModel($this);
     }
 
@@ -97,8 +138,12 @@ trait FieldFormTrait
     {
         parent::saveToModel();
 
-        $this->getModel()->listing = implode(',', $this->getElement('listing')->getValue());
-        $this->getModel()->filter = implode(',', $this->getElement('filter')->getValue());
+        if ($this->hasFilterFlags()) {
+            $this->getModel()->listing = implode(',', $this->getElement('listing')->getValue());
+        }
+        if ($this->hasFilterFlags()) {
+            $this->getModel()->filter = implode(',', $this->getElement('filter')->getValue());
+        }
         $this->getModel()->getType()->adminSaveToModel($this);
     }
 }

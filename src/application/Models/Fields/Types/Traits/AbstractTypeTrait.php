@@ -267,5 +267,4 @@ trait AbstractTypeTrait
     {
         return false;
     }
-
 }
