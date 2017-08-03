@@ -12,13 +12,11 @@ use Nip\Records\Collections\Collection;
  */
 class DynamicFormTest extends AbstractTest
 {
-
     public function testGetFields()
     {
         $form = new DynamicForm();
         $fields = $form->getFields();
 
         self::assertInstanceOf(Collection::class, $fields);
-
     }
 }

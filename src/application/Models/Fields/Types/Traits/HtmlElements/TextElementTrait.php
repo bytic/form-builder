@@ -11,5 +11,4 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfa
 trait TextElementTrait
 {
     use AbstractTypeInterfaceTrait;
-
 }

@@ -55,7 +55,6 @@ trait FieldFormTrait
         $this->mandatory->addOption('yes', translator()->translate('yes'))
             ->addOption('no', translator()->translate('no'))
             ->getRenderer()->setSeparator('');
-
     }
 
     /**

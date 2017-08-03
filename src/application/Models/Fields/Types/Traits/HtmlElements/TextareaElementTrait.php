@@ -4,7 +4,6 @@ namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements;
 
 use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
 
-
 /**
  * Trait TextareaElementTrait
  * @package ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements
