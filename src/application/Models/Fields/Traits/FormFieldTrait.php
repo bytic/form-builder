@@ -111,5 +111,4 @@ trait FormFieldTrait
     {
         return $this->mandatory != 'no';
     }
-
 }

@@ -14,5 +14,4 @@ class FormFields extends Records
 {
     use FormFieldsTrait;
     use SingletonTrait;
-
 }

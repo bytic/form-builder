@@ -14,5 +14,4 @@ use Nip\Records\Record;
  */
 trait HasFieldsRecordTrait
 {
-
 }
