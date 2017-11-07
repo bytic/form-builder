@@ -24,9 +24,9 @@
   },
   "require": {
     "php": "^7.0",
-    "bytic/framework": "^1.0",
-    "bytic/common": "^1.0",
-    "bytic/medialibrary": "dev-release/0.9.0",
+    "bytic/framework": "^0.9",
+    "bytic/common": "^0.9",
+    "bytic/medialibrary": "^0.8",
     "bytic/request-detective": "^1.0"
   },
   "require-dev": {
