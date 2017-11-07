@@ -19,5 +19,4 @@ trait TimeSelectElementTrait
     {
         $this->setInputType('timeselect');
     }
-
 }
