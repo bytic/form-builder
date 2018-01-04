@@ -3,6 +3,8 @@
 namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements;
 
 use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
+use Nip_Form_Element_Abstract;
+use Nip_Form_Element_CheckboxGroup;
 use Nip_Form_Model as NipModelForm;
 
 /**
@@ -22,19 +24,30 @@ trait CheckboxGroupElementTrait
     }
 
     /**
-     * @param $input
+     * @param Nip_Form_Element_Abstract|Nip_Form_Element_CheckboxGroup $input
+     *
      * @return mixed
      */
     public function initFormInput($input)
     {
-        $values = $this->getItem()->setOption('check_options');
-        foreach ($values as $value) {
-            $input->addOption($value, $value);
-        }
+        $this->populateFormInputOptions($input);
 
         $input->getRenderer()->setSeparator('');
 
         return parent::initFormInput($input);
+    }
+
+    /**
+     * @param Nip_Form_Element_Abstract|Nip_Form_Element_CheckboxGroup $input
+     */
+    public function populateFormInputOptions($input)
+    {
+        $values = $this->getItem()->getOption('check_options');
+        if (is_array($values)) {
+            foreach ($values as $value) {
+                $input->addOption($value, $value);
+            }
+        }
     }
 
     /**
@@ -67,6 +80,7 @@ trait CheckboxGroupElementTrait
     /**
      * @param $form
      * @param string $requester
+     *
      * @return string
      */
     public function getFormValue($form, $requester = 'model')
@@ -75,29 +89,33 @@ trait CheckboxGroupElementTrait
         if ($requester == 'model') {
             $formValue = serialize($formValue);
         }
+
         return $formValue;
     }
 
     /**
      * @param $model
+     *
      * @return mixed
      */
     public function getItemValue($model)
     {
-        if (!$this->_value[$model->id]) {
+        if ( ! $this->_value[$model->id]) {
             $value = parent::getItemValue($model);
             if (is_string($value)) {
                 $this->_serialized[$model->id] = $value;
-                $value = unserialize($value);
+                $value                         = unserialize($value);
             }
             $this->_value[$model->id] = $value;
         }
+
         return $this->_value[$model->id];
     }
 
 
     /**
      * @param $model
+     *
      * @return string
      */
     public function printItemValue($model)
@@ -106,6 +124,7 @@ trait CheckboxGroupElementTrait
         if (is_array($value)) {
             return implode(', ', $value);
         }
+
         return $value;
     }
 }
