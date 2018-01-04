@@ -13,6 +13,7 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeTrait;
 class FormField extends Record
 {
     use FormFieldTrait;
+    use \ByTIC\Common\Records\Traits\HasSerializedOptions\RecordTrait;
 
     /**
      * @return AbstractTypeTrait
