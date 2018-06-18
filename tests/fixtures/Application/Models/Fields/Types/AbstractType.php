@@ -12,5 +12,4 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeTrait;
 abstract class AbstractType extends GenericAbstractType
 {
     use AbstractTypeTrait;
-
 }
