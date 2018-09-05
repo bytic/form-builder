@@ -20,6 +20,8 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeTrait;
  */
 trait FormFieldTrait
 {
+    use \ByTIC\Common\Records\Traits\HasTypes\RecordTrait;
+
     /**
      * @param $form
      * @return mixed
@@ -84,6 +86,14 @@ trait FormFieldTrait
     {
         $value = $this->getType()->printItemValue($model);
         return $value;
+    }
+
+    public function populateFromType()
+    {
+        $type = $this->getType();
+        $this->label = $type->getDefaultLabel();
+        $this->visible = $type->getDefaultVisible();
+        $this->mandatory = $type->getDefaultMandatory();
     }
 
     /**
