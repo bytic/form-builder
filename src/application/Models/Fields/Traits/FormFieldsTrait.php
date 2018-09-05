@@ -38,4 +38,12 @@ trait FormFieldsTrait
         $this->addTypeTrait($object);
         $this->typesMatrix[$object->getRole()][$object->getName()] = $object;
     }
+
+    /**
+     * @return array
+     */
+    public function getRoles()
+    {
+        return [];
+    }
 }
