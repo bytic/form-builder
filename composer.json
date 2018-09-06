@@ -13,6 +13,7 @@
   ],
   "autoload": {
     "psr-4": {
+      "ByTIC\\FormBuilder\\": "src/",
       "ByTIC\\FormBuilder\\Application\\": "src/application/"
     }
   },
