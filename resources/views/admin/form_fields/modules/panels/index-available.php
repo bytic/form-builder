@@ -1,8 +1,11 @@
 <?php
-/** @var \KM42\Pacers\Models\Events\FormFields\FormFields $manager */
-$manager = $this->modelManager;
+/** @var \ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait $manager */
+$manager = $this->manager;
+
+/** @var array $roles */
+$roles = $this->roles;
 ?>
-<?php foreach (['pacer'] as $role) { ?>
+<?php foreach ($roles as $role) { ?>
     <div class="form-panel">
         <div class="header">
             <?php echo $manager->getLabel('available.'.$role) ?>

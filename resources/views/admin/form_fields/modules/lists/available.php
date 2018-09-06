@@ -1,23 +1,28 @@
 <?php
 
-use KM42\Pacers\Models\Events\FormFields\FormFields;
-use KM42\Pacers\Models\Events\FormFields\FormField;
+use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait;
+use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
 
-/** @var FormField[] $fields */
-$fields = $this->fields[$role] + $this->fields['custom'];
+/** @var FormFieldsTrait $manager */
+$manager = $this->manager;
+
+$fields = $this->fields;
+
+/** @var FormFieldTrait[] $fieldsRole */
+/** @var string $role */
+$fieldsRole = $fields[$role] + $fields['custom'];
 ?>
 <ul id="fields-competitor" class='list-unstyled fields-container'>
-    <?php foreach ($fields as $field) { ?>
+    <?php foreach ($fieldsRole as $field) { ?>
         <li class="field">
             <span class="name">
                 <?php echo $field->getLabel(); ?>
             </span>
             <div class="btn-group">
-                <?php $addUrl = FormFields::instance()->getAddURL([
-                    'id_race' => $this->_race->id,
-                    'type' => $field->getName(),
-                    'role' => $role
-                ]) ?>
+                <?php
+                $addUrlParams = $this->withParams + ['type' => $field->getName(), 'role' => $role];
+                $addUrl = $manager->compileURL('add', $addUrlParams);
+                ?>
                 <a href="<?php echo $addUrl; ?>" class="btn btn-success btn-xs pull-right">
                     +
                 </a>

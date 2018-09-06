@@ -1,6 +1,9 @@
 <?php
-/** @var \KM42\Pacers\Models\Events\FormFields\FormFields $manager */
-$manager = $this->modelManager;
+/** @var \ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait $manager */
+$manager = $this->manager;
+
+/** @var array $roles */
+$roles = $this->roles;
 ?>
 <div class="btn-group">
     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
@@ -8,22 +11,20 @@ $manager = $this->modelManager;
         <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
-        <?php foreach ($this->races as $race) { ?>
-            <?php if ($this->_race->id != $race->id) { ?>
-                <li>
-                    <a href="<?php echo $manager->compileURL('importFromEvent',
-                        ['id_race' => $this->_race->id, 'from_race' => $race->id]); ?>"
-                    >
-                        <?php echo $race->getName(); ?>
-                    </a>
-                </li>
-            <?php } ?>
+        <?php foreach ($this->importLinks as $link) { ?>
+            <li>
+                <a href="<?php echo $link['href']; ?>">
+                    <?php echo $link['name']; ?>
+                </a>
+            </li>
         <?php } ?>
     </ul>
 </div>
+
 <p>&nbsp;</p>
+
 <form method="post"
-      action="<?php echo $manager->compileURL('reset', ['id_event' => $this->_event->id]); ?>"
+      action="<?php echo $manager->compileURL('reset', $this->withParams); ?>"
       onsubmit="return confirm('<?php echo translator()->trans('general.messages.confirm'); ?>');">
     <button type="submit" class="btn btn-danger">
         <?php echo $manager->getLabel('reset-race'); ?>
