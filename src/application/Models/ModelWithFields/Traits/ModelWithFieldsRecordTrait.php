@@ -2,10 +2,9 @@
 
 namespace ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits;
 
+use ByTIC\Common\Records\Records;
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait;
-use ByTIC\FormBuilder\Application\Models\ModelFields\Traits\ModelFieldsRecordTrait;
-use Nip\Records\Collections\Collection;
-use Nip\Records\Record;
+use Nip\Records\Collections\Associated as AssociatedCollection;
 use Nip\Records\Relations\HasMany;
 
 /**
@@ -13,15 +12,15 @@ use Nip\Records\Relations\HasMany;
  * @package ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits
  *
  * @method HasMany getRelation($relationName)
- * @method ModelFieldsRecordTrait[]|Record[]|Collection getFormFields()
+ * @method Records getManager()
  */
 trait ModelWithFieldsRecordTrait
 {
-
     protected $formFieldsList = null;
 
     /**
      * @return array
+     * @throws \Exception
      */
     public function getFormFieldsList()
     {
@@ -31,6 +30,9 @@ trait ModelWithFieldsRecordTrait
         return $this->formFieldsList;
     }
 
+    /**
+     * @throws \Exception
+     */
     protected function initFormFieldsList()
     {
         $this->formFieldsList = $this->generateFormFieldsList();
@@ -44,8 +46,7 @@ trait ModelWithFieldsRecordTrait
     {
         $fields = [];
 
-        /** @var FormFieldsTrait $fieldsManager */
-        $fieldsManager = $this->getRelation('FormFields')->getWith();
+        $fieldsManager = $this->getFormFieldsManager();
 
         $roles = $fieldsManager->getRoles();
         foreach ($roles as $role) {
@@ -61,5 +62,62 @@ trait ModelWithFieldsRecordTrait
         }
 
         return $fields;
+    }
+
+    /**
+     * @return AssociatedCollection|FormFieldsTrait[]
+     * @throws \Exception
+     */
+    public function getFormFields()
+    {
+        $fields = parent::getFormFields();
+        if (count($fields) < 1) {
+            $fields = $this->initDefaultFormFields();
+        }
+        return $fields;
+    }
+
+    /**
+     * @return \Nip\Records\Collections\Collection
+     * @throws \Exception
+     */
+    protected function initDefaultFormFields()
+    {
+        $types = method_exists($this, 'generateDefaultFormFieldsTypes')
+            ? $this->generateDefaultFormFieldsTypes()
+            : [];
+
+        return $this->checkHasFieldsTypes($types);
+    }
+
+    /**
+     * @param array $types
+     * @return AssociatedCollection|\Nip\Records\Collections\Collection
+     * @throws \Exception
+     */
+    protected function checkHasFieldsTypes($types)
+    {
+        $fieldsManager = $this->getFormFieldsManager();
+        $fields = $fieldsManager->newCollection();
+        foreach ($types as $type) {
+            $field = $fieldsManager->getNew();
+            $field->type = $type;
+            $field->populateFromParent($this);
+            $field->populateFromType();
+
+            $field->insert();
+            $fields->add($field);
+        }
+        return $fields;
+
+    }
+
+    /**
+     * @return FormFieldsTrait|\Nip\Records\RecordManager
+     * @throws \Exception
+     */
+    protected function getFormFieldsManager()
+    {
+        return $this->getRelation('FormFields')->getWith();
     }
 }

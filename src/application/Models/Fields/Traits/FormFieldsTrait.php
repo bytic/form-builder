@@ -9,6 +9,7 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeTrait;
  * Trait FormFieldsTrait
  * @package ByTIC\FormBuilder\Application\Models\Fields\Types\Traits
  *
+ * @method FormFieldTrait getNew($data = [])
  */
 trait FormFieldsTrait
 {

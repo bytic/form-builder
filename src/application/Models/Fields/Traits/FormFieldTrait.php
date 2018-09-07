@@ -2,7 +2,9 @@
 
 namespace ByTIC\FormBuilder\Application\Models\Fields\Traits;
 
+use ByTIC\Common\Records\Record;
 use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeTrait;
+use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsRecordTrait;
 
 /**
  * Trait FormFieldTrait
@@ -84,12 +86,22 @@ trait FormFieldTrait
         return $value;
     }
 
+    /**
+     * @param Record|ModelWithFieldsRecordTrait $parent
+     */
+    public function populateFromParent($parent)
+    {
+        $pk = $parent->getManager()->getPrimaryFK();
+        $this->{$pk} = $parent->getPrimaryKey();
+    }
+
     public function populateFromType()
     {
         $type = $this->getType();
         $this->label = $type->getDefaultLabel();
         $this->visible = $type->getDefaultVisible();
         $this->mandatory = $type->getDefaultMandatory();
+        $this->role = $type->getRole();
     }
 
     /**
