@@ -17,6 +17,7 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeTrait;
  * @property string $listing
  * @property string $filter
  *
+ * @method AbstractTypeTrait getType()
  */
 trait FormFieldTrait
 {
@@ -30,11 +31,6 @@ trait FormFieldTrait
     {
         return $this->getType()->addFormInput($form);
     }
-
-    /**
-     * @return AbstractTypeTrait
-     */
-    abstract public function getType();
 
     /**
      * @param $form

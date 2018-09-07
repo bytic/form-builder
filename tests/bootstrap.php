@@ -1,7 +1,7 @@
 <?php
 
 app()->share('inflector', new Nip\Inflector\Inflector());
-app()->share('app', new \Nip\Application());
+app()->share('app', new \Nip\Application\Application());
 
 define('PROJECT_BASE_PATH', __DIR__ . '/..');
 define('TEST_BASE_PATH', __DIR__);

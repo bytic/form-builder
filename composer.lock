@@ -149,16 +149,16 @@
         },
         {
             "name": "bytic/common",
-            "version": "1.0.18",
+          "version": "1.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bytic/Common.git",
-                "reference": "9174623493082d90e9be98a2ec0495c70b37db99"
+              "reference": "025e38a5565951c76722363428a6a3777e31d22a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bytic/Common/zipball/9174623493082d90e9be98a2ec0495c70b37db99",
-                "reference": "9174623493082d90e9be98a2ec0495c70b37db99",
+              "url": "https://api.github.com/repos/bytic/Common/zipball/025e38a5565951c76722363428a6a3777e31d22a",
+              "reference": "025e38a5565951c76722363428a6a3777e31d22a",
                 "shasum": ""
             },
             "require": {
@@ -190,7 +190,7 @@
                 }
             ],
             "description": "Common Classes used by Nip Framework",
-            "time": "2018-08-19T20:19:56+00:00"
+          "time": "2018-09-05T21:42:28+00:00"
         },
         {
             "name": "bytic/config",
