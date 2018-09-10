@@ -24,6 +24,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/locale" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/locale-detector" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/mail" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/models-smart-properties" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/orm" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/pipeline" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/profiler" />

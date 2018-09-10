@@ -6,7 +6,7 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfa
 use ByTIC\FormBuilder\Application\Models\Form\Traits\HasFieldsRecordTrait;
 use ByTIC\FormBuilder\Application\Models\ModelFields\Traits\ModelFieldsRecordTrait;
 use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsRecordTrait;
-use Nip_Form_Element_Abstract as FormElement;
+use Nip\Form\Elements\AbstractElement as FormElement;
 
 /**
  * Trait AbstractCustomElementTrait

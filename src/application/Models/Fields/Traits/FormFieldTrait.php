@@ -23,7 +23,7 @@ use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsR
  */
 trait FormFieldTrait
 {
-    use \ByTIC\Common\Records\Traits\HasTypes\RecordTrait;
+    use \ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordTrait;
 
     /**
      * @param $form
