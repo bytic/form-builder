@@ -108,6 +108,8 @@
       <path value="$PROJECT_DIR$/vendor/oscarotero/middleland" />
       <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
       <path value="$PROJECT_DIR$/vendor/bytic/models-smart-properties" />
+      <path value="$PROJECT_DIR$/vendor/bytic/autoloader" />
+      <path value="$PROJECT_DIR$/vendor/bytic/logger" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7" />

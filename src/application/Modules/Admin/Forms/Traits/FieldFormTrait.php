@@ -3,6 +3,7 @@
 namespace ByTIC\FormBuilder\Application\Modules\Admin\Forms\Traits;
 
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
+use Nip\Form\Elements\AbstractElement;
 use Nip\Records\Record;
 use Nip\Records\RecordManager;
 
@@ -11,7 +12,7 @@ use Nip\Records\RecordManager;
  * @package ByTIC\FormBuilder\Application\Modules\Admin\Forms\Traits
  *
  * @method Record|FormFieldTrait getModel()
- * @method \Nip_Form_Element_Abstract getElement()
+ * @method AbstractElement getElement()
  */
 trait FieldFormTrait
 {
@@ -19,7 +20,7 @@ trait FieldFormTrait
     {
         parent::init();
 
-        $this->addSelect('type', translator()->translate('type'), true);
+        $this->addSelect('type', translator()->translate('type'), false);
         $this->getElement('type')->setAttrib('disabled', 'disabled');
 
         $this->addInput('label', translator()->translate('name'), true);
