@@ -1,4 +1,4 @@
-<ul class='list-unstyled sortable fields-container'>
+<ul class='list-unstyled sortable fields-container' data-url="<?php echo $updateUrl; ?>">
     <?php foreach ($fields as $field) { ?>
         <li id="field_<?php echo $field->id; ?>" class="field">
             <div class="row">

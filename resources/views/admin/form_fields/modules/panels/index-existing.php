@@ -12,30 +12,15 @@ $roles = $this->roles;
                 <?php echo $manager->getLabel('existing.' . $role) ?>
             </div>
             <div class="content">
-                <?php echo $this->load('../lists/existing', ['fields' => $this->fields['existing.' . $role]]); ?>
+                <?php
+                echo $this->load(
+                    '../lists/existing',
+                    [
+                        'fields' => $this->fields['existing.' . $role],
+                        'updateUrl' => $manager->compileURL('order', $this->withParams)
+                    ]
+                ); ?>
             </div>
         </div>
     <?php } ?>
 <?php } ?>
-
-
-<script type="text/javascript">
-    $(function () {
-        $("#form-fields-container ul.sortable").sortable({
-            update: function (event, ui) {
-                var order = $(this).sortable('serialize');
-
-                $.ajax({
-                    url: '<?php echo $manager->compileURL('order', $this->withParams); ?>',
-                    type: 'post',
-                    data: {
-                        'order': order
-                    },
-                    success: function (data) {
-                        jQuery.jGrowl(data.message, {life: 10000, theme: data.type});
-                    }
-                });
-            }
-        });
-    });
-</script>
