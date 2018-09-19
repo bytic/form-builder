@@ -12,7 +12,6 @@ use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\Types\CheckboxGro
  */
 class FormFieldTraitTest extends AbstractTest
 {
-
     public function testGetType()
     {
         $field = new FormField();
