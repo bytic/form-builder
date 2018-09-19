@@ -81,7 +81,8 @@ trait AbstractTypeTrait
     {
         /** @var Form $form */
         $form = $input->getForm();
-        $input->getData($this->getItemValue($form->getModel()), 'model');
+        $model = $this->getModelFromForm($form);
+        $input->getData($this->getItemValue($model), 'model');
 
         if ($this->getItem()->getHelp()) {
             $input->setOption('form-help', html_entity_decode($this->getItem()->getHelp()));
