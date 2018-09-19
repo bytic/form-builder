@@ -109,7 +109,6 @@ trait ModelWithFieldsRecordTrait
             $fields->add($field);
         }
         return $fields;
-
     }
 
     /**
