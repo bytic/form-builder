@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="ByTIC\FormBuilder\" />
       <sourceFolder url="file://$MODULE_DIR$/src/application" isTestSource="false" packagePrefix="ByTIC\FormBuilder\Application\" />
       <sourceFolder url="file://$MODULE_DIR$/tests/src" isTestSource="true" packagePrefix="ByTIC\FormBuilder\Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/application" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/autoloader" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/cache" />
