@@ -76,5 +76,5 @@ trait ModelDobTrait
         return Nip_Helper_Date::instance()->calculateAge($unix, $calculationDate);
     }
 
-    protected abstract function getAgeCalculationDate();
+    abstract protected function getAgeCalculationDate();
 }

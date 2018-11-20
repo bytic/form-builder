@@ -14,7 +14,6 @@ use Nip_Form_Model;
  */
 class CheckboxGroupTest extends AbstractTest
 {
-
     public function testInitFormInput()
     {
         $type = new CheckboxGroupType();
