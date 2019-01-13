@@ -2,5 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/bytic/common" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/bytic/framework" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/bytic/medialibrary" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/bytic/request-detective" vcs="Git" />
   </component>
 </project>

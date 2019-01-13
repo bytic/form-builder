@@ -7,7 +7,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
-      <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/guzzle/guzzle" />
@@ -53,7 +52,6 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/version" />
       <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
-      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
       <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
@@ -70,6 +68,48 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/league/pipeline" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-server-middleware" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-server-handler" />
+      <path value="$PROJECT_DIR$/vendor/bytic/dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/bytic/http" />
+      <path value="$PROJECT_DIR$/vendor/bytic/mail" />
+      <path value="$PROJECT_DIR$/vendor/bytic/controllers" />
+      <path value="$PROJECT_DIR$/vendor/bytic/collections" />
+      <path value="$PROJECT_DIR$/vendor/bytic/pipeline" />
+      <path value="$PROJECT_DIR$/vendor/bytic/database" />
+      <path value="$PROJECT_DIR$/vendor/bytic/translation" />
+      <path value="$PROJECT_DIR$/vendor/bytic/router" />
+      <path value="$PROJECT_DIR$/vendor/bytic/cache" />
+      <path value="$PROJECT_DIR$/vendor/bytic/container" />
+      <path value="$PROJECT_DIR$/vendor/bytic/orm" />
+      <path value="$PROJECT_DIR$/vendor/bytic/helpers" />
+      <path value="$PROJECT_DIR$/vendor/bytic/inflector" />
+      <path value="$PROJECT_DIR$/vendor/bytic/profiler" />
+      <path value="$PROJECT_DIR$/vendor/bytic/application" />
+      <path value="$PROJECT_DIR$/vendor/bytic/utility" />
+      <path value="$PROJECT_DIR$/vendor/bytic/debug" />
+      <path value="$PROJECT_DIR$/vendor/bytic/debugbar" />
+      <path value="$PROJECT_DIR$/vendor/bytic/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/bytic/form" />
+      <path value="$PROJECT_DIR$/vendor/bytic/config" />
+      <path value="$PROJECT_DIR$/vendor/bytic/view" />
+      <path value="$PROJECT_DIR$/vendor/oscarotero/middleland" />
+      <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/vendor/bytic/models-smart-properties" />
+      <path value="$PROJECT_DIR$/vendor/bytic/logger" />
+      <path value="$PROJECT_DIR$/vendor/bytic/mail-module" />
+      <path value="$PROJECT_DIR$/vendor/bytic/mvc" />
+      <path value="$PROJECT_DIR$/vendor/bytic/staging" />
+      <path value="$PROJECT_DIR$/vendor/bytic/cookie" />
+      <path value="$PROJECT_DIR$/vendor/bytic/google-analytics" />
+      <path value="$PROJECT_DIR$/vendor/bytic/flash" />
+      <path value="$PROJECT_DIR$/vendor/symfony/contracts" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

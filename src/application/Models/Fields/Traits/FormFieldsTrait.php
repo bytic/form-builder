@@ -2,13 +2,14 @@
 
 namespace ByTIC\FormBuilder\Application\Models\Fields\Traits;
 
-use ByTIC\Common\Records\Traits\HasTypes\RecordsTrait as HasTypesTrait;
 use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeTrait;
+use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordsTrait as HasTypesTrait;
 
 /**
  * Trait FormFieldsTrait
  * @package ByTIC\FormBuilder\Application\Models\Fields\Types\Traits
  *
+ * @method FormFieldTrait getNew($data = [])
  */
 trait FormFieldsTrait
 {
@@ -37,5 +38,13 @@ trait FormFieldsTrait
         /** @noinspection PhpParamsInspection */
         $this->addTypeTrait($object);
         $this->typesMatrix[$object->getRole()][$object->getName()] = $object;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRoles()
+    {
+        return [];
     }
 }

@@ -1,0 +1,67 @@
+/** FORM TAB */
+#form-fields-container .form-panel {
+
+}
+
+#form-fields-container .form-panel .header {
+    color: #fff;
+    background: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 3px 10px;
+
+    -webkit-border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    -moz-border-radius-topright: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+#form-fields-container .form-panel .content .fields-container {
+    background-color: #F4F4F4;
+    padding-bottom: 10px;
+}
+
+#form-fields-container .form-panel .content .fields-container.sortable .field {
+    cursor: move;
+}
+
+#form-fields-container .form-panel .content .fields-container .field {
+    background-color: #F4F4F4;
+    padding: 3px 10px;
+    border-bottom: 1px solid #DDD;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    border-top: 1px solid white;
+}
+#form-fields-container .form-panel .content .fields-container .field:hover {
+    background-color: #E6E6E6;
+}
+#form-fields-container .form-panel .content .fields-container .field .btn-group {
+    width:48px;
+    float:right;
+}
+#form-fields-container .form-panel .content .fields-container .field .btn-group .btn-mini {
+    padding: 0 2px;
+}
+
+#form-fields-container .existing .content .fields-container .field {
+    background-color: #F3F3D1;
+    padding: 3px 10px;
+
+    border-bottom: 1px solid #DBDBB0;
+    border-left: 1px solid #DBDBB0;
+    border-right: 1px solid #DBDBB0;
+}
+#form-fields-container .existing .content .fields-container .field:hover {
+    background-color: #EDEDAF;
+}
+
+#form-fields-container .existing .content .fields-container .field .field-invisible {
+    color: #ed513f;
+}
+
+#form-fields-container .existing .content .fields-container .field .field-visible {
+    color: #45b035;
+}

@@ -14,4 +14,12 @@ class FormFields extends Records
 {
     use FormFieldsTrait;
     use SingletonTrait;
+
+    /** @noinspection PhpMissingParentCallCommonInspection
+     * @return string
+     */
+    public function getModelNamespace()
+    {
+        return __NAMESPACE__ . '\\';
+    }
 }

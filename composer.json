@@ -13,6 +13,7 @@
   ],
   "autoload": {
     "psr-4": {
+      "ByTIC\\FormBuilder\\": "src/",
       "ByTIC\\FormBuilder\\Application\\": "src/application/"
     }
   },
@@ -24,14 +25,15 @@
   },
   "require": {
     "php": "^7.0",
-    "bytic/framework": "^0.9",
+    "bytic/models-smart-properties": "^0.9",
     "bytic/common": "^0.9",
+    "bytic/translation": "^0.9",
     "bytic/medialibrary": "^0.8",
     "bytic/request-detective": "^1.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.0",
-    "phpunit/phpunit": "^6.2",
-    "mockery/mockery": "^0.9"
+    "phpunit/phpunit": "^7.2",
+    "mockery/mockery": "^1.0"
   }
 }
