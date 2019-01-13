@@ -32,6 +32,10 @@ trait RadioGroupElementTrait
     {
         $this->populateFormInputOptions($input);
 
+        $autoSelectFirst = $this->getItem()->getOption('autoSelectFirst');
+        if ($autoSelectFirst == 'false') {
+            $input->autoSelectFirst(false);
+        }
         $input->getRenderer()->setSeparator('');
 
         return parent::initFormInput($input);
@@ -61,6 +65,11 @@ trait RadioGroupElementTrait
         $form->getElement('check_options')->setValue(
             implode("\n", $form->getModel()->getOption('check_options'))
         );
+
+        $form->addCheckbox('autoSelectFirst', 'AutoSelectFirst', false);
+        if ($form->getModel()->getOption('autoSelectFirst') !== 'false') {
+            $form->getElement('autoSelectFirst')->setChecked(true);
+        }
     }
 
 
@@ -74,5 +83,8 @@ trait RadioGroupElementTrait
         $values = $form->getElement('check_options')->getValue();
         $values = array_map('trim', explode("\n", $values));
         $form->getModel()->setOption('check_options', $values);
+
+        $autoSelectFirst = $form->getElement('autoSelectFirst')->getValue();
+        $form->getModel()->setOption('autoSelectFirst', $autoSelectFirst ? 'true' : 'false');
     }
 }
