@@ -12,6 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/flash" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/framework" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/google-analytics" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/mail-module" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/medialibrary" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/mvc" />
