@@ -21,6 +21,8 @@ trait AbstractTypeInterfaceTrait
 
     protected $canDelete = true;
 
+    protected $modelValues = [];
+
     /**
      * @return string
      */
