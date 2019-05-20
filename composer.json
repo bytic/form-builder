@@ -25,10 +25,10 @@
   },
   "require": {
     "php": "^7.0",
-    "bytic/models-smart-properties": "^0.9",
-    "bytic/common": "^0.9",
-    "bytic/translation": "^0.9",
-    "bytic/medialibrary": "^0.8",
+    "bytic/models-smart-properties": "^1.0",
+    "bytic/common": "^1.0",
+    "bytic/translation": "^1.0",
+    "bytic/medialibrary": "^0.9",
     "bytic/request-detective": "^1.0"
   },
   "require-dev": {
