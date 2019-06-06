@@ -70,7 +70,11 @@ trait ModelWithFieldsRecordTrait
      */
     public function getFormFields()
     {
-        $fields = parent::getFormFields();
+        if (is_callable($this, 'parent::getFormFields')) {
+            $fields = parent::getFormFields();
+        } else {
+            $fields = $this->getFormFieldsRelation()->getResults();
+        }
         if (count($fields) < 1) {
             $fields = $this->initDefaultFormFields();
         }
@@ -98,16 +102,20 @@ trait ModelWithFieldsRecordTrait
     protected function checkHasFieldsTypes($types)
     {
         $fieldsManager = $this->getFormFieldsManager();
-        $fields = $fieldsManager->newCollection();
+        $fieldsRelation = $this->getFormFieldsRelation();
+        $fields = $fieldsRelation->getResults();
         foreach ($types as $type) {
             $field = $fieldsManager->getNew();
             $field->type = $type;
             $field->populateFromParent($this);
             $field->populateFromType();
 
-            $field->insert();
+            if ($this->isInDB()) {
+                $field->insert();
+            }
             $fields->add($field);
         }
+//        $fieldsRelation->setResults($fields);
         return $fields;
     }
 
@@ -117,6 +125,14 @@ trait ModelWithFieldsRecordTrait
      */
     protected function getFormFieldsManager()
     {
-        return $this->getRelation('FormFields')->getWith();
+        return $this->getFormFieldsRelation()->getWith();
+    }
+
+    /**
+     * @return HasMany
+     */
+    protected function getFormFieldsRelation()
+    {
+        return $this->getRelation('FormFields');
     }
 }
