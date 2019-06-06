@@ -3,7 +3,7 @@
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait;
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
 
-/** @var FormFieldsTrait $manager */
+/** @var FormFieldsTrait|\Nip\Records\RecordManager $manager */
 $manager = $this->manager;
 
 $fields = $this->fields;
@@ -23,7 +23,8 @@ $fieldsRole = $fields[$role] + $fields['custom'];
                 $addUrlParams = $this->withParams + ['type' => $field->getName(), 'role' => $role];
                 $addUrl = $manager->compileURL('add', $addUrlParams);
                 ?>
-                <a href="<?php echo $addUrl; ?>" class="btn btn-success btn-xs pull-right">
+                <a href="<?php echo $addUrl; ?>"
+                   class="btn btn-success btn-xs pull-right add-<?php echo $field->getName(); ?>">
                     +
                 </a>
             </div>

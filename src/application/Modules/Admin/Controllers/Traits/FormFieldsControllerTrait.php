@@ -20,8 +20,8 @@ trait FormFieldsControllerTrait
     {
         /** @var FormFieldTrait $item */
         $item = parent::addNewModel();
-        $item->type = $_GET['type'];
-        $item->role = $_GET['role'];
+        $item->type = $this->getRequest()->query->get('type');
+        $item->role = $this->getRequest()->query->get('role');
         $item->populateFromType();
         return $item;
     }
