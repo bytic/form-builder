@@ -100,16 +100,16 @@ trait CheckboxGroupElementTrait
      */
     public function getItemValue($model)
     {
-        if ( ! $this->_value[$model->id]) {
+        if (!isset($this->modelValues[$model->id])) {
             $value = parent::getItemValue($model);
             if (is_string($value)) {
-                $this->_serialized[$model->id] = $value;
-                $value                         = unserialize($value);
+//                $this->_serialized[$model->id] = $value;
+                $value = unserialize($value);
             }
-            $this->_value[$model->id] = $value;
+            $this->modelValues[$model->id] = $value;
         }
 
-        return $this->_value[$model->id];
+        return $this->modelValues[$model->id];
     }
 
 

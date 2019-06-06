@@ -1,7 +1,11 @@
 <?php
 
-app()->share('inflector', new Nip\Inflector\Inflector());
-app()->share('app', new \Nip\Application\Application());
+use Nip\Container\Container;
+
+Container::setInstance(new Container());
+
+app()->singleton('inflector', new Nip\Inflector\Inflector());
+app()->singleton('app', new \Nip\Application\Application());
 
 define('PROJECT_BASE_PATH', __DIR__ . '/..');
 define('TEST_BASE_PATH', __DIR__);
