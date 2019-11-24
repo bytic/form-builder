@@ -3,6 +3,7 @@
 namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements;
 
 use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
+use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours\HasHtmlLabel;
 use Nip_Form_Element_Abstract;
 use Nip_Form_Element_RadioGroup;
 use Nip_Form_Model as NipModelForm;
@@ -14,6 +15,7 @@ use Nip_Form_Model as NipModelForm;
 trait RadioGroupElementTrait
 {
     use AbstractTypeInterfaceTrait;
+    use HasHtmlLabel;
 
     /**
      * SelectElement constructor.
@@ -31,6 +33,7 @@ trait RadioGroupElementTrait
     public function initFormInput($input)
     {
         $this->populateFormInputOptions($input);
+        $this->htmlDecodeLabel($input);
 
         $autoSelectFirst = $this->getItem()->getOption('autoSelectFirst');
         if ($autoSelectFirst == 'false') {

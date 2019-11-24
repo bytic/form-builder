@@ -3,6 +3,7 @@
 namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements;
 
 use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
+use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours\HasHtmlLabel;
 
 /**
  * Trait CheckboxElementTrait
@@ -11,6 +12,7 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfa
 trait CheckboxElementTrait
 {
     use AbstractTypeInterfaceTrait;
+    use HasHtmlLabel;
 
     /**
      * SelectElement constructor.
@@ -21,7 +23,7 @@ trait CheckboxElementTrait
     }
 
     /**
-     * @param $input
+     * @param \Nip_Form_Element_Input_Abstract $input
      * @return mixed
      */
     public function initFormInput($input)
@@ -29,12 +31,7 @@ trait CheckboxElementTrait
         parent::initFormInput($input);
 
         $input->setOption('render_label', false);
-        $label = $input->getLabel();
-        $label = html_entity_decode($label);
-        $title = strip_tags($label);
-
-        $input->setAttrib('title', $title);
-        $input->setLabel($label);
+        $this->htmlDecodeLabel($input);
 
         return $input;
     }

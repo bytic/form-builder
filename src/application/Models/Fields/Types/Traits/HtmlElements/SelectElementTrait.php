@@ -4,6 +4,7 @@ namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements;
 
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
 use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
+use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours\HasHtmlLabel;
 use Nip_Form_Element_Select as FormSelect;
 use Nip_Form_Model as NipModelForm;
 
@@ -17,6 +18,7 @@ use Nip_Form_Model as NipModelForm;
 trait SelectElementTrait
 {
     use AbstractTypeInterfaceTrait;
+    use HasHtmlLabel;
 
     /**
      * SelectElement constructor.
@@ -34,6 +36,7 @@ trait SelectElementTrait
     {
         $this->initFormInputDefaultOption($input);
         $this->initFormInputOptions($input);
+        $this->htmlDecodeLabel($input);
 
         return parent::initFormInput($input);
     }

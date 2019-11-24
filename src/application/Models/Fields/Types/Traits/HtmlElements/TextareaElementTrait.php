@@ -3,6 +3,7 @@
 namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements;
 
 use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
+use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours\HasHtmlLabel;
 
 /**
  * Trait TextareaElementTrait
@@ -11,6 +12,7 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfa
 trait TextareaElementTrait
 {
     use AbstractTypeInterfaceTrait;
+    use HasHtmlLabel;
 
     /**
      * SelectElement constructor.
@@ -18,5 +20,15 @@ trait TextareaElementTrait
     public function __construct()
     {
         $this->setInputType('textarea');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function initFormInput($input)
+    {
+        $this->htmlDecodeLabel($input);
+
+        return parent::initFormInput($input);
     }
 }
