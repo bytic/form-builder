@@ -1,6 +1,10 @@
+<?php
+/** @var \ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait $field */
+?>
 <ul class='list-unstyled sortable fields-container' data-url="<?php echo $updateUrl; ?>">
     <?php foreach ($fields as $field) { ?>
-        <li id="field_<?php echo $field->id; ?>" class="field">
+        <li id="field_<?php echo $field->id; ?>"
+            class="field field-<?php echo $field->getRole(); ?>-<?php echo $field->getType()->getName(); ?>">
             <div class="row">
                 <div class="name col-xs-7">
                     <?php $visibleIcons = ($field->visible == 'no') ? 'field-invisible glyphicon-eye-close' : 'field-visible glyphicon-eye-open' ?>
@@ -27,8 +31,8 @@
                             <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
                         </a>
                         <?php if ($field->getType()->canDelete()) { ?>
-                            <a href="<?php echo $field->getDeleteURL(); ?>" class="btn btn-danger btn-xs"
-                               onclick="return confirm('<?php echo translator()->translate('general.messages.confirm'); ?>');">
+                            <a href="<?php echo $field->compileURL('delete'); ?>" class="btn btn-danger btn-xs"
+                               onclick="return confirm('<?php echo translator()->trans('general.messages.confirm'); ?>');">
                                 <span class="glyphicon glyphicon-trash"></span>
                             </a>
                         <?php } ?>
