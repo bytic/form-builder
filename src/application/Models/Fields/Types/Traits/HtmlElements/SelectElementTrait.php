@@ -57,10 +57,25 @@ trait SelectElementTrait
      */
     protected function initFormInputOptions($input)
     {
-        $values = $this->getItem()->getOption('select_options');
-        if (is_array($values)) {
-            foreach ($values as $value) {
-                $input->addOption($value, $value);
+        $options = $this->getItem()->getOption('select_options');
+
+        $isInAdmin = $input->getForm()->isInAdmin();
+        $optionsDisabled = $this->getItem()->getOption('select_options_disabled');
+        $optionsDisabled = is_array($optionsDisabled) ? $optionsDisabled : [];
+
+        if (is_array($options)) {
+            foreach ($options as $value) {
+                $attribs = [
+                    'label' => $value,
+                ];
+                if (in_array($value, $optionsDisabled)) {
+                    $attribs['label'] .= ' (' . translator()->trans('unavailable') . ')';
+
+                    if (!$isInAdmin) {
+                        $attribs['disabled'] = 'disabled';
+                    }
+                }
+                $input->addOption($value, $attribs);
             }
         }
     }
@@ -77,6 +92,10 @@ trait SelectElementTrait
 
         $form->addTextarea('select_options', 'Select Options', true);
         $form->getElement('select_options')->setValue(implode("\n", $model->getOption('select_options')));
+
+        $form->addTextarea('select_options_disabled', 'Disabled Options', false);
+        $form->getElement('select_options_disabled')->setValue(implode("\n",
+            $model->getOption('select_options_disabled')));
 
         $form->addInput('select_no_value', 'Default NoValue', false);
         $form->getElement('select_no_value')->setValue($model->getOption('select_no_value'));
