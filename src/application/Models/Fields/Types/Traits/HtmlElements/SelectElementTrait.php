@@ -115,6 +115,10 @@ trait SelectElementTrait
         $values = array_map('trim', explode("\n", $values));
         $model->setOption('select_options', $values);
 
+        $values = $form->getElement('select_options_disabled')->getValue();
+        $values = array_map('trim', explode("\n", $values));
+        $model->setOption('select_options_disabled', $values);
+
         $model->setOption('select_no_value', $form->getElement('select_no_value')->getValue());
     }
 }
