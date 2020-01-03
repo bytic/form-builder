@@ -64,4 +64,3 @@ class ModelWithFieldsRecordTraitTest extends AbstractTest
         self::assertCount(2, $fields);
     }
 }
-
