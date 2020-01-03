@@ -6,6 +6,7 @@ use ByTIC\FormBuilder\Tests\AbstractTest;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\FormField;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\FormFields;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\ModelWithFields\ModelWithFieldsRecord;
+use Mockery\Mock;
 use Nip\Collections\Collection;
 use Nip\Records\Relations\HasMany;
 
@@ -34,6 +35,7 @@ class ModelWithFieldsRecordTraitTest extends AbstractTest
 
     public function testInitDefaultFormFields()
     {
+        /** @var ModelWithFieldsRecord|Mock $model */
         $model = \Mockery::mock(ModelWithFieldsRecord::class)->makePartial();
         $model->shouldAllowMockingProtectedMethods();
         $model->shouldReceive('isInDB')->andReturn(false);

@@ -13,11 +13,19 @@ class ModelWithFieldsRecord extends Record
 {
     use ModelWithFieldsRecordTrait;
 
+    /** @noinspection PhpMissingParentCallCommonInspection
+     * @inheritDoc
+     */
+    protected function inflectManagerName()
+    {
+        return ModelWithFieldsRecords::class;
+    }
+
     /**
      * @return array
      */
     public function generateDefaultFormFieldsTypes()
     {
-        return ['type1', 'type2'];
+        return ['checkbox', 'select'];
     }
 }
