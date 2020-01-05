@@ -70,7 +70,7 @@ trait SelectElementTrait
                     'label' => $value,
                 ];
                 if (in_array($value, $optionsDisabled)) {
-                    if ($hideDisabled) {
+                    if ($hideDisabled && !$isInAdmin) {
                         continue;
                     }
                     $attribs['label'] .= ' (' . translator()->trans('unavailable') . ')';
@@ -95,14 +95,18 @@ trait SelectElementTrait
         $model = $form->getModel();
 
         $form->addTextarea('select_options', 'Select Options', true);
-        $form->getElement('select_options')->setValue(implode("\n", $model->getOption('select_options')));
+        $selectOptions = $model->getOption('select_options');
+        $selectOptions = is_array($selectOptions) ? $selectOptions : [];
+        $form->getElement('select_options')->setValue(implode("\n", $selectOptions));
 
         $form->addTextarea('select_options_disabled', 'Disabled Options', false);
-        $form->getElement('select_options_disabled')->setValue(implode("\n",
-            $model->getOption('select_options_disabled')));
+        $disabledOptions = $model->getOption('select_options_disabled');
+        $disabledOptions = is_array($disabledOptions) ? $disabledOptions : [];
+        $form->getElement('select_options_disabled')->setValue(implode("\n", $disabledOptions));
 
-        $this->addBsRadioGroup('hide_disabled', translator()->trans('hide_disabled'), true);
-        $this->hide_disabled->addOption('yes', translator()->trans('yes'))
+        $hideDisabledType = $form->isElementsType('BsRadioGroup') ? 'BsRadioGroup' : 'RadioGroup';
+        $form->{'add' . $hideDisabledType}('hide_disabled', translator()->trans('hide_disabled'), true);
+        $form->hide_disabled->addOption('yes', translator()->trans('yes'))
             ->addOption('no', translator()->trans('no'))
             ->getRenderer()->setSeparator('');
 

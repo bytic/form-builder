@@ -74,4 +74,22 @@ class SelectElementTraitTest extends AbstractTest
             ]
         ];
     }
+
+    public function test_adminGetDataFromModel()
+    {
+        $type = new SelectType();
+
+        $item = new FormField();
+        $type->setItem($item);
+
+        $record = new FormField();
+        $form = \Mockery::mock(DynamicForm::class)->makePartial();
+        $form->shouldReceive('getModel')->andReturn($record);
+//        $input = new SelectElement($form);
+
+        $type->adminGetDataFromModel($form);
+
+        $elements = $form->getElements();
+        self::assertCount(4, $elements);
+    }
 }
