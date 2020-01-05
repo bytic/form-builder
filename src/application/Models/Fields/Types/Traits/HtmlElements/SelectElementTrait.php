@@ -70,7 +70,7 @@ trait SelectElementTrait
                     'label' => $value,
                 ];
                 if (in_array($value, $optionsDisabled)) {
-                    if ($hideDisabled) {
+                    if ($hideDisabled && !$isInAdmin) {
                         continue;
                     }
                     $attribs['label'] .= ' (' . translator()->trans('unavailable') . ')';
