@@ -4,9 +4,9 @@ use Nip\Container\Container;
 
 Container::setInstance(new Container());
 
-app()->singleton('inflector', new Nip\Inflector\Inflector());
-app()->singleton('app', new \Nip\Application\Application());
-app()->singleton('translator', new \Nip\I18n\Translator());
+app()->share('inflector', new Nip\Inflector\Inflector());
+app()->share('app', new \Nip\Application\Application());
+app()->share('translator', new \Nip\I18n\Translator('en'));
 
 define('PROJECT_BASE_PATH', __DIR__ . '/..');
 define('TEST_BASE_PATH', __DIR__);
