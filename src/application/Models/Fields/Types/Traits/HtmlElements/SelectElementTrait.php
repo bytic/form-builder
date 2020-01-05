@@ -101,8 +101,8 @@ trait SelectElementTrait
         $form->getElement('select_options_disabled')->setValue(implode("\n",
             $model->getOption('select_options_disabled')));
 
-        $this->addBsRadioGroup('hide_disabled', translator()->trans('hide_disabled'), true);
-        $this->hide_disabled->addOption('yes', translator()->trans('yes'))
+        $form->addBsRadioGroup('hide_disabled', translator()->trans('hide_disabled'), true);
+        $form->hide_disabled->addOption('yes', translator()->trans('yes'))
             ->addOption('no', translator()->trans('no'))
             ->getRenderer()->setSeparator('');
 
