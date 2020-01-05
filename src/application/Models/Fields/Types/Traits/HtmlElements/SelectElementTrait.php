@@ -60,6 +60,7 @@ trait SelectElementTrait
         $options = $this->getItem()->getOption('select_options');
 
         $isInAdmin = $input->getForm()->isInAdmin();
+        $hideDisabled = $this->getItem()->getOption('hide_disabled') == 'yes';
         $optionsDisabled = $this->getItem()->getOption('select_options_disabled');
         $optionsDisabled = is_array($optionsDisabled) ? $optionsDisabled : [];
 
@@ -69,6 +70,9 @@ trait SelectElementTrait
                     'label' => $value,
                 ];
                 if (in_array($value, $optionsDisabled)) {
+                    if ($hideDisabled) {
+                        continue;
+                    }
                     $attribs['label'] .= ' (' . translator()->trans('unavailable') . ')';
 
                     if (!$isInAdmin) {
@@ -97,6 +101,11 @@ trait SelectElementTrait
         $form->getElement('select_options_disabled')->setValue(implode("\n",
             $model->getOption('select_options_disabled')));
 
+        $this->addBsRadioGroup('hide_disabled', translator()->trans('hide_disabled'), true);
+        $this->hide_disabled->addOption('yes', translator()->trans('yes'))
+            ->addOption('no', translator()->trans('no'))
+            ->getRenderer()->setSeparator('');
+
         $form->addInput('select_no_value', 'Default NoValue', false);
         $form->getElement('select_no_value')->setValue($model->getOption('select_no_value'));
     }
@@ -119,6 +128,7 @@ trait SelectElementTrait
         $values = array_map('trim', explode("\n", $values));
         $model->setOption('select_options_disabled', $values);
 
+        $model->setOption('hide_disabled', $form->getElement('hide_disabled')->getValue());
         $model->setOption('select_no_value', $form->getElement('select_no_value')->getValue());
     }
 }

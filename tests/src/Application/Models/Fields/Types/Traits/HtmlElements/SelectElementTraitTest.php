@@ -17,16 +17,16 @@ class SelectElementTraitTest extends AbstractTest
     /**
      * @dataProvider data_initFormInput_render
      * @param $options
-     * @param $dissabled
      * @param $output
      */
-    public function test_initFormInput_render($options, $dissabled, $output)
+    public function test_initFormInput_render($options, $output)
     {
         $type = new SelectType();
 
         $item = new FormField();
-        $item->setOption('select_options', $options);
-        $item->setOption('select_options_disabled', $dissabled);
+        foreach ($options as $option => $value) {
+            $item->setOption($option, $value);
+        }
         $type->setItem($item);
 
         $form = new DynamicForm();
@@ -46,15 +46,31 @@ class SelectElementTraitTest extends AbstractTest
     {
         return [
             [
-                ['option1', 'option2', 'option3'],
-                null,
+                ['select_options' => ['option1', 'option2', 'option3']],
                 '<select  title="" ><option value="option1">option1</option><option value="option2">option2</option><option value="option3">option3</option></select>',
             ],
-
             [
-                ['option1', 'option2', 'option3'],
-                ['option2'],
+                [
+                    'select_options' => ['option1', 'option2', 'option3'],
+                    'select_options_disabled' => ['option2'],
+                ],
                 '<select  title="" ><option value="option1">option1</option><option disabled="disabled" value="option2">option2 (unavailable)</option><option value="option3">option3</option></select>',
+            ],
+            [
+                [
+                    'select_options' => ['option1', 'option2', 'option3'],
+                    'select_options_disabled' => ['option2'],
+                    'hide_disabled' => 'no',
+                ],
+                '<select  title="" ><option value="option1">option1</option><option disabled="disabled" value="option2">option2 (unavailable)</option><option value="option3">option3</option></select>',
+            ],
+            [
+                [
+                    'select_options' => ['option1', 'option2', 'option3'],
+                    'select_options_disabled' => ['option2'],
+                    'hide_disabled' => 'yes',
+                ],
+                '<select  title="" ><option value="option1">option1</option><option value="option3">option3</option></select>',
             ]
         ];
     }
