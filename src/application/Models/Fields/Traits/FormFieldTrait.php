@@ -19,6 +19,7 @@ use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsR
  * @property string $listing
  * @property string $filter
  *
+ * @method string getName()
  * @method AbstractTypeTrait getType()
  */
 trait FormFieldTrait
@@ -128,5 +129,69 @@ trait FormFieldTrait
     public function isMandatory()
     {
         return $this->mandatory != 'no';
+    }
+
+    /**
+     * @param string $module
+     * @return bool
+     */
+    public function isListed($module = 'public')
+    {
+        $module = $module == 'admin' ? $module : 'public';
+
+        return $this->hasListing($module);
+    }
+
+    /**
+     * @param string $slug
+     * @return bool
+     */
+    public function hasListing($slug)
+    {
+        return in_array($slug, $this->getListingArray());
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getListingArray()
+    {
+        if (!$this->getRegistry()->has('listingArray')) {
+            $this->getRegistry()->set('listingArray', explode(',', $this->listing));
+        }
+
+        return $this->getRegistry()->get('listingArray');
+    }
+
+    /**
+     * @param string $module
+     * @return bool
+     */
+    public function isFiltered($module = 'public')
+    {
+        $module = $module == 'admin' ? $module : 'public';
+
+        return $this->hasFilter($module);
+    }
+
+    /**
+     * @param string $slug
+     * @return bool
+     */
+    public function hasFilter($slug)
+    {
+        return in_array($slug, $this->getFilterArray());
+    }
+
+    /**
+     * @return array
+     */
+    public function getFilterArray()
+    {
+        if (!$this->getRegistry()->has('filterArray')) {
+            $this->getRegistry()->set('filterArray', explode(',', $this->filter));
+        }
+
+        return $this->getRegistry()->get('filterArray');
     }
 }

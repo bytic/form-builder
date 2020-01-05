@@ -20,12 +20,12 @@ trait FieldFormTrait
     {
         parent::init();
 
-        $this->addSelect('type', translator()->translate('type'), false);
+        $this->addSelect('type', translator()->trans('type'), false);
         $this->getElement('type')->setAttrib('disabled', 'disabled');
 
-        $this->addInput('label', translator()->translate('name'), true);
+        $this->addInput('label', translator()->trans('name'), true);
 
-        $this->addInput('label_intern', translator()->translate('internal_name'));
+        $this->addInput('label_intern', translator()->trans('internal_name'));
 
         $this->addInput('help', 'help');
 
@@ -39,22 +39,22 @@ trait FieldFormTrait
             $this->initFilterElement();
         }
 
-        $this->addButton('save', translator()->translate('submit'));
+        $this->addButton('save', translator()->trans('submit'));
     }
 
     protected function initVisibleElement()
     {
-        $this->addBsRadioGroup('visible', translator()->translate('visible'), true);
-        $this->visible->addOption('yes', translator()->translate('yes'))
-            ->addOption('no', translator()->translate('no'))
+        $this->addBsRadioGroup('visible', translator()->trans('visible'), true);
+        $this->visible->addOption('yes', translator()->trans('yes'))
+            ->addOption('no', translator()->trans('no'))
             ->getRenderer()->setSeparator('');
     }
 
     protected function initMandatoryElement()
     {
-        $this->addBsRadioGroup('mandatory', translator()->translate('mandatory'), true);
-        $this->mandatory->addOption('yes', translator()->translate('yes'))
-            ->addOption('no', translator()->translate('no'))
+        $this->addBsRadioGroup('mandatory', translator()->trans('mandatory'), true);
+        $this->mandatory->addOption('yes', translator()->trans('yes'))
+            ->addOption('no', translator()->trans('no'))
             ->getRenderer()->setSeparator('');
     }
 

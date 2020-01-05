@@ -87,4 +87,12 @@ trait DynamicFormTrait
     {
         $this->getModel()->getRelation('FormFields')->save();
     }
+
+    /**
+     * @return bool
+     */
+    public function isInAdmin()
+    {
+        return false;
+    }
 }

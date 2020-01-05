@@ -4,6 +4,7 @@ namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits;
 
 use ByTIC\FormBuilder\Application\Modules\Admin\Forms\Traits\FieldFormTrait;
 use ByTIC\FormBuilder\Application\Modules\Frontend\Forms\Traits\DynamicFormTrait;
+use Nip\Records\Record;
 use Nip_Form_Element_Abstract as FormElement;
 use Nip_Form_Model as Form;
 
@@ -82,7 +83,9 @@ trait AbstractTypeTrait
         /** @var Form $form */
         $form = $input->getForm();
         $model = $this->getModelFromForm($form);
-        $input->getData($this->getItemValue($model), 'model');
+        if ($model instanceof Record) {
+            $input->getData($this->getItemValue($model), 'model');
+        }
 
         if ($this->getItem()->getHelp()) {
             $input->setOption('form-help', html_entity_decode($this->getItem()->getHelp()));

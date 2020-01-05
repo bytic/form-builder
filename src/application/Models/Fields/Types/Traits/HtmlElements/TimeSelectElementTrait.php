@@ -19,4 +19,14 @@ trait TimeSelectElementTrait
     {
         $this->setInputType('timeselect');
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function initFormInput($input)
+    {
+        $this->htmlDecodeLabel($input);
+
+        return parent::initFormInput($input);
+    }
 }

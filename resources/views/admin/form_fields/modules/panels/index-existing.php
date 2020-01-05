@@ -5,8 +5,9 @@ $manager = $this->manager;
 /** @var array $roles */
 $roles = $this->roles;
 ?>
-<?php foreach (['pacer'] as $role) { ?>
-    <?php if ($this->fields['existing.' . $role]) { ?>
+<?php foreach ($roles as $role) { ?>
+    <?php $fields = isset($this->fields['existing.' . $role]) ? $this->fields['existing.' . $role] : $this->fields['existing']; ?>
+    <?php if ($fields) { ?>
         <div class="form-panel">
             <div class="header">
                 <?php echo $manager->getLabel('existing.' . $role) ?>
@@ -16,7 +17,7 @@ $roles = $this->roles;
                 echo $this->load(
                     '../lists/existing',
                     [
-                        'fields' => $this->fields['existing.' . $role],
+                        'fields' => $fields,
                         'updateUrl' => $manager->compileURL('order', $this->withParams)
                     ]
                 ); ?>

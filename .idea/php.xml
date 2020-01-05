@@ -14,7 +14,6 @@
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
-      <path value="$PROJECT_DIR$/vendor/guzzle/guzzle" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
@@ -22,7 +21,6 @@
       <path value="$PROJECT_DIR$/vendor/sendgrid/sendgrid" />
       <path value="$PROJECT_DIR$/vendor/html2text/html2text" />
       <path value="$PROJECT_DIR$/vendor/sendgrid/php-http-client" />
-      <path value="$PROJECT_DIR$/vendor/omnipay/common" />
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
@@ -91,10 +89,8 @@
       <path value="$PROJECT_DIR$/vendor/bytic/router" />
       <path value="$PROJECT_DIR$/vendor/bytic/cache" />
       <path value="$PROJECT_DIR$/vendor/bytic/container" />
-      <path value="$PROJECT_DIR$/vendor/bytic/orm" />
       <path value="$PROJECT_DIR$/vendor/bytic/helpers" />
       <path value="$PROJECT_DIR$/vendor/bytic/profiler" />
-      <path value="$PROJECT_DIR$/vendor/bytic/application" />
       <path value="$PROJECT_DIR$/vendor/bytic/utility" />
       <path value="$PROJECT_DIR$/vendor/bytic/debug" />
       <path value="$PROJECT_DIR$/vendor/bytic/debugbar" />
@@ -134,6 +130,15 @@
       <path value="$PROJECT_DIR$/vendor/bytic/persistent-data" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/vendor/kylekatarnls/update-helper" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
+      <path value="$PROJECT_DIR$/vendor/bytic/money" />
+      <path value="$PROJECT_DIR$/vendor/bytic/application" />
+      <path value="$PROJECT_DIR$/vendor/bytic/orm" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7" />
