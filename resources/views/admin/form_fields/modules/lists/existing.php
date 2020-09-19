@@ -1,5 +1,5 @@
 <?php
-/** @var \ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait $field */
+/** @var \ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait[] $fields */
 ?>
 <ul class='list-unstyled sortable fields-container' data-url="<?php echo $updateUrl; ?>">
     <?php foreach ($fields as $field) { ?>
@@ -7,14 +7,14 @@
             class="field field-<?php echo $field->getRole(); ?>-<?php echo $field->getType()->getName(); ?>">
             <div class="row row-fluid">
                 <div class="name col-7 col-xs-7">
-                    <?php $visibleIcons = ($field->visible == 'no') ? 'field-invisible glyphicon-eye-close' : 'field-visible glyphicon-eye-open' ?>
-                    <span class="glyphicon <?php echo $visibleIcons; ?>"></span>
+                    <?php $visibleIcons = ($field->visible == 'no') ? 'field-invisible fas fa-eye-slash' : 'field-visible far fa-eye' ?>
+                    <i class=" <?php echo $visibleIcons; ?>"></i>
 
                     <?php $listIcons = ($field->hasListing('public')) ? 'field-visible' : 'field-invisible' ?>
-                    <span class="glyphicon glyphicon-th-list <?php echo $listIcons; ?>"></span>
+                    <i class="far fa-list-alt <?php echo $listIcons; ?>"></i>
 
                     <?php $filterIcons = ($field->hasFilter('public')) ? 'field-visible' : 'field-invisible' ?>
-                    <span class="glyphicon glyphicon-filter <?php echo $filterIcons; ?>"></span>
+                    <i class=" fas fa-filter <?php echo $filterIcons; ?>"></i>
 
                     <?php echo $field->getLabel(); ?>
                     <?php echo $field->isMandatory() ? '*' : ''; ?>
@@ -28,12 +28,12 @@
                 <div class="col-2 col-xs-2">
                     <div class="pull-right btn-group">
                         <a href="<?php echo $field->getURL(); ?>" class="btn btn-success btn-xs">
-                            <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
+                            <i class="fas fa-edit"></i>
                         </a>
                         <?php if ($field->getType()->canDelete()) { ?>
                             <a href="<?php echo $field->compileURL('delete'); ?>" class="btn btn-danger btn-xs"
                                onclick="return confirm('<?php echo translator()->trans('general.messages.confirm'); ?>');">
-                                <span class="glyphicon glyphicon-trash"></span>
+                                <i class="far fa-trash-alt"></i>
                             </a>
                         <?php } ?>
                     </div>
