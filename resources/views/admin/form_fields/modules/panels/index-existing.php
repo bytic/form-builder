@@ -12,7 +12,7 @@ $roles = $this->roles;
             <div class="header">
                 <?php echo $manager->getLabel('existing.' . $role) ?>
             </div>
-            <div class="content">
+            <div class="fields-body">
                 <?php
                 echo $this->load(
                     '../lists/existing',
