@@ -10,7 +10,7 @@ $roles = $this->roles;
         <div class="header">
             <?php echo $manager->getLabel('available.'.$role) ?>
         </div>
-        <div class="content">
+        <div class="fields-body">
             <?php echo $this->load('../lists/available', ['role' => $role]); ?>
         </div>
     </div>
