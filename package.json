@@ -1,0 +1,19 @@
+{
+  "name": "bytic-form-builder",
+  "version": "0.0.1",
+  "description": " ",
+  "private": true,
+  "author": "Gabriel Solomon",
+  "license": "proprietary",
+  "scripts": {
+    "dev": "yarn run development",
+    "development": "yarn encore dev",
+    "prod": "yarn run production",
+    "production": "yarn encore prod"
+  },
+  "dependencies": {
+    "jgrowl": "^1.4"
+  },
+  "devDependencies": {
+  }
+}
