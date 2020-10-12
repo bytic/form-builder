@@ -20,4 +20,17 @@ class FormFieldTraitTest extends AbstractTest
         $type = $field->getType();
         self::assertInstanceOf(CheckboxGroup::class, $type);
     }
+
+    public function test_getHelp()
+    {
+        $field = new FormField();
+        $field->writeData(['help' => '']);
+        self::assertSame('', $field->help);
+        self::assertSame('', $field->getHelp());
+
+        $field = new FormField();
+        $field->writeData(['help' => 'test']);
+        self::assertSame('test', $field->help);
+        self::assertSame('test', $field->getHelp());
+    }
 }
