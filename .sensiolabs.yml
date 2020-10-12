@@ -1,7 +1,23 @@
-# Configure the PHP version SensioLabsInsight should use to analyze
-# your project. It can be defined to 5, 7.0, or 7.1. If not
-# present, it will prefer 7.1 but fallback to 5 if errored.
-php_version: 7.1
+checks:
+    php:
+        code_rating: true
+        duplication: true
+
+php_version: 7.2
+
+    nodes:
+        analysis:
+            tests:
+                override:
+                    - php-scrutinizer-run
+tools:
+    php_code_coverage:
+        enabled: true
+    php_code_sniffer:
+        config:
+            standard: "PSR12"
+    external_code_coverage:
+        timeout: 600
 
 global_exclude_dirs:
     - .idea

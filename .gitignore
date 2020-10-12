@@ -1,4 +1,6 @@
-vendor
 .idea/workspace.xml
 .idea/usage.statistics.xml
+
+vendor
+
 composer.lock

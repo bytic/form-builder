@@ -49,7 +49,8 @@ trait FormFieldTrait
      */
     public function getLabel()
     {
-        return $this->label ? $this->label : $this->getType()->getLabel();
+        $label = $this->getAttributeFromArray('label');
+        return $label ? $label : $this->getType()->getLabel();
     }
 
     /**
@@ -57,7 +58,7 @@ trait FormFieldTrait
      */
     public function getRole()
     {
-        return $this->role;
+        return $this->getAttributeFromArray('role');
     }
 
     /**
@@ -65,7 +66,7 @@ trait FormFieldTrait
      */
     public function getHelp()
     {
-        return $this->help;
+        return $this->getAttributeFromArray('help');
     }
 
     /**
