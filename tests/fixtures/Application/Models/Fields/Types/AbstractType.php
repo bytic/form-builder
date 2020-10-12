@@ -2,7 +2,7 @@
 
 namespace ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\Types;
 
-use ByTIC\Common\Records\Properties\Types\Generic as GenericAbstractType;
+use \ByTIC\Models\SmartProperties\Properties\Types\Generic as GenericAbstractType;
 use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeTrait;
 
 /**

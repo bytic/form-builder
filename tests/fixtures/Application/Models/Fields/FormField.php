@@ -14,12 +14,8 @@ class FormField extends Record
     use FormFieldTrait;
     use \ByTIC\Common\Records\Traits\HasSerializedOptions\RecordTrait;
 
-
-    /** @noinspection PhpMissingParentCallCommonInspection
-     * @inheritDoc
-     */
-    protected function inflectManagerName()
+    public function getManager()
     {
-        return FormFields::class;
+        return FormFields::instance();
     }
 }

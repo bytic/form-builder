@@ -16,7 +16,6 @@ trait AbstractTypeTrait
 {
     use AbstractTypeInterfaceTrait;
 
-
     /**
      * AbstractTypeTrait constructor.
      */

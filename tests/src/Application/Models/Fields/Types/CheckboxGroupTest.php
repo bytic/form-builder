@@ -28,7 +28,7 @@ class CheckboxGroupTest extends AbstractTest
         $item->setOption('check_options', $options);
         $type->setItem($item);
 
-        $form = new Nip_Form_Model();
+        $form = new \Nip\Form\FormModel();
         $input = new CheckboxGroupElement($form);
 
         $type->populateFormInputOptions($input);

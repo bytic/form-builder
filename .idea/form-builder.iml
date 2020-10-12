@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/tests/fixtures" isTestSource="true" packagePrefix="ByTIC\FormBuilder\Tests\Fixtures\" />
       <sourceFolder url="file://$MODULE_DIR$/src/application" isTestSource="false" packagePrefix="ByTIC\FormBuilder\Application\" />
       <sourceFolder url="file://$MODULE_DIR$/tests/src" isTestSource="true" packagePrefix="ByTIC\FormBuilder\Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/auth" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/autoloader" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/common" />
@@ -201,10 +203,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/translation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/debug" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/dispatcher" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/mail" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/utility" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/controllers" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/collections" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/mail" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
