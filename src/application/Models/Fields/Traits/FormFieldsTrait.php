@@ -13,10 +13,11 @@ use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordsTrait as HasTypes
  */
 trait FormFieldsTrait
 {
-    use HasTypesTrait {
-        HasTypesTrait::addType as addTypeTrait;
-    }
+    use HasTypesTrait;
 
+    /**
+     * @var null|array
+     */
     protected $typesMatrix = null;
 
     /**
@@ -25,20 +26,43 @@ trait FormFieldsTrait
      */
     public function getTypesByRole($role)
     {
-        $this->checkInitTypes();
-
+        $this->checkInitTypesMatrix();
         return isset($this->typesMatrix[$role]) ? $this->typesMatrix[$role] : null;
     }
 
     /**
-     * @param AbstractTypeTrait $object
+     * @return array
      */
-    public function addType($object)
+    protected function getTypesMatrix()
     {
-        /** @noinspection PhpParamsInspection */
-        $this->addTypeTrait($object);
-        $this->typesMatrix[$object->getRole()][$object->getName()] = $object;
+        $this->checkInitTypesMatrix();
+        return $this->typesMatrix;
     }
+
+    protected function checkInitTypesMatrix()
+    {
+        if ($this->typesMatrix === null) {
+            $this->generateTypesMatrix();
+        }
+    }
+
+    protected function generateTypesMatrix()
+    {
+        $items = $this->getSmartPropertyDefinition('Type')->getItems();
+        foreach ($items as $item) {
+            $this->typesMatrix[$item->getRole()][$item->getName()] = $item;
+        }
+    }
+
+//    /**
+//     * @param AbstractTypeTrait $object
+//     */
+//    public function addType($object)
+//    {
+//        /** @noinspection PhpParamsInspection */
+//        $this->addTypeTrait($object);
+//        $this->typesMatrix[$object->getRole()][$object->getName()] = $object;
+//    }
 
     /**
      * @return array

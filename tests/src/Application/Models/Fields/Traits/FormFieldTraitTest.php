@@ -12,10 +12,10 @@ use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\Types\CheckboxGro
  */
 class FormFieldTraitTest extends AbstractTest
 {
-    public function testGetType()
+    public function test_getType()
     {
         $field = new FormField();
-        $field->type = 'CheckboxGroup';
+        $field->type = 'checkbox_group';
 
         $type = $field->getType();
         self::assertInstanceOf(CheckboxGroup::class, $type);
