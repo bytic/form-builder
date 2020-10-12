@@ -18,7 +18,7 @@ trait ModelFieldsRecordTrait
      */
     public function getValue()
     {
-        return $this->value;
+        return $this->getAttributeFromArray('value');
     }
 
     /**
