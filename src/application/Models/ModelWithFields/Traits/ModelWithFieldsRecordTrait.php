@@ -4,6 +4,7 @@ namespace ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits;
 
 use ByTIC\Common\Records\Records;
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait;
+use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
 use Nip\Records\Collections\Associated as AssociatedCollection;
 use Nip\Records\Relations\HasMany;
 
@@ -58,14 +59,14 @@ trait ModelWithFieldsRecordTrait
         $existing = $this->getFormFields();
         foreach ($existing as $field) {
             $fields['existing.' . $field->getRole()][] = $field;
-            unset($fields[$field->role][$field->type]);
+            unset($fields[$field->getRole()][$field->getType()->getName()]);
         }
 
         return $fields;
     }
 
     /**
-     * @return AssociatedCollection|FormFieldsTrait[]
+     * @return AssociatedCollection|FormFieldTrait[]
      * @throws \Exception
      */
     public function getFormFields()
@@ -106,7 +107,7 @@ trait ModelWithFieldsRecordTrait
         $fields = $fieldsRelation->getResults();
         foreach ($types as $type) {
             $field = $fieldsManager->getNew();
-            $field->type = $type;
+            $field->setType($type);
             $field->populateFromParent($this);
             $field->populateFromType();
 
