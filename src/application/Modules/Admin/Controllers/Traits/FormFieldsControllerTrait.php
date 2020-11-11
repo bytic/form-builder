@@ -2,7 +2,7 @@
 
 namespace ByTIC\FormBuilder\Application\Modules\Admin\Controllers\Traits;
 
-use ByTIC\Common\Application\Controllers\Traits\AbstractControllerTrait;
+use Nip\Controllers\Traits\AbstractControllerTrait;
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
 
 /**
@@ -20,7 +20,7 @@ trait FormFieldsControllerTrait
     {
         /** @var FormFieldTrait $item */
         $item = parent::addNewModel();
-        $item->type = $this->getRequest()->query->get('type');
+        $item->setType($this->getRequest()->query->get('type'));
         $item->role = $this->getRequest()->query->get('role');
         $item->populateFromType();
         return $item;
