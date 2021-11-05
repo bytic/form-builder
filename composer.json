@@ -24,7 +24,7 @@
     }
   },
   "require": {
-    "php": "^7.1",
+    "bytic/package-base": "^1.0",
     "bytic/models-smart-properties": "^1.0",
     "bytic/translation": "^1.0"
   },
