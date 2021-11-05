@@ -40,7 +40,6 @@
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/vendor/filp/whoops" />
       <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
-      <path value="$PROJECT_DIR$/vendor/container-interop/container-interop" />
       <path value="$PROJECT_DIR$/vendor/http-interop/http-middleware" />
       <path value="$PROJECT_DIR$/vendor/bytic/medialibrary" />
       <path value="$PROJECT_DIR$/vendor/bytic/request-detective" />
@@ -235,6 +234,11 @@
       <path value="$PROJECT_DIR$/vendor/bytic/namefy" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/vendor/bytic/orm-behaviors" />
+      <path value="$PROJECT_DIR$/vendor/bytic/controllers-extra" />
+      <path value="$PROJECT_DIR$/vendor/symfony/workflow" />
+      <path value="$PROJECT_DIR$/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/vendor/bytic/memoize" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
