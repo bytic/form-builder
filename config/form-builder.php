@@ -1,18 +1,18 @@
 <?php
 
-use ByTIC\FormBuilder\Models\Fields\Fields;
+use ByTIC\FormBuilder\Models\FormsFields\FormsFields;
 use ByTIC\FormBuilder\Models\Forms\Forms;
-use ByTIC\FormBuilder\Models\Values\Values;
+use ByTIC\FormBuilder\Models\FieldsValues\FieldsValues;
 
 return [
     'models' => [
         'forms' => Forms::class,
-        'fields' => Fields::class,
-        'values' => Values::class,
+        'fields' => FormsFields::class,
+        'values' => FieldsValues::class,
     ],
     'tables' => [
         'forms' => Forms::TABLE,
-        'fields' => Fields::TABLE,
-        'values' => Values::TABLE,
+        'fields' => FormsFields::TABLE,
+        'values' => FieldsValues::TABLE,
     ],
 ];

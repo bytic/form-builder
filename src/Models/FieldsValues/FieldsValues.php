@@ -1,19 +1,19 @@
 <?php
 
-namespace ByTIC\FormBuilder\Models\Fields;
+namespace ByTIC\FormBuilder\Models\FieldsValues;
 
 use Nip\Records\RecordManager;
 use Nip\Utility\Traits\SingletonTrait;
 
 /**
- * Class Fields
- * @package ByTIC\FormBuilder\Models\Forms
+ * Class FieldsValues
+ * @package ByTIC\FormBuilder\Models\FieldsValues
  */
-class Fields extends RecordManager
+class FieldsValues extends RecordManager
 {
     use SingletonTrait;
 
-    public const TABLE = 'fb-fields';
+    public const TABLE = 'formbuilder-values';
 
     public function getRootNamespace()
     {

@@ -13,7 +13,7 @@ class Forms extends RecordManager
 {
     use SingletonTrait;
 
-    public const TABLE = 'fb-forms';
+    public const TABLE = 'formbuilder-forms';
 
     public function getRootNamespace()
     {

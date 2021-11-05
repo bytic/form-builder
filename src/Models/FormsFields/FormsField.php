@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\FormBuilder\Models\Fields;
+namespace ByTIC\FormBuilder\Models\FormsFields;
 
 use Nip\Records\Record;
 
@@ -8,7 +8,7 @@ use Nip\Records\Record;
  * Class Field
  * @package ByTIC\FormBuilder\Models\Forms
  */
-class Field extends Record
+class FormsField extends Record
 {
 //    use EventTrait;
 }
