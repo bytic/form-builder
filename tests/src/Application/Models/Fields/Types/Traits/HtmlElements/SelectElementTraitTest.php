@@ -6,6 +6,7 @@ use ByTIC\FormBuilder\Tests\AbstractTest;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\FormField;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\Types\Select as SelectType;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Modules\AbstractModule\Forms\DynamicForm;
+use Mockery;
 use Nip_Form_Element_Select as SelectElement;
 
 /**
@@ -47,14 +48,14 @@ class SelectElementTraitTest extends AbstractTest
         return [
             [
                 ['select_options' => ['option1', 'option2', 'option3']],
-                '<select  title="" ><option value="option1">option1</option><option value="option2">option2</option><option value="option3">option3</option></select>',
+                '<select  title="" class="form-select " ><option value="option1">option1</option><option value="option2">option2</option><option value="option3">option3</option></select>',
             ],
             [
                 [
                     'select_options' => ['option1', 'option2', 'option3'],
                     'select_options_disabled' => ['option2'],
                 ],
-                '<select  title="" ><option value="option1">option1</option><option disabled="disabled" value="option2">option2 (unavailable)</option><option value="option3">option3</option></select>',
+                '<select  title="" class="form-select " ><option value="option1">option1</option><option disabled="disabled" value="option2">option2 (unavailable)</option><option value="option3">option3</option></select>',
             ],
             [
                 [
@@ -62,7 +63,7 @@ class SelectElementTraitTest extends AbstractTest
                     'select_options_disabled' => ['option2'],
                     'hide_disabled' => 'no',
                 ],
-                '<select  title="" ><option value="option1">option1</option><option disabled="disabled" value="option2">option2 (unavailable)</option><option value="option3">option3</option></select>',
+                '<select  title="" class="form-select " ><option value="option1">option1</option><option disabled="disabled" value="option2">option2 (unavailable)</option><option value="option3">option3</option></select>',
             ],
             [
                 [
@@ -70,7 +71,7 @@ class SelectElementTraitTest extends AbstractTest
                     'select_options_disabled' => ['option2'],
                     'hide_disabled' => 'yes',
                 ],
-                '<select  title="" ><option value="option1">option1</option><option value="option3">option3</option></select>',
+                '<select  title="" class="form-select " ><option value="option1">option1</option><option value="option3">option3</option></select>',
             ]
         ];
     }
@@ -83,7 +84,7 @@ class SelectElementTraitTest extends AbstractTest
         $type->setItem($item);
 
         $record = new FormField();
-        $form = \Mockery::mock(DynamicForm::class)->makePartial();
+        $form = Mockery::mock(DynamicForm::class)->makePartial();
         $form->shouldReceive('getModel')->andReturn($record);
 //        $input = new SelectElement($form);
 
