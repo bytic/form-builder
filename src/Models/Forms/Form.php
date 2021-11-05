@@ -10,5 +10,6 @@ use Nip\Records\Record;
  */
 class Form extends Record
 {
+    use \ByTIC\Records\Behaviors\HasForms\HasFormsRecordTrait;
 //    use EventTrait;
 }

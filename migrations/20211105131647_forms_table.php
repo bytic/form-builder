@@ -27,10 +27,9 @@ final class FormsTable extends AbstractMigration
 
         $table = $this->table($table_name);
         $table
-            ->addColumn('id_topic', 'integer')
-            ->addColumn('id_email', 'biginteger')
-            ->addColumn('id_item', 'biginteger')
-            ->addColumn('status', 'enum', ['values' => ['pending', 'skipped', 'sent']])
+            ->addColumn('tenant', 'string')
+            ->addColumn('tenant_id', 'integer')
+            ->addColumn('name', 'string')
             ->addColumn('modified', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',
@@ -39,12 +38,8 @@ final class FormsTable extends AbstractMigration
                 'default' => 'CURRENT_TIMESTAMP',
             ]);
 
-        $table->addIndex(['id_topic']);
-        $table->addIndex(['id_email']);
-        $table->addIndex(['id_item']);
-        $table->addIndex(['status']);
-        $table->addIndex(['modified']);
-        $table->addIndex(['created']);
+        $table->addIndex(['tenant']);
+        $table->addIndex(['tenant_id']);
 
         $table->save();
     }

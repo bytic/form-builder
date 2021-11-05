@@ -14,6 +14,8 @@ class Forms extends RecordManager
     use SingletonTrait;
     use \ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
     use \ByTIC\Records\Behaviors\I18n\I18nRecordsTrait;
+    use \Nip\Records\Filters\Records\HasFiltersRecordsTrait;
+    use FormsTrait;
 
     public const TABLE = 'formbuilder-forms';
 
