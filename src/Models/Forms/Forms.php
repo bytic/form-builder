@@ -12,7 +12,7 @@ use Nip\Utility\Traits\SingletonTrait;
 class Forms extends RecordManager
 {
     use SingletonTrait;
-    use ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
+    use \ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
     use \ByTIC\Records\Behaviors\I18n\I18nRecordsTrait;
 
     public const TABLE = 'formbuilder-forms';
@@ -20,5 +20,10 @@ class Forms extends RecordManager
     public function getRootNamespace()
     {
         return 'ByTIC\FormBuilder\Models\\';
+    }
+
+    protected function generateController()
+    {
+        return static::TABLE;
     }
 }
