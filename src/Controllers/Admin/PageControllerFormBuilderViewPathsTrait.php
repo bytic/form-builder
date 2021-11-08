@@ -8,18 +8,18 @@ use ByTIC\FormBuilder\Utility\ViewHelper;
  * Trait HasAdminViewPathsTrait
  * @package ByTIC\AdminBase\Library\Controllers\Traits
  */
-trait HasAdminViewPathsTrait
+trait PageControllerFormBuilderViewPathsTrait
 {
-    protected function bootHasAdminViewPathsTrait()
+    protected function bootPageControllerFormBuilderViewPathsTrait()
     {
         $this->after(
             function () {
-                $this->registerHelloViewPaths();
+                $this->registerFormBuilderViewPaths();
             }
         );
     }
 
-    protected function registerHelloViewPaths()
+    protected function registerFormBuilderViewPaths()
     {
         $view = $this->getView();
         ViewHelper::registerAdminPaths($view);

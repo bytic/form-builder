@@ -9,5 +9,5 @@
             </a>
         </div>
     </div>
-    <?= $this->load("/formbuilder-forms/module/item/details"); ?>
+    <?= $this->load("/formbuilder-forms/modules/item/details"); ?>
 </div>

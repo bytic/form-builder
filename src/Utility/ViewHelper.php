@@ -2,7 +2,7 @@
 
 namespace ByTIC\FormBuilder\Utility;
 
-use ByTIC\FormBuilder\Controllers\Admin\HasAdminViewPathsTrait;
+use ByTIC\FormBuilder\Controllers\Admin\PageControllerFormBuilderViewPathsTrait;
 use Nip\View\View;
 
 /**
@@ -12,7 +12,7 @@ use Nip\View\View;
 class ViewHelper
 {
     /**
-     * @param View|HasAdminViewPathsTrait $view
+     * @param View|PageControllerFormBuilderViewPathsTrait $view
      */
     public static function registerAdminPaths(View $view)
     {
