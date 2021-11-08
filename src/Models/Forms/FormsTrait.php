@@ -25,4 +25,9 @@ trait FormsTrait
     {
         $this->morphTo('Tenant');
     }
+
+    protected function generateController(): string
+    {
+        return Forms::TABLE;
+    }
 }

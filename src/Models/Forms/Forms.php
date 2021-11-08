@@ -23,9 +23,4 @@ class Forms extends RecordManager
     {
         return 'ByTIC\FormBuilder\Models\\';
     }
-
-    protected function generateController()
-    {
-        return static::TABLE;
-    }
 }
