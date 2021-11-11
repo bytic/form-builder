@@ -4,6 +4,10 @@ namespace ByTIC\FormBuilder;
 
 use ByTIC\PackageBase\BaseBootableServiceProvider;
 
+/**
+ * Class FormBuilderServiceProvider
+ * @package ByTIC\FormBuilder
+ */
 class FormBuilderServiceProvider extends BaseBootableServiceProvider
 {
     public const NAME = 'form-builder';

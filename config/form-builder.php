@@ -15,4 +15,6 @@ return [
         'fields' => FormsFields::TABLE,
         'values' => FieldsValues::TABLE,
     ],
+    'consumers' => [
+    ],
 ];
