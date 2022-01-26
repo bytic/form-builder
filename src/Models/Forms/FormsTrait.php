@@ -2,6 +2,7 @@
 
 namespace ByTIC\FormBuilder\Models\Forms;
 
+use ByTIC\FormBuilder\Utility\FormsBuilderModels;
 use ByTIC\FormBuilder\Utility\PackageConfig;
 
 /**
@@ -21,12 +22,18 @@ trait FormsTrait
     protected function initRelationsCommon()
     {
         $this->initRelationsTenant();
+        $this->initRelationsFormFields();
         $this->initRelationsConsumers();
     }
 
     protected function initRelationsTenant()
     {
         $this->morphTo('Tenant');
+    }
+
+    public function initRelationsFormFields()
+    {
+        $this->hasMany('FormFields', ['class' => get_class(FormsBuilderModels::fields())]);
     }
 
     protected function initRelationsConsumers()

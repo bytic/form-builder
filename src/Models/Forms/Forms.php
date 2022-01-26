@@ -23,4 +23,5 @@ class Forms extends RecordManager
     {
         return 'ByTIC\FormBuilder\Models\\';
     }
+
 }
