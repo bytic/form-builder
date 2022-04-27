@@ -1,12 +1,15 @@
 <?php
-/** @var \ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait $manager */
+/** @var FormFieldsTrait $manager */
+
+use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait;
+
 $manager = $this->manager;
 
 /** @var array $roles */
 $roles = $this->roles;
 ?>
 <?php foreach ($roles as $role) { ?>
-    <?php $fields = isset($this->fields['existing.' . $role]) ? $this->fields['existing.' . $role] : $this->fields['existing']; ?>
+    <?php $fields = $this->fields['existing.' . $role] ?? $this->fields['existing']; ?>
     <?php if ($fields) { ?>
         <div class="form-panel">
             <div class="header">

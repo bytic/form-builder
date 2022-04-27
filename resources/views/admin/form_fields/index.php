@@ -1,6 +1,9 @@
 <?php
 
-/** @var \ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait $manager */
+/** @var FormFieldsTrait $manager */
+
+use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait;
+
 $this->set('manager', $manager);
 
 /** @var array $roles */
@@ -16,23 +19,12 @@ $this->set('withParams', $withParams);
 ?>
 <div id="form-fields-container" class="row">
     <div class="col-sm-3 available">
-        <?php
-        echo $this->load(
-            'modules/panels/index-available'
-        ); ?>
+        <?= $this->load('modules/panels/index-available'); ?>
     </div>
     <div class="col-sm-7 existing">
-        <?php
-        echo $this->load(
-            'modules/panels/index-existing'
-        );
-        ?>
+        <?= $this->load('modules/panels/index-existing'); ?>
     </div>
     <div class="col-sm-2">
-        <?php
-        echo $this->load(
-            'modules/panels/index-actions'
-        );
-        ?>
+        <?= $this->load('modules/panels/index-actions'); ?>
     </div>
 </div>
