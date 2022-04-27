@@ -1,8 +1,9 @@
 <?php
 
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait;
+use Nip\Records\AbstractModels\RecordManager;
 
-/** @var FormFieldsTrait $manager */
+/** @var FormFieldsTrait|RecordManager $manager */
 $manager = $this->manager;
 
 /** @var array $roles */
@@ -16,7 +17,7 @@ $roles = $this->roles;
     <ul class="dropdown-menu">
         <?php foreach ($this->importLinks as $link) { ?>
             <li>
-                <a href="<?= $link['href']; ?>">
+                <a href="<?= $link['href']; ?>" class="dropdown-item">
                     <?= $link['name']; ?>
                 </a>
             </li>
