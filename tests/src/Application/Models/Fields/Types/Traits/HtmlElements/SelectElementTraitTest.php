@@ -48,14 +48,14 @@ class SelectElementTraitTest extends AbstractTest
         return [
             [
                 ['select_options' => ['option1', 'option2', 'option3']],
-                '<select  title="" class="form-select " ><option value="option1">option1</option><option value="option2">option2</option><option value="option3">option3</option></select>',
+                '<select  title="" class="form-select" ><option value="option1">option1</option><option value="option2">option2</option><option value="option3">option3</option></select>',
             ],
             [
                 [
                     'select_options' => ['option1', 'option2', 'option3'],
                     'select_options_disabled' => ['option2'],
                 ],
-                '<select  title="" class="form-select " ><option value="option1">option1</option><option disabled="disabled" value="option2">option2 (unavailable)</option><option value="option3">option3</option></select>',
+                '<select  title="" class="form-select" ><option value="option1">option1</option><option disabled="disabled" value="option2">option2 (unavailable)</option><option value="option3">option3</option></select>',
             ],
             [
                 [
@@ -63,7 +63,7 @@ class SelectElementTraitTest extends AbstractTest
                     'select_options_disabled' => ['option2'],
                     'hide_disabled' => 'no',
                 ],
-                '<select  title="" class="form-select " ><option value="option1">option1</option><option disabled="disabled" value="option2">option2 (unavailable)</option><option value="option3">option3</option></select>',
+                '<select  title="" class="form-select" ><option value="option1">option1</option><option disabled="disabled" value="option2">option2 (unavailable)</option><option value="option3">option3</option></select>',
             ],
             [
                 [
@@ -71,7 +71,7 @@ class SelectElementTraitTest extends AbstractTest
                     'select_options_disabled' => ['option2'],
                     'hide_disabled' => 'yes',
                 ],
-                '<select  title="" class="form-select " ><option value="option1">option1</option><option value="option3">option3</option></select>',
+                '<select  title="" class="form-select" ><option value="option1">option1</option><option value="option3">option3</option></select>',
             ]
         ];
     }
@@ -86,11 +86,10 @@ class SelectElementTraitTest extends AbstractTest
         $record = new FormField();
         $form = Mockery::mock(DynamicForm::class)->makePartial();
         $form->shouldReceive('getModel')->andReturn($record);
-//        $input = new SelectElement($form);
 
         $type->adminGetDataFromModel($form);
 
         $elements = $form->getElements();
-        self::assertCount(4, $elements);
+        self::assertCount(6, $elements);
     }
 }

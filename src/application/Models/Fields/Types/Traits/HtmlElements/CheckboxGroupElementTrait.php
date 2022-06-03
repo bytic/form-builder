@@ -3,6 +3,7 @@
 namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements;
 
 use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
+use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours\HasElementOptions;
 use Nip_Form_Element_Abstract;
 use Nip_Form_Element_CheckboxGroup;
 use Nip_Form_Model as NipModelForm;
@@ -14,6 +15,7 @@ use Nip_Form_Model as NipModelForm;
 trait CheckboxGroupElementTrait
 {
     use AbstractTypeInterfaceTrait;
+    use HasElementOptions;
 
     /**
      * SelectElement constructor.
@@ -31,23 +33,9 @@ trait CheckboxGroupElementTrait
     public function initFormInput($input)
     {
         $this->populateFormInputOptions($input);
-
         $input->getRenderer()->setSeparator('');
 
         return parent::initFormInput($input);
-    }
-
-    /**
-     * @param Nip_Form_Element_Abstract|Nip_Form_Element_CheckboxGroup $input
-     */
-    public function populateFormInputOptions($input)
-    {
-        $values = $this->getItem()->getOption('check_options');
-        if (is_array($values)) {
-            foreach ($values as $value) {
-                $input->addOption($value, $value);
-            }
-        }
     }
 
     /**
@@ -57,10 +45,7 @@ trait CheckboxGroupElementTrait
     {
         parent::adminGetDataFromModel($form);
 
-        $form->addTextarea('check_options', translator()->translate('check_options'), true);
-        $form->getElement('check_options')->setValue(
-            implode("\n", $form->getModel()->getOption('check_options'))
-        );
+        $this->adminFormAddOptionsFromModel($form);
     }
 
 
@@ -71,9 +56,7 @@ trait CheckboxGroupElementTrait
     {
         parent::adminSaveToModel($form);
 
-        $values = $form->getElement('check_options')->getValue();
-        $values = array_map('trim', explode("\n", $values));
-        $form->getModel()->setOption('check_options', $values);
+        $this->adminSaveToModelInputOptions($form);
     }
 
 

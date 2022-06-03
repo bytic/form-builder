@@ -4,13 +4,14 @@ namespace ByTIC\FormBuilder\Tests\Fixtures\Application\Modules\AbstractModule\Fo
 
 use ByTIC\FormBuilder\Application\Modules\AbstractModule\Forms\Traits\DynamicFormTrait;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\FormField;
+use Nip\Form\FormModel;
 use Nip\Records\Collections\Collection;
 
 /**
  * Class DynamicForm
  * @package ByTIC\FormBuilder\Tests\Fixtures\Application\Modules\AbstractModule\Forms
  */
-class DynamicForm extends \Nip_Form_Model
+class DynamicForm extends FormModel
 {
     use DynamicFormTrait;
 

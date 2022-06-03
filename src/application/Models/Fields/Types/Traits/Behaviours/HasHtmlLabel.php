@@ -2,6 +2,8 @@
 
 namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours;
 
+use Nip\Form\Elements\AbstractElement;
+
 /**
  * Trait HasHtmlLabel
  * @package ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours
@@ -9,7 +11,7 @@ namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours;
 trait HasHtmlLabel
 {
     /**
-     * @param \Nip_Form_Element_Input_Abstract $input
+     * @param AbstractElement $input
      */
     public function htmlDecodeLabel($input)
     {

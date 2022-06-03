@@ -264,6 +264,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/slevomat/coding-standard" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/ocramius/package-versions" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/madewithlove/license-checker" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/stella-maris/clock" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
