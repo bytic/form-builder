@@ -2,11 +2,11 @@
 
 namespace ByTIC\FormBuilder\Tests\Fixtures\Application\Models\ModelWithFields;
 
-use ByTIC\Common\Records\Records;
+use Nip\Records\RecordManager;
 
 /**
  * Class FormField.
  */
-class ModelWithFieldsRecords extends Records
+class ModelWithFieldsRecords extends RecordManager
 {
 }

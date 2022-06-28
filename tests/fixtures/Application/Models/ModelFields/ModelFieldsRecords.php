@@ -2,13 +2,13 @@
 
 namespace ByTIC\FormBuilder\Tests\Fixtures\Application\Models\ModelFields;
 
-use ByTIC\Common\Records\Records;
+use Nip\Records\RecordManager;
 use Nip\Utility\Traits\SingletonTrait;
 
 /**
  * Class ModelFieldsRecords.
  */
-class ModelFieldsRecords extends Records
+class ModelFieldsRecords extends RecordManager
 {
     use SingletonTrait;
 }

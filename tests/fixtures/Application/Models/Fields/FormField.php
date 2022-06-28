@@ -2,8 +2,9 @@
 
 namespace ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields;
 
-use ByTIC\Common\Records\Record;
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
+use Nip\Records\Record;
+use Nip\Records\RecordManager;
 
 /**
  * Class FormField.
@@ -11,10 +12,17 @@ use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
 class FormField extends Record
 {
     use FormFieldTrait;
-    use \ByTIC\Common\Records\Traits\HasSerializedOptions\RecordTrait;
 
+    /**
+     * @return RecordManager
+     */
     public function getManager()
     {
         return FormFields::instance();
+    }
+
+    public function getRegistry()
+    {
+        // TODO: Implement getRegistry() method.
     }
 }

@@ -2,8 +2,8 @@
 
 namespace ByTIC\FormBuilder\Tests\Fixtures\Application\Models\ModelWithFields;
 
-use ByTIC\Common\Records\Record;
 use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsRecordTrait;
+use Nip\Records\Record;
 
 /**
  * Class FormField.

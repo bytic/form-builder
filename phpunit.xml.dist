@@ -2,17 +2,10 @@
 
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
-         backupGlobals="false"
-         backupStaticAttributes="false"
          colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
          bootstrap="tests/bootstrap.php"
          failOnRisky="true"
          failOnWarning="true"
-         stopOnError="false"
-         stopOnFailure="false"
          verbose="true">
   <coverage processUncoveredFiles="true">
     <include>
@@ -25,7 +18,7 @@
 
   <testsuites>
     <testsuite name="ByTIC Framework Test Suite">
-      <directory suffix="Test.php">./tests</directory>
+      <directory>./tests</directory>
     </testsuite>
   </testsuites>
 
