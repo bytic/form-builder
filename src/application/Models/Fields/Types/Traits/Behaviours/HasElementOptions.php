@@ -6,6 +6,9 @@ use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
 use Nip\Form\Elements\AbstractElement;
 use Nip_Form_Element_Input_Group;
 
+/**
+ *
+ */
 trait HasElementOptions
 {
     protected string $elementsOptionsName = 'check_options';
@@ -23,9 +26,9 @@ trait HasElementOptions
         /** @var FormFieldTrait $model */
         $model = $form->getModel();
 
-        $form->addTextarea($name, $label, true);
+        $form->addTextarea($name, $label, $required);
 
-        $selectOptions = $model->getOption($this->elementsOptionsName);
+        $selectOptions = $model->getOption($name);
         $selectOptions = is_array($selectOptions) ? $selectOptions : [];
         $form->getElement($name)->setValue(
             implode("\n", $selectOptions)

@@ -8,6 +8,7 @@ use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\Types\Select as S
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Modules\AbstractModule\Forms\DynamicForm;
 use Mockery;
 use Nip_Form_Element_Select as SelectElement;
+use Nip_Form_Element_Textarea;
 
 /**
  * Class CheckboxTest.
@@ -85,6 +86,15 @@ class SelectElementTraitTest extends AbstractTest
         $type->setItem($item);
 
         $record = new FormField();
+
+        $fieldOptions = [
+            'select_options' => ['option1', 'option2', 'option3'],
+            'select_options_disabled' => ['option2'],
+        ];
+        foreach ($fieldOptions as $name => $value) {
+            $record->setOption($name, $value);
+        }
+
         $form = Mockery::mock(DynamicForm::class)->makePartial();
         $form->shouldReceive('getModel')->andReturn($record);
 
@@ -92,5 +102,11 @@ class SelectElementTraitTest extends AbstractTest
 
         $elements = $form->getElements();
         self::assertCount(6, $elements);
+
+        foreach (['select_options', 'select_options_disabled'] as $fieldName) {
+            $elementOptions = $elements[$fieldName];
+            self::assertInstanceOf(Nip_Form_Element_Textarea::class, $elementOptions);
+            self::assertSame(implode("\n", $fieldOptions[$fieldName]), $elementOptions->getValue());
+        }
     }
 }
