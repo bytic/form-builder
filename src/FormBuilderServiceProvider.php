@@ -5,8 +5,7 @@ namespace ByTIC\FormBuilder;
 use ByTIC\PackageBase\BaseBootableServiceProvider;
 
 /**
- * Class FormBuilderServiceProvider
- * @package ByTIC\FormBuilder
+ * Class FormBuilderServiceProvider.
  */
 class FormBuilderServiceProvider extends BaseBootableServiceProvider
 {
@@ -14,6 +13,6 @@ class FormBuilderServiceProvider extends BaseBootableServiceProvider
 
     public function migrations(): string
     {
-        return dirname(__DIR__) . '/migrations/';
+        return dirname(__DIR__).'/migrations/';
     }
 }

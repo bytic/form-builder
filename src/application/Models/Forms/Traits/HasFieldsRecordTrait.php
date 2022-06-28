@@ -7,8 +7,7 @@ use Nip\Records\Collections\Collection;
 use Nip\Records\Record;
 
 /**
- * Trait HasFieldsRecordTrait
- * @package ByTIC\FormBuilder\Application\Models\Forms\Traits
+ * Trait HasFieldsRecordTrait.
  *
  * @method FormFieldTrait[]|Record[]|Collection getFormFields()
  */

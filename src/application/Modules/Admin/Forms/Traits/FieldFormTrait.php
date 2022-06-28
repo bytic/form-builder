@@ -8,11 +8,10 @@ use Nip\Records\Record;
 use Nip\Records\RecordManager;
 
 /**
- * Trait FieldFormTrait
- * @package ByTIC\FormBuilder\Application\Modules\Admin\Forms\Traits
+ * Trait FieldFormTrait.
  *
  * @method Record|FormFieldTrait getModel()
- * @method AbstractElement getElement()
+ * @method AbstractElement       getElement()
  */
 trait FieldFormTrait
 {

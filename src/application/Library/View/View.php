@@ -6,8 +6,7 @@ use ByTIC\FormBuilder\FormBuilder;
 use Nip\Utility\Traits\SingletonTrait;
 
 /**
- * Class View
- * @package ByTIC\FormBuilder\Application\Library\View
+ * Class View.
  */
 class View extends \Nip\View
 {
@@ -20,7 +19,7 @@ class View extends \Nip\View
     protected function generateBasePath()
     {
         return FormBuilder::basePath()
-            . DIRECTORY_SEPARATOR . 'resources'
-            . DIRECTORY_SEPARATOR . 'views';
+            .DIRECTORY_SEPARATOR.'resources'
+            .DIRECTORY_SEPARATOR.'views';
     }
 }

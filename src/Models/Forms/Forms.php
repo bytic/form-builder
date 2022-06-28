@@ -6,8 +6,7 @@ use Nip\Records\RecordManager;
 use Nip\Utility\Traits\SingletonTrait;
 
 /**
- * Class Forms
- * @package ByTIC\FormBuilder\Models\Forms
+ * Class Forms.
  */
 class Forms extends RecordManager
 {
@@ -23,5 +22,4 @@ class Forms extends RecordManager
     {
         return 'ByTIC\FormBuilder\Models\\';
     }
-
 }

@@ -6,8 +6,7 @@ use Nip\Records\RecordManager;
 use Nip\Utility\Traits\SingletonTrait;
 
 /**
- * Class FormsFields
- * @package ByTIC\FormBuilder\Models\FormsFields
+ * Class FormsFields.
  */
 class FormsFields extends RecordManager
 {

@@ -5,8 +5,7 @@ namespace ByTIC\FormBuilder\Models\FormsFields;
 use Nip\Records\Record;
 
 /**
- * Class Field
- * @package ByTIC\FormBuilder\Models\Forms
+ * Class Field.
  */
 class FormsField extends Record
 {

@@ -6,12 +6,11 @@ use ByTIC\FormBuilder\Tests\AbstractTest;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\FormFields;
 
 /**
- * Class FormFieldsTraitTest
- * @package ByTIC\FormBuilder\Tests\Application\Models\Fields\Traits
+ * Class FormFieldsTraitTest.
  */
 class FormFieldsTraitTest extends AbstractTest
 {
-    public function test_getTypesByRole()
+    public function testGetTypesByRole()
     {
         $fields = FormFields::instance();
         $types = $fields->getTypesByRole('custom');

@@ -6,8 +6,7 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfa
 use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours\HasHtmlLabel;
 
 /**
- * Trait CheckboxElementTrait
- * @package ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements
+ * Trait CheckboxElementTrait.
  */
 trait CheckboxElementTrait
 {
@@ -24,6 +23,7 @@ trait CheckboxElementTrait
 
     /**
      * @param \Nip_Form_Element_Input_Abstract $input
+     *
      * @return mixed
      */
     public function initFormInput($input)
@@ -38,6 +38,7 @@ trait CheckboxElementTrait
 
     /**
      * @param $model
+     *
      * @return string
      */
     public function printItemValue($model)
@@ -45,10 +46,11 @@ trait CheckboxElementTrait
         $value = parent::printItemValue($model);
 
         if ($value) {
-            $value = "YES";
+            $value = 'YES';
         } else {
             $value = '--';
         }
+
         return $value;
     }
 }

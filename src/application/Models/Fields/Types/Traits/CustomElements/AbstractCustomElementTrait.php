@@ -9,8 +9,7 @@ use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsR
 use Nip\Form\Elements\AbstractElement as FormElement;
 
 /**
- * Trait AbstractCustomElementTrait
- * @package ByTIC\FormBuilder\Application\Models\Fields\Types\Traits
+ * Trait AbstractCustomElementTrait.
  */
 trait AbstractCustomElementTrait
 {
@@ -18,6 +17,7 @@ trait AbstractCustomElementTrait
 
     /**
      * @param FormElement $input
+     *
      * @return mixed
      */
     public function initFormInput($input)
@@ -40,6 +40,7 @@ trait AbstractCustomElementTrait
 
     /**
      * @param HasFieldsRecordTrait $model
+     *
      * @return bool
      */
     public function getItemValue($model)
@@ -48,6 +49,7 @@ trait AbstractCustomElementTrait
         if (is_object($fields[$this->getItem()->id])) {
             return $fields[$this->getItem()->id]->getValue();
         }
+
         return false;
     }
 
@@ -63,6 +65,7 @@ trait AbstractCustomElementTrait
 
     /**
      * @param ModelWithFieldsRecordTrait $model
+     *
      * @return ModelFieldsRecordTrait
      */
     protected function initModelField($model)
@@ -81,17 +84,20 @@ trait AbstractCustomElementTrait
 
     /**
      * @param $model
+     *
      * @return ModelFieldsRecordTrait
      */
     protected function generateModelField($model)
     {
         $field = $this->getNewModelField($model);
         $field->populateFromField($this->getItem());
+
         return $field;
     }
 
     /**
      * @param $model
+     *
      * @return ModelFieldsRecordTrait
      */
     abstract protected function getNewModelField($model);
@@ -103,14 +109,15 @@ trait AbstractCustomElementTrait
         if ($inputSibling) {
             $input->getData($inputSibling->getValue('model'), 'model');
         }
+
         return $this;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getFormName()
     {
-        return $this->getName() . '-' . sha1($this->getItem()->id);
+        return $this->getName().'-'.sha1($this->getItem()->id);
     }
 }

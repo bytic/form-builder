@@ -5,24 +5,25 @@ namespace ByTIC\FormBuilder;
 use ByTIC\FormBuilder\Application\Library\View\View;
 
 /**
- * Class FormBuilder
- * @package ByTIC\FormBuilder
+ * Class FormBuilder.
  */
 class FormBuilder
 {
     /**
      * @param $path
-     * @return null|string
+     *
+     * @return string|null
      */
     public static function loadAssetContent($path)
     {
         $fullPath = self::basePath()
-            . DIRECTORY_SEPARATOR . 'resources'
-            . DIRECTORY_SEPARATOR . 'assets'
-            . $path;
+            .DIRECTORY_SEPARATOR.'resources'
+            .DIRECTORY_SEPARATOR.'assets'
+            .$path;
         if (file_exists($fullPath)) {
             return file_get_contents($fullPath);
         }
+
         return '';
     }
 
@@ -37,7 +38,8 @@ class FormBuilder
     /**
      * @param $path
      * @param array $variables
-     * @return null|string
+     *
+     * @return string|null
      */
     public static function loadView($path, $variables = [])
     {

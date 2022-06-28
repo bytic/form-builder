@@ -9,15 +9,14 @@ use Nip_Form_Element_Checkbox as CheckboxElement;
 use Nip_Form_Model;
 
 /**
- * Class CheckboxTest
- * @package ByTIC\FormBuilder\Tests\Application\Models\Fields\Types
+ * Class CheckboxTest.
  */
 class CheckboxTest extends AbstractTest
 {
     /**
      * @dataProvider data_init_form_input_label_decode
      */
-    public function test_init_form_input_label_decode($label_in, $label_out, $title)
+    public function testInitFormInputLabelDecode($label_in, $label_out, $title)
     {
         $type = new CheckboxType();
         $item = new FormField();
@@ -43,7 +42,7 @@ class CheckboxTest extends AbstractTest
                 'Size (&lt;a href=&quot;https://domain.ro/&quot; target=&quot;_blank&quot;&gt;Size&lt;/a&gt;)',
                 'Size (<a href="https://domain.ro/" target="_blank">Size</a>)',
                 'Size (Size)',
-            ]
+            ],
         ];
     }
 }

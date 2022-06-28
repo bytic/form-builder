@@ -6,8 +6,7 @@ use ByTIC\FormBuilder\Models\FormsFields\FormsField;
 use Nip\Records\Collections\Associated;
 
 /**
- * Trait FormTrait
- * @package ByTIC\FormBuilder\Models\Forms
+ * Trait FormTrait.
  *
  * @method FormsField[]|Associated getFormFields
  */

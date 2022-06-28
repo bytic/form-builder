@@ -6,15 +6,14 @@ use ByTIC\Common\Records\Record;
 use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsRecordTrait;
 
 /**
- * Class FormField
- * @package ByTIC\FormBuilder\Tests\Fixtures\Application\Models\ModelWithFields
+ * Class FormField.
  */
 class ModelWithFieldsRecord extends Record
 {
     use ModelWithFieldsRecordTrait;
 
     /** @noinspection PhpMissingParentCallCommonInspection
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function inflectManagerName()
     {

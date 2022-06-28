@@ -11,8 +11,7 @@ use Nip_Form_Element_Checkbox;
 use Nip_Form_Element_CheckboxGroup as CheckboxGroupElement;
 
 /**
- * Class CheckboxGroupTest
- * @package ByTIC\FormBuilder\Tests\Application\Models\Fields\Types
+ * Class CheckboxGroupTest.
  */
 class CheckboxGroupTest extends AbstractTest
 {
@@ -23,7 +22,7 @@ class CheckboxGroupTest extends AbstractTest
         $options = [
             'Test 1',
             'Test 2',
-            'Test 3'
+            'Test 3',
         ];
         $item = new FormField();
         $item->setOption('check_options', $options);

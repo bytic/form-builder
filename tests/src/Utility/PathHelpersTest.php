@@ -6,12 +6,11 @@ use ByTIC\FormBuilder\Tests\AbstractTest;
 use ByTIC\FormBuilder\Utility\PathsHelpers;
 
 /**
- * Class PathHelpersTest
- * @package ByTIC\FormBuilder\Tests\Utility
+ * Class PathHelpersTest.
  */
 class PathHelpersTest extends AbstractTest
 {
-    public function test_views()
+    public function testViews()
     {
         $path = PathsHelpers::views('/admin/formbuilder-forms/modules/item-row.php');
         $content = file_get_contents($path);

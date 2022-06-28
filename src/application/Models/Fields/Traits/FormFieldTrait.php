@@ -9,8 +9,7 @@ use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordTrait;
 use ByTIC\Records\Behaviors\HasSerializedOptions\HasSerializedOptionsRecordTrait;
 
 /**
- * Trait FormFieldTrait
- * @package ByTIC\FormBuilder\Application\Models\Fields\Types\Traits
+ * Trait FormFieldTrait.
  *
  * @property string $id
  * @property string $label
@@ -21,7 +20,7 @@ use ByTIC\Records\Behaviors\HasSerializedOptions\HasSerializedOptionsRecordTrait
  * @property string $listing
  * @property string $filter
  *
- * @method string getName()
+ * @method string            getName()
  * @method AbstractTypeTrait getType()
  */
 trait FormFieldTrait
@@ -31,6 +30,7 @@ trait FormFieldTrait
 
     /**
      * @param $form
+     *
      * @return mixed
      */
     public function addFormInput($form)
@@ -40,6 +40,7 @@ trait FormFieldTrait
 
     /**
      * @param $form
+     *
      * @return void
      */
     public function processValidation($form)
@@ -53,6 +54,7 @@ trait FormFieldTrait
     public function getLabel()
     {
         $label = $this->getAttributeFromArray('label');
+
         return $label ? $label : $this->getType()->getLabel();
     }
 
@@ -74,6 +76,7 @@ trait FormFieldTrait
 
     /**
      * @param $model
+     *
      * @return mixed
      */
     public function getItemValue($model)
@@ -83,11 +86,13 @@ trait FormFieldTrait
 
     /**
      * @param $model
+     *
      * @return mixed
      */
     public function printItemValue($model)
     {
         $value = $this->getType()->printItemValue($model);
+
         return $value;
     }
 
@@ -112,6 +117,7 @@ trait FormFieldTrait
     /**
      * @param $form
      * @param $siblingForm
+     *
      * @return mixed
      */
     public function populateFormFromSibling($form, $siblingForm)
@@ -124,7 +130,7 @@ trait FormFieldTrait
      */
     public function isVisible()
     {
-        return $this->visible != 'no';
+        return 'no' != $this->visible;
     }
 
     /**
@@ -132,22 +138,24 @@ trait FormFieldTrait
      */
     public function isMandatory()
     {
-        return $this->mandatory != 'no';
+        return 'no' != $this->mandatory;
     }
 
     /**
      * @param string $module
+     *
      * @return bool
      */
     public function isListed($module = 'public')
     {
-        $module = $module == 'admin' ? $module : 'public';
+        $module = 'admin' == $module ? $module : 'public';
 
         return $this->hasListing($module);
     }
 
     /**
      * @param string $slug
+     *
      * @return bool
      */
     public function hasListing($slug)
@@ -169,17 +177,19 @@ trait FormFieldTrait
 
     /**
      * @param string $module
+     *
      * @return bool
      */
     public function isFiltered($module = 'public')
     {
-        $module = $module == 'admin' ? $module : 'public';
+        $module = 'admin' == $module ? $module : 'public';
 
         return $this->hasFilter($module);
     }
 
     /**
      * @param string $slug
+     *
      * @return bool
      */
     public function hasFilter($slug)

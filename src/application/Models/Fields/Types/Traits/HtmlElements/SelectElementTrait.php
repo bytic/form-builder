@@ -10,8 +10,7 @@ use Nip_Form_Element_Select as FormSelect;
 use Nip_Form_Model as NipModelForm;
 
 /**
- * Trait SelectElementTrait
- * @package ByTIC\FormBuilder\Application\Models\FormFields\Types\Traits
+ * Trait SelectElementTrait.
  */
 trait SelectElementTrait
 {
@@ -30,6 +29,7 @@ trait SelectElementTrait
 
     /**
      * @param FormSelect $input
+     *
      * @return mixed
      */
     public function initFormInput($input)
@@ -60,7 +60,7 @@ trait SelectElementTrait
         $options = $this->getItem()->getOption('select_options');
 
         $isInAdmin = $input->getForm()->isInAdmin();
-        $hideDisabled = $this->getItem()->getOption('hide_disabled') == 'yes';
+        $hideDisabled = 'yes' == $this->getItem()->getOption('hide_disabled');
         $optionsDisabled = $this->getItem()->getOption('select_options_disabled');
         $optionsDisabled = is_array($optionsDisabled) ? $optionsDisabled : [];
 
@@ -73,7 +73,7 @@ trait SelectElementTrait
                     if ($hideDisabled && !$isInAdmin) {
                         continue;
                     }
-                    $attribs['label'] .= ' (' . translator()->trans('unavailable') . ')';
+                    $attribs['label'] .= ' ('.translator()->trans('unavailable').')';
 
                     if (!$isInAdmin) {
                         $attribs['disabled'] = 'disabled';
@@ -85,7 +85,7 @@ trait SelectElementTrait
     }
 
     /**
-     * @var NipModelForm $form
+     * @var NipModelForm
      */
     public function adminGetDataFromModel($form)
     {
@@ -98,7 +98,7 @@ trait SelectElementTrait
         $this->adminFormAddOptionsFromModel($form, 'select_options_disabled', 'Disabled Options', false);
 
         $hideDisabledType = $form->isElementsType('BsRadioGroup') ? 'BsRadioGroup' : 'RadioGroup';
-        $form->{'add' . $hideDisabledType}('hide_disabled', translator()->trans('hide_disabled'), true);
+        $form->{'add'.$hideDisabledType}('hide_disabled', translator()->trans('hide_disabled'), true);
         $form->getElement('hide_disabled')
             ->addOption('yes', translator()->trans('yes'))
             ->addOption('no', translator()->trans('no'))
@@ -109,7 +109,7 @@ trait SelectElementTrait
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function adminSaveToModel($form)
     {

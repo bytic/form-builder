@@ -10,8 +10,7 @@ use Nip_Form_Element_RadioGroup;
 use Nip_Form_Model as NipModelForm;
 
 /**
- * Trait RadioGroupElementTrait
- * @package ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements
+ * Trait RadioGroupElementTrait.
  */
 trait RadioGroupElementTrait
 {
@@ -38,7 +37,7 @@ trait RadioGroupElementTrait
         $this->htmlDecodeLabel($input);
 
         $autoSelectFirst = $this->getItem()->getOption('autoSelectFirst');
-        if ($autoSelectFirst == 'false') {
+        if ('false' == $autoSelectFirst) {
             $input->autoSelectFirst(false);
         }
         $input->getRenderer()->setSeparator('');
@@ -46,10 +45,8 @@ trait RadioGroupElementTrait
         return parent::initFormInput($input);
     }
 
-
-
     /**
-     * @var $form NipModelForm
+     * @var NipModelForm
      */
     public function adminGetDataFromModel($form)
     {
@@ -58,14 +55,13 @@ trait RadioGroupElementTrait
         $this->adminFormAddOptionsFromModel($form);
 
         $form->addCheckbox('autoSelectFirst', 'AutoSelectFirst', false);
-        if ($form->getModel()->getOption('autoSelectFirst') !== 'false') {
+        if ('false' !== $form->getModel()->getOption('autoSelectFirst')) {
             $form->getElement('autoSelectFirst')->setChecked(true);
         }
     }
 
-
     /**
-     * @var $form NipModelForm
+     * @var NipModelForm
      */
     public function adminSaveToModel($form)
     {

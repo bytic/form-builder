@@ -6,8 +6,7 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfa
 use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours\HasHtmlLabel;
 
 /**
- * Trait TextareaElementTrait
- * @package ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements
+ * Trait TextareaElementTrait.
  */
 trait TextareaElementTrait
 {
@@ -23,7 +22,7 @@ trait TextareaElementTrait
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function initFormInput($input)
     {

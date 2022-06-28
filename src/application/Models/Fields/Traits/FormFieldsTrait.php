@@ -6,8 +6,7 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeTrait;
 use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordsTrait as HasTypesTrait;
 
 /**
- * Trait FormFieldsTrait
- * @package ByTIC\FormBuilder\Application\Models\Fields\Types\Traits
+ * Trait FormFieldsTrait.
  *
  * @method FormFieldTrait getNew($data = [])
  */
@@ -16,18 +15,20 @@ trait FormFieldsTrait
     use HasTypesTrait;
 
     /**
-     * @var null|array
+     * @var array|null
      */
     protected $typesMatrix = null;
 
     /**
      * @param string $role
+     *
      * @return AbstractTypeTrait[]|null
      */
     public function getTypesByRole($role)
     {
         $this->checkInitTypesMatrix();
-        return isset($this->typesMatrix[$role]) ? $this->typesMatrix[$role] : null;
+
+        return $this->typesMatrix[$role] ?? null;
     }
 
     /**
@@ -36,12 +37,13 @@ trait FormFieldsTrait
     protected function getTypesMatrix()
     {
         $this->checkInitTypesMatrix();
+
         return $this->typesMatrix;
     }
 
     protected function checkInitTypesMatrix()
     {
-        if ($this->typesMatrix === null) {
+        if (null === $this->typesMatrix) {
             $this->generateTypesMatrix();
         }
     }

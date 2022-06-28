@@ -7,12 +7,11 @@ use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\FormField;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\Types\CheckboxGroup;
 
 /**
- * Class FormFieldTraitTest
- * @package ByTIC\FormBuilder\Tests\Application\Models\Fields\Traits
+ * Class FormFieldTraitTest.
  */
 class FormFieldTraitTest extends AbstractTest
 {
-    public function test_getType()
+    public function testGetType()
     {
         $field = new FormField();
         $field->type = 'checkbox_group';
@@ -21,7 +20,7 @@ class FormFieldTraitTest extends AbstractTest
         self::assertInstanceOf(CheckboxGroup::class, $type);
     }
 
-    public function test_getHelp()
+    public function testGetHelp()
     {
         $field = new FormField();
         $field->writeData(['help' => '']);

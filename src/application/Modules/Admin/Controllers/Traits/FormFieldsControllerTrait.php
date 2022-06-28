@@ -2,19 +2,18 @@
 
 namespace ByTIC\FormBuilder\Application\Modules\Admin\Controllers\Traits;
 
-use Nip\Controllers\Traits\AbstractControllerTrait;
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
+use Nip\Controllers\Traits\AbstractControllerTrait;
 
 /**
- * Class FormFieldsControllerTrait
- * @package ByTIC\FormBuilder\Application\Modules\Admin\Controllers\Traits
+ * Class FormFieldsControllerTrait.
  */
 trait FormFieldsControllerTrait
 {
     use AbstractControllerTrait;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function addNewModel()
     {
@@ -23,6 +22,7 @@ trait FormFieldsControllerTrait
         $item->setType($this->getRequest()->query->get('type'));
         $item->role = $this->getRequest()->query->get('role');
         $item->populateFromType();
+
         return $item;
     }
 

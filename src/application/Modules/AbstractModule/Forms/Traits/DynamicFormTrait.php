@@ -6,8 +6,7 @@ use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
 use Nip\Records\Record;
 
 /**
- * Trait DynamicFormTrait
- * @package ByTIC\FormBuilder\Application\Modules\AbstractModule\Forms\Traits
+ * Trait DynamicFormTrait.
  */
 trait DynamicFormTrait
 {

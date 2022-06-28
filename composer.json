@@ -1,16 +1,29 @@
 {
   "name": "bytic/form-builder",
-  "type": "library",
-  "license": "MIT",
   "description": "Form builder module for bytic library",
+  "license": "MIT",
+  "type": "library",
   "keywords": [],
-  "homepage": "https://github.com/ByTIC/form-builder",
   "authors": [
     {
       "name": "Gabriel Solomon",
       "email": "hello@gabrielsolomon.ro"
     }
   ],
+  "homepage": "https://github.com/ByTIC/form-builder",
+  "require": {
+    "bytic/models-smart-properties": "^1.0",
+    "bytic/orm-behaviors": "^1.0",
+    "bytic/orm-filters": "^1.0",
+    "bytic/package-base": "^1.0",
+    "bytic/translation": "^1.0"
+  },
+  "require-dev": {
+    "bytic/common": "^1.0",
+    "bytic/phpqatools": "^1.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "autoload": {
     "psr-4": {
       "ByTIC\\FormBuilder\\": "src/",
@@ -23,19 +36,6 @@
       "ByTIC\\FormBuilder\\Tests\\Fixtures\\": "tests/fixtures"
     }
   },
-  "require": {
-    "bytic/package-base": "^1.0",
-    "bytic/models-smart-properties": "^1.0",
-    "bytic/orm-behaviors": "^1.0",
-    "bytic/orm-filters": "^1.0",
-    "bytic/translation": "^1.0"
-  },
-  "require-dev": {
-    "bytic/common": "^1.0",
-    "bytic/phpqatools": "^1.0"
-  },
-  "prefer-stable": true,
-  "minimum-stability": "dev",
   "config": {
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true,

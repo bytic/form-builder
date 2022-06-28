@@ -5,8 +5,7 @@ namespace ByTIC\FormBuilder\Controllers\Admin;
 use ByTIC\FormBuilder\Utility\FormsBuilderModels;
 
 /**
- * Trait FormsControllerTrait
- * @package ByTIC\FormBuilder\Controllers\Admin
+ * Trait FormsControllerTrait.
  */
 trait FormsControllerTrait
 {

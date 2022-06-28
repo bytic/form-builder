@@ -10,8 +10,7 @@ use ByTIC\PackageBase\Utility\ModelFinder;
 use Nip\Records\RecordManager;
 
 /**
- * Class NotifierBuilderModels
- * @package ByTIC\FormBuilder\Utility
+ * Class NotifierBuilderModels.
  */
 class FormsBuilderModels extends ModelFinder
 {

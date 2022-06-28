@@ -9,8 +9,7 @@ use Nip_Form_Element_Abstract as FormElement;
 use Nip_Form_Model as Form;
 
 /**
- * Trait AbstractTypeTrait
- * @package ByTIC\FormBuilder\Application\Models\FormFields\Types\Traits
+ * Trait AbstractTypeTrait.
  */
 trait AbstractTypeTrait
 {
@@ -40,7 +39,8 @@ trait AbstractTypeTrait
     }
 
     /**
-     * @var DynamicFormTrait|Form $form
+     * @var DynamicFormTrait|Form
+     *
      * @return FormElement
      */
     public function addFormInput($form)
@@ -75,6 +75,7 @@ trait AbstractTypeTrait
 
     /**
      * @param FormElement $input
+     *
      * @return mixed
      */
     public function initFormInput($input)
@@ -95,6 +96,7 @@ trait AbstractTypeTrait
 
     /**
      * @param $model
+     *
      * @return mixed
      */
     public function getItemValue($model)
@@ -111,7 +113,7 @@ trait AbstractTypeTrait
     }
 
     /**
-     * @var $form Form
+     * @var Form
      */
     public function processValidation($form)
     {
@@ -127,6 +129,7 @@ trait AbstractTypeTrait
 
     /**
      * @param DynamicFormTrait|Form $form
+     *
      * @return \Nip\Records\Record
      */
     protected function getModelFromForm($form)
@@ -135,8 +138,9 @@ trait AbstractTypeTrait
     }
 
     /**
-     * @param Form $form
+     * @param Form   $form
      * @param string $requester
+     *
      * @return mixed
      */
     public function getFormValue($form, $requester = 'model')
@@ -145,21 +149,21 @@ trait AbstractTypeTrait
     }
 
     /**
-     * @var $form Form
+     * @var Form
      */
     public function adminGetDataFromModel($form)
     {
     }
 
     /**
-     * @var $form Form
+     * @var Form
      */
     public function adminProcessValidation($form)
     {
     }
 
     /**
-     * @var $form Form|FieldFormTrait
+     * @var Form|FieldFormTrait
      */
     public function adminSaveToModel($form)
     {
@@ -167,13 +171,13 @@ trait AbstractTypeTrait
 
     /**
      * @param $model
+     *
      * @return mixed
      */
     public function printItemValue($model)
     {
         return $this->getItemValue($model);
     }
-
 
     // --------------------------------------------- //
     // --------------- GETTERS & SETTERS ----------- //
@@ -182,6 +186,7 @@ trait AbstractTypeTrait
     /**
      * @param Form $form
      * @param Form $siblingForm
+     *
      * @return $this
      */
     public function populateFormFromSibling($form, $siblingForm)
@@ -191,11 +196,12 @@ trait AbstractTypeTrait
         if ($inputSibling) {
             $input->getData($inputSibling->getValue('model'), 'model');
         }
+
         return $this;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setInputType($value)
     {
@@ -211,7 +217,7 @@ trait AbstractTypeTrait
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setRole($role)
     {
@@ -219,7 +225,7 @@ trait AbstractTypeTrait
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setCanDelete(bool $canDelete)
     {
@@ -231,9 +237,8 @@ trait AbstractTypeTrait
      */
     public function canDelete()
     {
-        return $this->canDelete === true;
+        return true === $this->canDelete;
     }
-
 
     // --------------------------------------------- //
     // ---------------      DEFAULTS     ----------- //
@@ -264,7 +269,7 @@ trait AbstractTypeTrait
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function hasShortLabel()
     {

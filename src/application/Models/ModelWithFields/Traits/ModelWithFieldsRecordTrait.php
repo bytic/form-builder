@@ -9,8 +9,7 @@ use Nip\Records\Collections\Associated as AssociatedCollection;
 use Nip\Records\Relations\HasMany;
 
 /**
- * Trait ModelWithFieldsRecordTrait
- * @package ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits
+ * Trait ModelWithFieldsRecordTrait.
  *
  * @method HasMany getRelation($relationName)
  * @method Records getManager()
@@ -21,13 +20,15 @@ trait ModelWithFieldsRecordTrait
 
     /**
      * @return array
+     *
      * @throws \Exception
      */
     public function getFormFieldsList()
     {
-        if ($this->formFieldsList === null) {
+        if (null === $this->formFieldsList) {
             $this->initFormFieldsList();
         }
+
         return $this->formFieldsList;
     }
 
@@ -41,6 +42,7 @@ trait ModelWithFieldsRecordTrait
 
     /**
      * @return array
+     *
      * @throws \Exception
      */
     protected function generateFormFieldsList()
@@ -52,13 +54,13 @@ trait ModelWithFieldsRecordTrait
         $roles = $fieldsManager->getRoles();
         foreach ($roles as $role) {
             $fields[$role] = $fieldsManager->getTypesByRole($role);
-            $fields['existing.' . $role] = [];
+            $fields['existing.'.$role] = [];
         }
         $fields['custom'] = $fieldsManager->getTypesByRole('custom');
 
         $existing = $this->getFormFields();
         foreach ($existing as $field) {
-            $fields['existing.' . $field->getRole()][] = $field;
+            $fields['existing.'.$field->getRole()][] = $field;
             unset($fields[$field->getRole()][$field->getType()->getName()]);
         }
 
@@ -67,6 +69,7 @@ trait ModelWithFieldsRecordTrait
 
     /**
      * @return AssociatedCollection|FormFieldTrait[]
+     *
      * @throws \Exception
      */
     public function getFormFields()
@@ -79,11 +82,13 @@ trait ModelWithFieldsRecordTrait
         if (count($fields) < 1) {
             $fields = $this->initDefaultFormFields();
         }
+
         return $fields;
     }
 
     /**
      * @return \Nip\Records\Collections\Collection
+     *
      * @throws \Exception
      */
     protected function initDefaultFormFields()
@@ -97,7 +102,9 @@ trait ModelWithFieldsRecordTrait
 
     /**
      * @param array $types
+     *
      * @return AssociatedCollection|\Nip\Records\Collections\Collection
+     *
      * @throws \Exception
      */
     protected function checkHasFieldsTypes($types)
@@ -122,6 +129,7 @@ trait ModelWithFieldsRecordTrait
 
     /**
      * @return FormFieldsTrait|\Nip\Records\RecordManager
+     *
      * @throws \Exception
      */
     protected function getFormFieldsManager()

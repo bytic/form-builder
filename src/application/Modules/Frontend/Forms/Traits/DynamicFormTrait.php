@@ -3,8 +3,7 @@
 namespace ByTIC\FormBuilder\Application\Modules\Frontend\Forms\Traits;
 
 /**
- * Trait DynamicFormTrait
- * @package ByTIC\FormBuilder\Application\Modules\Frontend\Forms\Traits
+ * Trait DynamicFormTrait.
  */
 trait DynamicFormTrait
 {

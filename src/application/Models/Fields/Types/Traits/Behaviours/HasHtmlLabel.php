@@ -5,8 +5,7 @@ namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours;
 use Nip\Form\Elements\AbstractElement;
 
 /**
- * Trait HasHtmlLabel
- * @package ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours
+ * Trait HasHtmlLabel.
  */
 trait HasHtmlLabel
 {

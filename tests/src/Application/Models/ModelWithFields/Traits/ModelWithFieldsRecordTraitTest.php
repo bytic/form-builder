@@ -11,8 +11,7 @@ use Nip\Collections\Collection;
 use Nip\Records\Relations\HasMany;
 
 /**
- * Class ModelWithFieldsRecordTraitTest
- * @package ByTIC\FormBuilder\Tests\Application\Models\ModelWithFields\Traits
+ * Class ModelWithFieldsRecordTraitTest.
  */
 class ModelWithFieldsRecordTraitTest extends AbstractTest
 {

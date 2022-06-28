@@ -5,8 +5,7 @@ namespace ByTIC\FormBuilder\Controllers\Admin;
 use ByTIC\FormBuilder\Utility\ViewHelper;
 
 /**
- * Trait HasAdminViewPathsTrait
- * @package ByTIC\AdminBase\Library\Controllers\Traits
+ * Trait HasAdminViewPathsTrait.
  */
 trait PageControllerFormBuilderViewPathsTrait
 {

@@ -9,8 +9,7 @@ use Nip_Form_Element_CheckboxGroup;
 use Nip_Form_Model as NipModelForm;
 
 /**
- * Trait CheckboxGroupElementTrait
- * @package ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements
+ * Trait CheckboxGroupElementTrait.
  */
 trait CheckboxGroupElementTrait
 {
@@ -39,7 +38,7 @@ trait CheckboxGroupElementTrait
     }
 
     /**
-     * @var $form NipModelForm
+     * @var NipModelForm
      */
     public function adminGetDataFromModel($form)
     {
@@ -48,9 +47,8 @@ trait CheckboxGroupElementTrait
         $this->adminFormAddOptionsFromModel($form);
     }
 
-
     /**
-     * @var $form NipModelForm
+     * @var NipModelForm
      */
     public function adminSaveToModel($form)
     {
@@ -58,7 +56,6 @@ trait CheckboxGroupElementTrait
 
         $this->adminSaveToModelInputOptions($form);
     }
-
 
     /**
      * @param $form
@@ -69,7 +66,7 @@ trait CheckboxGroupElementTrait
     public function getFormValue($form, $requester = 'model')
     {
         $formValue = $form->getElement($this->getFormName())->getValue($requester);
-        if ($requester == 'model') {
+        if ('model' == $requester) {
             $formValue = serialize($formValue);
         }
 
@@ -94,7 +91,6 @@ trait CheckboxGroupElementTrait
 
         return $this->modelValues[$model->id];
     }
-
 
     /**
      * @param $model

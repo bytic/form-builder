@@ -6,8 +6,7 @@ use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfa
 use Nip_Helper_Date;
 
 /**
- * Trait ModelDobTrait
- * @package ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\ModelElements
+ * Trait ModelDobTrait.
  */
 trait ModelDobTrait
 {
@@ -23,6 +22,7 @@ trait ModelDobTrait
 
     /**
      * @param $model
+     *
      * @return string
      */
     public function printItemValue($model)
@@ -35,7 +35,7 @@ trait ModelDobTrait
                 app('locale')->getOption(['time', 'dateStringFormatShort'])
             );
             if ($value) {
-                $value .= ' (' . $this->getAgeString($model) . ')';
+                $value .= ' ('.$this->getAgeString($model).')';
             }
         }
 
@@ -48,22 +48,24 @@ trait ModelDobTrait
 
     /**
      * @param $model
+     *
      * @return string
      */
     public function getAgeString($model)
     {
-        return $this->getAge($model) . ' ' . translator()->trans('years');
+        return $this->getAge($model).' '.translator()->trans('years');
     }
 
     /**
      * @param $model
+     *
      * @return mixed
      */
     public function getAge($model)
     {
         $dob = parent::printItemValue($model);
         if ($dob) {
-            list($years) = $this->_calculateAge($dob);
+            [$years] = $this->_calculateAge($dob);
 
             return $years;
         }

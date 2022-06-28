@@ -10,17 +10,17 @@ use Mockery;
 use Nip_Form_Element_Select as SelectElement;
 
 /**
- * Class CheckboxTest
- * @package ByTIC\FormBuilder\Tests\Application\Models\Fields\Types
+ * Class CheckboxTest.
  */
 class SelectElementTraitTest extends AbstractTest
 {
     /**
      * @dataProvider data_initFormInput_render
+     *
      * @param $options
      * @param $output
      */
-    public function test_initFormInput_render($options, $output)
+    public function testInitFormInputRender($options, $output)
     {
         $type = new SelectType();
 
@@ -37,7 +37,8 @@ class SelectElementTraitTest extends AbstractTest
 
         self::assertSame(
             $output,
-            $input->renderElement());
+            $input->renderElement()
+        );
     }
 
     /**
@@ -72,11 +73,11 @@ class SelectElementTraitTest extends AbstractTest
                     'hide_disabled' => 'yes',
                 ],
                 '<select  title="" class="form-select" ><option value="option1">option1</option><option value="option3">option3</option></select>',
-            ]
+            ],
         ];
     }
 
-    public function test_adminGetDataFromModel()
+    public function testAdminGetDataFromModel()
     {
         $type = new SelectType();
 

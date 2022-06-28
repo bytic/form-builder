@@ -6,8 +6,7 @@ use ByTIC\FormBuilder\Controllers\Admin\PageControllerFormBuilderViewPathsTrait;
 use Nip\View\View;
 
 /**
- * Class ViewHelper
- * @package ByTIC\FormBuilder\Utility
+ * Class ViewHelper.
  */
 class ViewHelper
 {

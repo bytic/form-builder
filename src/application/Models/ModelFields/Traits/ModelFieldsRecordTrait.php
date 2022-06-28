@@ -5,10 +5,9 @@ namespace ByTIC\FormBuilder\Application\Models\ModelFields\Traits;
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
 
 /**
- * Trait ModelWithFieldsRecordTrait
- * @package ByTIC\FormBuilder\Application\Models\ModelsWithFields\Traits
+ * Trait ModelWithFieldsRecordTrait.
  *
- * @property int $id_field
+ * @property int    $id_field
  * @property string $value
  */
 trait ModelFieldsRecordTrait
@@ -23,11 +22,13 @@ trait ModelFieldsRecordTrait
 
     /**
      * @param FormFieldTrait $field
+     *
      * @return $this
      */
     public function populateFromField($field)
     {
         $this->id_field = $field->id;
+
         return $this;
     }
 }

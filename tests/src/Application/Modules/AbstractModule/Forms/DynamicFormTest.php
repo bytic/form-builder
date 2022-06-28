@@ -7,8 +7,7 @@ use ByTIC\FormBuilder\Tests\Fixtures\Application\Modules\AbstractModule\Forms\Dy
 use Nip\Records\Collections\Collection;
 
 /**
- * Class DynamicFormTest
- * @package ByTIC\FormBuilder\Tests\Application\Modules\AbstractModule\Forms
+ * Class DynamicFormTest.
  */
 class DynamicFormTest extends AbstractTest
 {

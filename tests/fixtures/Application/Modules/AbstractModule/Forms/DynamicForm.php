@@ -8,21 +8,21 @@ use Nip\Form\FormModel;
 use Nip\Records\Collections\Collection;
 
 /**
- * Class DynamicForm
- * @package ByTIC\FormBuilder\Tests\Fixtures\Application\Modules\AbstractModule\Forms
+ * Class DynamicForm.
  */
 class DynamicForm extends FormModel
 {
     use DynamicFormTrait;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function generateFormFields()
     {
         $types = new Collection();
         $types->add(new FormField(), 'id');
         $types->add(new FormField(), 'id');
+
         return $types;
     }
 }

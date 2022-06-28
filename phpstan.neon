@@ -1,0 +1,7 @@
+includes:
+    - ./vendor/bytic/phpqaconfig/rules/phpstan/phpstan.neon.dist
+
+parameters:
+    paths:
+        - src
+        - tests

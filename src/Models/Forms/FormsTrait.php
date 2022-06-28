@@ -6,12 +6,10 @@ use ByTIC\FormBuilder\Utility\FormsBuilderModels;
 use ByTIC\FormBuilder\Utility\PackageConfig;
 
 /**
- * Trait FormsTrait
- * @package ByTIC\FormBuilder\Models\Forms
+ * Trait FormsTrait.
  */
 trait FormsTrait
 {
-
     protected function initRelations()
     {
         parent::initRelations();

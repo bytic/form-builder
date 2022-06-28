@@ -6,21 +6,19 @@ use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
 use Nip\Form\Elements\AbstractElement;
 use Nip_Form_Element_Input_Group;
 
-/**
- *
- */
 trait HasElementOptions
 {
     protected string $elementsOptionsName = 'check_options';
 
     /**
      * @param $form
+     *
      * @return void
      */
     protected function adminFormAddOptionsFromModel($form, $name = null, $label = null, $required = true)
     {
-        $name = $name ?? $this->elementsOptionsName;
-        $label = $label ?? translator()->trans($name);
+        $name ??= $this->elementsOptionsName;
+        $label ??= translator()->trans($name);
 
         /** @var FormFieldTrait $model */
         $model = $form->getModel();
@@ -51,6 +49,7 @@ trait HasElementOptions
     /**
      * @param $form
      * @param $name
+     *
      * @return void
      */
     protected function adminSaveToModelInputOptions($form, $name = null)

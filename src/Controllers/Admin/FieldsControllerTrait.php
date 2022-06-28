@@ -7,8 +7,7 @@ use ByTIC\FormBuilder\Models\Forms\Forms;
 use ByTIC\FormBuilder\Utility\FormsBuilderModels;
 
 /**
- * Trait FieldsControllerTrait
- * @package ByTIC\FormBuilder\Controllers\Admin
+ * Trait FieldsControllerTrait.
  */
 trait FieldsControllerTrait
 {
