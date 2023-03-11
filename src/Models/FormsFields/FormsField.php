@@ -9,5 +9,5 @@ use Nip\Records\Record;
  */
 class FormsField extends Record
 {
-//    use EventTrait;
+    use FormFieldTrait;
 }

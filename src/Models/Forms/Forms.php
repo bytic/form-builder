@@ -2,18 +2,20 @@
 
 namespace ByTIC\FormBuilder\Models\Forms;
 
+use ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
+use ByTIC\Records\Behaviors\I18n\I18nRecordsTrait;
+use Nip\Records\Filters\Records\HasFiltersRecordsTrait;
 use Nip\Records\RecordManager;
-use Nip\Utility\Traits\SingletonTrait;
 
 /**
  * Class Forms.
+ * @method Form getNew()
  */
 class Forms extends RecordManager
 {
-    use SingletonTrait;
-    use \ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
-    use \ByTIC\Records\Behaviors\I18n\I18nRecordsTrait;
-    use \Nip\Records\Filters\Records\HasFiltersRecordsTrait;
+    use HasFormsRecordsTrait;
+    use I18nRecordsTrait;
+    use HasFiltersRecordsTrait;
     use FormsTrait;
 
     public const TABLE = 'formbuilder-forms';

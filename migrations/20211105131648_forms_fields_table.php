@@ -2,8 +2,13 @@
 declare(strict_types=1);
 
 use ByTIC\FormBuilder\Utility\FormsBuilderModels;
+use ByTIC\FormBuilder\Utility\PackageConfig;
+use Phinx\Db\Adapter\MysqlAdapter;
 use Phinx\Migration\AbstractMigration;
 
+/**
+ *
+ */
 final class FormsFieldsTable extends AbstractMigration
 {
     /**
@@ -19,7 +24,7 @@ final class FormsFieldsTable extends AbstractMigration
      */
     public function change(): void
     {
-        $table_name = FormsBuilderModels::fields()->getTable();
+        $table_name = PackageConfig::tablesFields();
         $exists = $this->hasTable($table_name);
         if ($exists) {
             return;
@@ -38,7 +43,7 @@ final class FormsFieldsTable extends AbstractMigration
             ->addColumn('listing', 'set', ['values' => ['public', 'admin']])
             ->addColumn('filter', 'set', ['values' => ['public', 'admin']])
             ->addColumn('mandatory', 'enum', ['values' => ['yes', 'no'], 'default' => 'no'])
-            ->addColumn('pos', 'integer', ['limit' => \Phinx\Db\Adapter\MysqlAdapter::INT_TINY])
+            ->addColumn('pos', 'integer', ['limit' => MysqlAdapter::INT_TINY])
             ->addColumn('modified', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',
@@ -52,10 +57,12 @@ final class FormsFieldsTable extends AbstractMigration
 
         $table->save();
 
-        $table->addForeignKey('id_form',
+        $table->addForeignKey(
+            'id_form',
             FormsBuilderModels::forms()->getFullNameTable(),
             'id',
-            ['constraint' => 'forms_id_forms_values_id_form', 'delete' => 'RESTRICT', 'update' => 'NO_ACTION'])
+            ['constraint' => 'forms_id_forms_values_id_form', 'delete' => 'RESTRICT', 'update' => 'NO_ACTION']
+        )
             ->save();
     }
 }

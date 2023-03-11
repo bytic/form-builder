@@ -2,6 +2,7 @@
 
 namespace ByTIC\FormBuilder\Models\Forms;
 
+use ByTIC\DataObjects\Behaviors\Timestampable\TimestampableTrait;
 use ByTIC\FormBuilder\Utility\FormsBuilderModels;
 use ByTIC\FormBuilder\Utility\PackageConfig;
 
@@ -10,6 +11,8 @@ use ByTIC\FormBuilder\Utility\PackageConfig;
  */
 trait FormsTrait
 {
+    use TimestampableTrait;
+
     protected function initRelations()
     {
         parent::initRelations();
@@ -49,6 +52,11 @@ trait FormsTrait
     protected function initRelationConsumer($name, $className = null)
     {
         $this->morphedByMany($name, ['class' => $className, 'fk' => 'id_form']);
+    }
+
+    protected function generateTable(): string
+    {
+        return PackageConfig::tablesForms();
     }
 
     protected function generateController(): string

@@ -1,9 +1,12 @@
 <?php
 declare(strict_types=1);
 
-use ByTIC\FormBuilder\Utility\FormsBuilderModels;
+use ByTIC\FormBuilder\Utility\PackageConfig;
 use Phinx\Migration\AbstractMigration;
 
+/**
+ *
+ */
 final class FormsTable extends AbstractMigration
 {
     /**
@@ -19,7 +22,7 @@ final class FormsTable extends AbstractMigration
      */
     public function change(): void
     {
-        $table_name = FormsBuilderModels::forms()->getTable();
+        $table_name = PackageConfig::tablesForms();
         $exists = $this->hasTable($table_name);
         if ($exists) {
             return;
