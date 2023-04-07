@@ -1,9 +1,9 @@
 <?php
 
-namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements;
+namespace ByTIC\FormBuilder\FormFields\Types\Behaviours\HtmlElements;
 
-use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
-use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours\HasHtmlLabel;
+use ByTIC\FormBuilder\FormFields\Types\Behaviours\AbstractTypeInterfaceTrait;
+use ByTIC\FormBuilder\FormFields\Types\Behaviours\HasHtmlLabel;
 
 /**
  * Trait TextElementTrait.

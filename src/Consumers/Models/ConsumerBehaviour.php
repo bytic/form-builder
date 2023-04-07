@@ -36,4 +36,9 @@ trait ConsumerBehaviour
 
         return $record->getManager()->getMorphName();
     }
+
+    public function getFormBuilderForms()
+    {
+        return $this->getRelation('FormBuilderForms')->getResults();
+    }
 }

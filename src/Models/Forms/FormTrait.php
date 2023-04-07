@@ -20,6 +20,8 @@ trait FormTrait
 {
     use TimestampableTrait;
 
+    protected string $name = '';
+
     public $timestamps = true;
 
     /**
@@ -31,6 +33,11 @@ trait FormTrait
      * @var string
      */
     static protected $updateTimestamps = ['modified'];
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
 
     public function hasResponses(): bool
     {

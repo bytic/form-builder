@@ -16,4 +16,6 @@ interface Consumer
     public function getTenant(): ?string;
 
     public function getTenantRecord(): ?Record;
+
+    public function getFormBuilderForms();
 }

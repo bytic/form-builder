@@ -11,7 +11,6 @@ use ByTIC\FormBuilder\Utility\PackageConfig;
  */
 trait FormsTrait
 {
-    use TimestampableTrait;
 
     protected function initRelations()
     {

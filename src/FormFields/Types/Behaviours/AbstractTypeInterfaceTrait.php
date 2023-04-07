@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits;
+namespace ByTIC\FormBuilder\FormFields\Types\Behaviours;
 
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
 use ByTIC\FormBuilder\Application\Models\Form\Traits\HasFieldsRecordTrait;

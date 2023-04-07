@@ -3,8 +3,8 @@
 namespace ByTIC\FormBuilder\Application\Models\Fields\Traits;
 
 use ByTIC\Common\Records\Record;
-use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeTrait;
 use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsRecordTrait;
+use ByTIC\FormBuilder\FormFields\Types\Behaviours\AbstractTypeTrait;
 use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordTrait;
 use ByTIC\Records\Behaviors\HasSerializedOptions\HasSerializedOptionsRecordTrait;
 

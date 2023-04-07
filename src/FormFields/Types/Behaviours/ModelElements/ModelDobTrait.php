@@ -1,8 +1,8 @@
 <?php
 
-namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\ModelElements;
+namespace ByTIC\FormBuilder\FormFields\Types\Behaviours\ModelElements;
 
-use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
+use ByTIC\FormBuilder\FormFields\Types\Behaviours\AbstractTypeInterfaceTrait;
 use Nip_Helper_Date;
 
 /**

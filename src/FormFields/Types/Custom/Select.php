@@ -1,13 +1,15 @@
 <?php
 
-namespace ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\Types;
+namespace ByTIC\FormBuilder\FormFields\Types\Custom;
 
 use ByTIC\FormBuilder\FormFields\Types\Behaviours\HtmlElements\SelectElementTrait;
 
 /**
- * Class Select.
+ * Class Custom_Select
+ *
  */
-class Select extends AbstractType
+class Select extends Text
 {
     use SelectElementTrait;
+
 }

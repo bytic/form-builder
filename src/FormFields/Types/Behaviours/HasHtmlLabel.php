@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours;
+namespace ByTIC\FormBuilder\FormFields\Types\Behaviours;
 
 use Nip\Form\Elements\AbstractElement;
 

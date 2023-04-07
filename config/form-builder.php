@@ -3,6 +3,7 @@
 use ByTIC\FormBuilder\Models\FormsFields\FormsFields;
 use ByTIC\FormBuilder\Models\Forms\Forms;
 use ByTIC\FormBuilder\Models\FieldsValues\FieldsValues;
+use ByTIC\FormBuilder\Utility\PathsHelpers;
 
 return [
     'models' => [
@@ -16,5 +17,16 @@ return [
         'values' => FieldsValues::TABLE,
     ],
     'consumers' => [
+    ],
+    'fields' => [
+        'discovery' => [
+            'paths' => [
+                'form-builder' => [
+                    'namespace' => 'ByTIC\FormBuilder\Fields',
+                    'path' => PathsHelpers::basePath().'/src/FormFields/Types',
+                ],
+            ],
+        ],
+        'classmap' => [],
     ],
 ];

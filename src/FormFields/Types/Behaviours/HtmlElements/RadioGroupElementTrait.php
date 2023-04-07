@@ -1,10 +1,10 @@
 <?php
 
-namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements;
+namespace ByTIC\FormBuilder\FormFields\Types\Behaviours\HtmlElements;
 
-use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
-use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours\HasElementOptions;
-use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\Behaviours\HasHtmlLabel;
+use ByTIC\FormBuilder\FormFields\Types\Behaviours\AbstractTypeInterfaceTrait;
+use ByTIC\FormBuilder\FormFields\Types\Behaviours\HasElementOptions;
+use ByTIC\FormBuilder\FormFields\Types\Behaviours\HasHtmlLabel;
 use Nip_Form_Element_Abstract;
 use Nip_Form_Element_RadioGroup;
 use Nip_Form_Model as NipModelForm;

@@ -12,3 +12,9 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/bytic/form-builder.svg?style=flat-square)](https://packagist.org/packages/bytic/form-builder)
 
 Form builder with custom elements for bytic form-builder
+
+
+### Inspiration
+* https://github.com/nails/module-custom-forms
+* https://github.com/atk14/CustomForms
+* 

@@ -22,4 +22,10 @@ class PathsHelpers
     {
         return dirname(dirname(__DIR__));
     }
+
+    public static function config($path)
+    {
+        return static::basePath().'/config'.$path;
+    }
+
 }

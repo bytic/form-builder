@@ -1,8 +1,8 @@
 <?php
 
-namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\HtmlElements;
+namespace ByTIC\FormBuilder\FormFields\Types\Behaviours\HtmlElements;
 
-use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
+use ByTIC\FormBuilder\FormFields\Types\Behaviours\AbstractTypeInterfaceTrait;
 
 /**
  * Trait TimeSelectElementTrait.

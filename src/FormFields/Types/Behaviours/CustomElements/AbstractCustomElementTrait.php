@@ -1,11 +1,11 @@
 <?php
 
-namespace ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\CustomElements;
+namespace ByTIC\FormBuilder\FormFields\Types\Behaviours\CustomElements;
 
-use ByTIC\FormBuilder\Application\Models\Fields\Types\Traits\AbstractTypeInterfaceTrait;
 use ByTIC\FormBuilder\Application\Models\Form\Traits\HasFieldsRecordTrait;
 use ByTIC\FormBuilder\Application\Models\ModelFields\Traits\ModelFieldsRecordTrait;
 use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsRecordTrait;
+use ByTIC\FormBuilder\FormFields\Types\Behaviours\AbstractTypeInterfaceTrait;
 use Nip\Form\Elements\AbstractElement as FormElement;
 
 /**
@@ -100,7 +100,7 @@ trait AbstractCustomElementTrait
      *
      * @return ModelFieldsRecordTrait
      */
-    abstract protected function getNewModelField($model);
+//    abstract protected function getNewModelField($model);
 
     public function populateFormFromSibling($form, $siblingForm)
     {

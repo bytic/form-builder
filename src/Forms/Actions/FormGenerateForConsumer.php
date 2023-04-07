@@ -44,12 +44,12 @@ class FormGenerateForConsumer extends Action
         if ($consumerType === null) {
             throw new Exception('Consumer type not found');
         }
-        $formConsumerRelation = $this->formRepository->getRelation($consumerType);
-        $forms = $formConsumerRelation->getResults();
+
+        $forms = $this->consumer->getFormBuilderForms();
         if ($forms->count() == 0) {
             return $this->createForm($consumerType);
         }
-        if ($this->unique == true) {
+        if ($this->unique) {
             return $forms->first();
         }
 
