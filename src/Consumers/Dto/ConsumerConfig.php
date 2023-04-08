@@ -28,7 +28,7 @@ class ConsumerConfig
         }
         $this->setName($config['name'] ?? null);
         $this->setRepositoryClass($config['repository'] ?? null);
-        $this->setRoles($config['roles'] ?? []);
+        $this->setRoles($config['roles'] ?? null);
 
         return $this;
     }
@@ -68,7 +68,7 @@ class ConsumerConfig
     /**
      * @return array
      */
-    public function getRoles(): array
+    public function getRoles(): ?array
     {
         return $this->roles;
     }
@@ -76,7 +76,7 @@ class ConsumerConfig
     /**
      * @param array $roles
      */
-    public function setRoles(array $roles): void
+    public function setRoles(?array $roles): void
     {
         $this->roles = $roles;
     }

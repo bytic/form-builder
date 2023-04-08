@@ -17,6 +17,10 @@ class FormFieldsDesigner
 
     protected $roles = null;
 
+    public function __construct()
+    {
+    }
+
     /**
      * @param $role
      * @return array|mixed
@@ -28,13 +32,16 @@ class FormFieldsDesigner
 
     public function getAvailable($role): array
     {
-        return $this->available->get($role);
+        return $this->available[$role] ?? [];
     }
 
-    public function addAvailable(AbstractType $field): self
+    public function addAvailable(AbstractType $field, $role = null): self
     {
-        $role = $field->getRole();
-        $this->available[$role][] = $field;
+        $role = $role ?? $field->getRole();
+        if (!isset($this->available[$role])) {
+            $this->available[$role] = new FormFieldsList();
+        }
+        $this->available[$role]->add($field);
 
         return $this;
     }
@@ -50,7 +57,7 @@ class FormFieldsDesigner
     /**
      * @param array $roles
      */
-    public function setRoles(array $roles): void
+    public function setRoles(?array $roles): void
     {
         $this->roles = $roles;
     }
