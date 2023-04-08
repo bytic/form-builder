@@ -11,7 +11,7 @@ class ConsumerConfig
 
     protected $repositoryClass;
 
-    protected $roles = [];
+    protected ?array $roles = null;
 
     public static function fromConfig($config): self
     {

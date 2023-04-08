@@ -3,6 +3,8 @@
 namespace ByTIC\FormBuilder\FormFields\Actions;
 
 use Bytic\Actions\Action;
+use ByTIC\FormBuilder\Consumers\Actions\GetConsumerConfig;
+use ByTIC\FormBuilder\Consumers\Dto\ConsumerConfig;
 use ByTIC\FormBuilder\Consumers\Models\Consumer;
 use ByTIC\FormBuilder\FormFields\Dto\FormFieldsDesigner;
 use ByTIC\FormBuilder\Forms\Actions\GetConsumerForForm;
@@ -15,6 +17,7 @@ class GenerateFormFieldsDesigner extends Action
 {
     protected ?Form $form = null;
     protected ?Consumer $consumer = null;
+    protected ?ConsumerConfig $consumerConfig = null;
 
     protected FormFieldsDesigner $fieldsList;
 
@@ -35,6 +38,14 @@ class GenerateFormFieldsDesigner extends Action
         return $action;
     }
 
+    public function handle(): FormFieldsDesigner
+    {
+        $this->findFieldTypes();
+        $this->fieldsList->setRoles($this->consumerConfig->getRoles());
+
+        return $this->fieldsList;
+    }
+
     public function setForm(Form $form)
     {
         $this->form = $form;
@@ -43,14 +54,14 @@ class GenerateFormFieldsDesigner extends Action
     public function setConsumer(Consumer $consumer)
     {
         $this->consumer = $consumer;
+        $this->consumerConfig = GetConsumerConfig::forConsumer($consumer)->handle();
     }
 
-    public function handle(): FormFieldsDesigner
+    public function getConsumer(): Consumer
     {
-        $this->findFieldTypes();
-
-        return $this->fieldsList;
+        return $this->consumer;
     }
+
 
     protected function findFieldTypes()
     {

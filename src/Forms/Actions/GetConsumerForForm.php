@@ -27,12 +27,29 @@ class GetConsumerForForm extends Action
 
     public function handle()
     {
-        $consumerType = $this->form->getConsumerClass();
-        $consumers = $this->form->getRelation($consumerType)->getResults();
+        $consumers = $this->getConsumers();
         if ($consumers->count() == 0) {
             return null;
         }
 
         return $consumers->first();
+    }
+
+    protected function getConsumers()
+    {
+        $consumerType = $this->detectConsumerType();
+        $consumers = $this->form->getRelation($consumerType)->getResults();
+
+        return $consumers;
+    }
+
+    protected function detectConsumerType()
+    {
+        $consumerType = $this->form->getConsumerClass();
+        if ($consumerType === null) {
+            throw new Exception('Consumer type not found');
+        }
+
+        return $consumerType;
     }
 }

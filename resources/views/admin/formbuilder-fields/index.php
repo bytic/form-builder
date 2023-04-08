@@ -6,11 +6,6 @@ use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait;
 
 $this->set('manager', $manager);
 
-/** @var array $roles */
-$this->set('roles', $roles);
-
-$this->set('fields', $fields);
-
 /** @var array $importLinks */
 $this->set('importLinks', $importLinks);
 

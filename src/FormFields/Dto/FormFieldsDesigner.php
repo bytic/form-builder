@@ -6,11 +6,16 @@ use ByTIC\FormBuilder\FormFields\Types\AbstractType;
 
 class FormFieldsDesigner
 {
+
+    public const ROLE_DEFAULT = 'default';
+
     protected $existing = [];
 
     protected FormFieldsList $available;
 
     protected $custom = [];
+
+    protected $roles = null;
 
     /**
      * @param $role
@@ -21,10 +26,32 @@ class FormFieldsDesigner
         return $this->existing[$role] ?? [];
     }
 
+    public function getAvailable($role): array
+    {
+        return $this->available->get($role);
+    }
+
     public function addAvailable(AbstractType $field): self
     {
         $role = $field->getRole();
         $this->available[$role][] = $field;
+
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRoles(): array
+    {
+        return $this->roles ?? [self::ROLE_DEFAULT];
+    }
+
+    /**
+     * @param array $roles
+     */
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
     }
 }

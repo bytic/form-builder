@@ -11,7 +11,7 @@ $this->Scripts()->addRaw(FormBuilder::loadAssetContent('/js/sortable.js'));
 <?= $this->load(
     '/formbuilder-fields/index',
     [
-        'roles' => $this->fieldsRoles,
+        'designer' => $this->designer,
         'fields' => $this->fields,
         'manager' => $this->modelManager,
         'withParams' => ['id_race' => $this->_race->id],

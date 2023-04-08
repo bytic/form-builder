@@ -17,12 +17,14 @@ trait FormbuilderFormsControllerTrait
             $this->dispatchNotFoundResponse();
         }
 
-        $designer = GenerateFormFieldsDesigner::forForm($item)->handle();
+        $action = GenerateFormFieldsDesigner::forForm($item);
+        $designer = $action->handle();
 
         $this->payload()->with(
             [
                 'fields' => $item->getFormFields(),
                 'designer' => $designer,
+                'consumer' => $action->getConsumer(),
                 'fieldsRoles' => [],
             ]
         );

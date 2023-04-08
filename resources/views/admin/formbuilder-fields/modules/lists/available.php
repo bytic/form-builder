@@ -1,30 +1,24 @@
 <?php
 
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait;
-use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
+use Nip\Records\RecordManager;
 
-/** @var FormFieldsTrait|\Nip\Records\RecordManager $manager */
+/** @var FormFieldsTrait|RecordManager $manager */
 $manager = $this->manager;
-
-$fields = $this->fields;
-
-/** @var FormFieldTrait[] $fieldsRole */
-/** @var string $role */
-$fieldsRole = $fields[$role] + $fields['custom'];
 ?>
-<ul id="fields-competitor" class='list-unstyled fields-container'>
-    <?php foreach ($fieldsRole as $field) { ?>
+<ul class='list-unstyled fields-container'>
+    <?php foreach ($fields as $field) { ?>
         <li class="field">
             <span class="name">
-                <?php echo $field->getLabel(); ?>
+                <?= $field->getLabel(); ?>
             </span>
             <div class="btn-group">
                 <?php
                 $addUrlParams = $this->withParams + ['type' => $field->getName(), 'role' => $role];
                 $addUrl = $manager->compileURL('add', $addUrlParams);
                 ?>
-                <a href="<?php echo $addUrl; ?>"
-                   class="btn btn-success btn-xs pull-right add-<?php echo $field->getName(); ?>">
+                <a href="<?= $addUrl; ?>"
+                   class="btn btn-success btn-xs pull-right add-<?= $field->getName(); ?>">
                     +
                 </a>
             </div>

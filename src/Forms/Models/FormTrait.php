@@ -38,19 +38,19 @@ trait FormTrait
      */
     static protected $updateTimestamps = ['modified'];
 
-    public function bootFormFieldTrait()
+    public function bootFormTrait()
     {
         $this->addCast('metadata', AsMetadataObject::class.':json');
     }
 
     public function setConsumerClass($consumerClass)
     {
-        $this->metadata->set('consumer_class', $consumerClass);
+        $this->get('metadata')->set('consumer_class', $consumerClass);
     }
 
     public function getConsumerClass($default = null)
     {
-        return $this->metadata->get('consumer_class', $default);
+        return $this->get('metadata')->get('consumer_class', $default);
     }
 
     public function getName(): string
