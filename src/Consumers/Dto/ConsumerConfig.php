@@ -8,6 +8,8 @@ class ConsumerConfig
 
     protected $repositoryClass;
 
+    protected $roles = [];
+
     public static function fromConfig($config): self
     {
         $consumer = new self();

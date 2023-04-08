@@ -2,8 +2,8 @@
 
 namespace ByTIC\FormBuilder\Controllers\Admin;
 
-use ByTIC\FormBuilder\Models\Forms\Form;
-use ByTIC\FormBuilder\Models\Forms\Forms;
+use ByTIC\FormBuilder\Forms\Models\Form;
+use ByTIC\FormBuilder\Forms\Models\Forms;
 use ByTIC\FormBuilder\Utility\FormsBuilderModels;
 
 /**

@@ -1,7 +1,8 @@
 <?php
 
-/** @var \ByTIC\FormBuilder\Models\Forms\Form $item */
+/** @var Form $item */
 
+use ByTIC\FormBuilder\Forms\Models\Form;
 use ByTIC\FormBuilder\Utility\FormsBuilderModels;
 
 $item = $item ?? $this->item;

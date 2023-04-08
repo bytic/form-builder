@@ -36,4 +36,9 @@ class ConsumersList
     {
         return $this->all;
     }
+
+    public function forRepository($repositoryClass): ?ConsumerConfig
+    {
+        return $this->classmap[$repositoryClass] ?? null;
+    }
 }

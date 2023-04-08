@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\FormBuilder\Models\Forms;
+namespace ByTIC\FormBuilder\Forms\Models;
 
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
 use ByTIC\Records\Behaviors\I18n\I18nRecordsTrait;
@@ -22,6 +22,6 @@ class Forms extends RecordManager
 
     public function getRootNamespace()
     {
-        return 'ByTIC\FormBuilder\Models\\';
+        return 'ByTIC\FormBuilder\Forms\Models\\';
     }
 }

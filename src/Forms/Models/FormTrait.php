@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\FormBuilder\Models\Forms;
+namespace ByTIC\FormBuilder\Forms\Models;
 
 use ByTIC\DataObjects\Behaviors\Timestampable\TimestampableTrait;
 use ByTIC\FormBuilder\Models\FormsFields\FormsField;

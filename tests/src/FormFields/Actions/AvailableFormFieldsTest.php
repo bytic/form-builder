@@ -12,7 +12,6 @@ class AvailableFormFieldsTest extends AbstractTest
 
     public function test_getAvailableTypes()
     {
-        $consumer =
         $form = new Form();
         $list = GenerateFormFieldsDesigner::forForm($form)
             ->handle();

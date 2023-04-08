@@ -5,7 +5,7 @@ namespace ByTIC\FormBuilder\FormFields\Actions;
 use Bytic\Actions\Action;
 use ByTIC\FormBuilder\Consumers\Models\Consumer;
 use ByTIC\FormBuilder\FormFields\Dto\FormFieldsDesigner;
-use ByTIC\FormBuilder\Models\Forms\Form;
+use ByTIC\FormBuilder\Forms\Models\Form;
 
 /**
  *
@@ -25,11 +25,12 @@ class GenerateFormFieldsDesigner extends Action
         $this->fieldsList = $fieldsList ?? new FormFieldsDesigner();
     }
 
-    public static function forForm($form, $fieldList = null)
+    public static function forForm(Form $form, $fieldList = null)
     {
         $action = new static($fieldList);
         $action->setForm($form);
         $action->setConsumer($form->getConsumer());
+
         return $action;
     }
 

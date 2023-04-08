@@ -1,8 +1,7 @@
 <?php
 
-namespace ByTIC\FormBuilder\Models\Forms;
+namespace ByTIC\FormBuilder\Forms\Models;
 
-use ByTIC\DataObjects\Behaviors\Timestampable\TimestampableTrait;
 use ByTIC\FormBuilder\Utility\FormsBuilderModels;
 use ByTIC\FormBuilder\Utility\PackageConfig;
 
@@ -28,7 +27,7 @@ trait FormsTrait
 
     protected function initRelationsTenant()
     {
-        $this->morphTo('Tenant');
+        $this->morphTo('Tenant', ['morphTypeField' => 'tenant', 'morphPrefix' => 'tenant']);
     }
 
     public function initRelationsFormFields()
@@ -38,6 +37,7 @@ trait FormsTrait
 
     protected function initRelationsConsumers()
     {
+        $this->morphedByMany('Consumers', []);
         $consumers = PackageConfig::instance()->get('consumers', []);
         foreach ($consumers as $name => $className) {
             $this->initRelationConsumer($name, $className);
@@ -61,5 +61,10 @@ trait FormsTrait
     protected function generateController(): string
     {
         return Forms::TABLE;
+    }
+
+    public function generatePrimaryFK(): string
+    {
+        return 'id_form';
     }
 }

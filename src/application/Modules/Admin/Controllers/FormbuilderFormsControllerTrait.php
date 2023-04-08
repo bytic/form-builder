@@ -2,6 +2,7 @@
 
 namespace ByTIC\FormBuilder\Application\Modules\Admin\Controllers;
 
+use ByTIC\FormBuilder\FormFields\Actions\GenerateFormFieldsDesigner;
 use ByTIC\FormBuilder\Utility\ViewHelper;
 
 trait FormbuilderFormsControllerTrait
@@ -11,11 +12,17 @@ trait FormbuilderFormsControllerTrait
         parent::view();
 
         $item = $this->getModelFromRequest();
-        $item->getTenant();
+        $tenant = $item->getTenant();
+        if (!is_object($tenant)) {
+            $this->dispatchNotFoundResponse();
+        }
+
+        $designer = GenerateFormFieldsDesigner::forForm($item)->handle();
 
         $this->payload()->with(
             [
                 'fields' => $item->getFormFields(),
+                'designer' => $designer,
                 'fieldsRoles' => [],
             ]
         );
