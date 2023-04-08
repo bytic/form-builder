@@ -19,6 +19,12 @@ class FormFieldsList
         $class = get_class($field);
         $this->classmap[$field->getName()] = $class;
         $this->all[$class] = $field;
+
         return $this;
+    }
+
+    public function all(): array
+    {
+        return $this->all;
     }
 }

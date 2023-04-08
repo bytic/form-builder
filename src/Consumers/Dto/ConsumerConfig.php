@@ -2,6 +2,8 @@
 
 namespace ByTIC\FormBuilder\Consumers\Dto;
 
+use Nip\Config\Config;
+
 /**
  *
  */
@@ -28,10 +30,13 @@ class ConsumerConfig
         if (is_string($config)) {
             $config = ['repository' => $config];
         }
+        $config = $config instanceof Config ? $config->toArray() : $config;
+
         $this->setName($config['name'] ?? null);
         $this->setRepositoryClass($config['repository'] ?? null);
         $this->setRoles($config['roles'] ?? null);
         $this->setFields($config['fields'] ?? null);
+
         return $this;
     }
 

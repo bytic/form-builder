@@ -3,6 +3,7 @@
 namespace ByTIC\FormBuilder\Consumers\Actions;
 
 use Bytic\Actions\Action;
+use ByTIC\FormBuilder\Consumers\Dto\ConsumersList;
 use ByTIC\FormBuilder\Consumers\Models\Consumer;
 use ByTIC\FormBuilder\Utility\PackageConfig;
 use Nip\Records\Record;
@@ -12,14 +13,14 @@ use Nip\Records\Record;
  */
 class GetConsumerType extends Action
 {
-    protected array $consumerClasses;
+    protected ConsumersList $consumerClasses;
 
     /**
      * @param $consumerClasses
      */
     public function __construct($consumerClasses = null)
     {
-        $this->consumerClasses = $consumerClasses ?? PackageConfig::consumers()->toArray();
+        $this->consumerClasses = $consumerClasses ?? PackageConfig::consumersList();
     }
 
     /**
@@ -35,11 +36,6 @@ class GetConsumerType extends Action
 
     public function handle($consumerClassRepository = null): int|string|null
     {
-        $key = array_search($consumerClassRepository, $this->consumerClasses);
-        if (false == $key) {
-            return null;
-        }
-
-        return $key;
+        return $this->consumerClasses->forRepository($consumerClassRepository)?->getName();
     }
 }

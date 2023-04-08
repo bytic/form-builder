@@ -14,28 +14,14 @@ use Nip_Form_Model as Form;
 trait AbstractTypeTrait
 {
     use AbstractTypeInterfaceTrait;
+    use Generic\HasLabelTrait;
+    use Generic\HasIconTrait;
 
     /**
      * AbstractTypeTrait constructor.
      */
     public function __construct()
     {
-    }
-
-    /**
-     * @return string
-     */
-    public function generateLabel()
-    {
-        return $this->getDefaultLabel();
-    }
-
-    /**
-     * @return string
-     */
-    public function getDefaultLabel()
-    {
-        return $this->getName();
     }
 
     /**
@@ -130,7 +116,7 @@ trait AbstractTypeTrait
     /**
      * @param DynamicFormTrait|Form $form
      *
-     * @return \Nip\Records\Record
+     * @return Record
      */
     protected function getModelFromForm($form)
     {
@@ -268,11 +254,4 @@ trait AbstractTypeTrait
         return [];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function hasShortLabel()
-    {
-        return false;
-    }
 }

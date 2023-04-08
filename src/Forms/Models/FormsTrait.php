@@ -38,9 +38,9 @@ trait FormsTrait
     protected function initRelationsConsumers()
     {
         $this->morphedByMany('Consumers', []);
-        $consumers = PackageConfig::instance()->get('consumers', []);
-        foreach ($consumers as $name => $className) {
-            $this->initRelationConsumer($name, $className);
+        $consumers = PackageConfig::consumersList()->all();
+        foreach ($consumers as $name => $config) {
+            $this->initRelationConsumer($name, $config->getRepositoryClass());
         }
     }
 

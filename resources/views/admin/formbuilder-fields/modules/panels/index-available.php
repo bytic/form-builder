@@ -18,12 +18,12 @@ $roles = $designer->getRoles();
     <div class="card-header">
         <?= FormsBuilderModels::fields()->getLabel('available'); ?>
     </div>
-    <div class="fields-body" id="fields-available fields-container">
+    <div class="fields-body" id="fields-available">
         <?php if (count($roles) > 1) { ?>
             <div class='accordion'>
                 <?php foreach ($roles as $role) { ?>
                     <?php
-                    $fields = $designer->getAvailable($role);
+                    $fields = $designer->getAvailable($role)->all();
                     $id = 'fields-available-'.$role;
                     ?>
                     <div class="accordion-item">
@@ -43,11 +43,13 @@ $roles = $designer->getRoles();
                 <?php } ?>
             </div>
         <?php } else { ?>
-            <?php
-            $role = current($roles);
-            $fields = $designer->getAvailable($role);
-            ?>
-            <?= $this->load('../lists/available', ['fields' => $fields, 'role' => $role]); ?>
+            <div class="p-2">
+                <?php
+                $role = current($roles);
+                $fields = $designer->getAvailable($role)->all();
+                ?>
+                <?= $this->load('../lists/available', ['fields' => $fields, 'role' => $role]); ?>
+            </div>
         <?php } ?>
     </div>
 </div>

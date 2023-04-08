@@ -6,6 +6,9 @@ class ConsumersList
 {
     protected $classmap = [];
 
+    /**
+     * @var array
+     */
     protected $all = [];
 
     public static function staticFromConfig($config): self
@@ -32,6 +35,9 @@ class ConsumersList
         return $this;
     }
 
+    /**
+     * @return ConsumerConfig[]
+     */
     public function all(): array
     {
         return $this->all;

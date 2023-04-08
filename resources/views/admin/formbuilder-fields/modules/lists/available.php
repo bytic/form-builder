@@ -1,15 +1,20 @@
 <?php
 
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait;
+use ByTIC\FormBuilder\FormFields\Types\AbstractType;
 use Nip\Records\RecordManager;
 
 /** @var FormFieldsTrait|RecordManager $manager */
 $manager = $this->manager;
+/** @var AbstractType $fields */
 ?>
-<ul class='list-unstyled fields-container'>
+<div class='fields-container d-grid grid gap-2'>
     <?php foreach ($fields as $field) { ?>
-        <li class="field">
-            <span class="name">
+        <div class="field border rounded">
+            <span class="field-icon">
+                <?= $field->getIcon(); ?>
+            </span>
+            <span class="field-name">
                 <?= $field->getLabel(); ?>
             </span>
             <div class="btn-group">
@@ -22,6 +27,6 @@ $manager = $this->manager;
                     +
                 </a>
             </div>
-        </li>
+        </div>
     <?php } ?>
-</ul>  
+</div>
