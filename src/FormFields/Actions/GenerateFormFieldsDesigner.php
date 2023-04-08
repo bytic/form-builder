@@ -40,8 +40,8 @@ class GenerateFormFieldsDesigner extends Action
 
     public function handle(): FormFieldsDesigner
     {
-        $this->findFieldTypes();
         $this->fieldsList->setRoles($this->consumerConfig->getRoles());
+        $this->findFieldTypes();
 
         return $this->fieldsList;
     }
@@ -65,11 +65,12 @@ class GenerateFormFieldsDesigner extends Action
 
     protected function findFieldTypes()
     {
-        $names = $this->findFieldTypesNames();
-        $fields = [];
-        foreach ($names as $name) {
-            $type = new $name();
-            $this->fieldsList->addAvailable($type);
+        $roles = $this->findFieldTypesNames();
+        foreach ($roles as $role => $names) {
+            foreach ($names as $name) {
+                $type = new $name();
+                $this->fieldsList->addAvailable($type, $role);
+            }
         }
     }
 
@@ -84,7 +85,7 @@ class GenerateFormFieldsDesigner extends Action
             return $fields;
         }
 
-        return [];
+        return $this->consumerConfig->getFields();
     }
 }
 

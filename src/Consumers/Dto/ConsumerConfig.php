@@ -13,6 +13,8 @@ class ConsumerConfig
 
     protected ?array $roles = null;
 
+    protected ?array $fields = null;
+
     public static function fromConfig($config): self
     {
         $consumer = new self();
@@ -29,7 +31,7 @@ class ConsumerConfig
         $this->setName($config['name'] ?? null);
         $this->setRepositoryClass($config['repository'] ?? null);
         $this->setRoles($config['roles'] ?? null);
-
+        $this->setFields($config['fields'] ?? null);
         return $this;
     }
 
@@ -79,5 +81,15 @@ class ConsumerConfig
     public function setRoles(?array $roles): void
     {
         $this->roles = $roles;
+    }
+
+    public function setFields(?array $param)
+    {
+        $this->fields = $param;
+    }
+
+    public function getFields(): ?array
+    {
+        return $this->fields;
     }
 }

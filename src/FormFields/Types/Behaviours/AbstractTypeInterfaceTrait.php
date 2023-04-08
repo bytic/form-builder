@@ -4,8 +4,9 @@ namespace ByTIC\FormBuilder\FormFields\Types\Behaviours;
 
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
 use ByTIC\FormBuilder\Application\Models\Form\Traits\HasFieldsRecordTrait;
+use ByTIC\FormBuilder\FormFields\Dto\FormFieldsDesigner;
+use Nip\Form\FormModel as NipModelForm;
 use Nip\Records\Record;
-use Nip_Form_Model as NipModelForm;
 
 /**
  * Trait AbstractTypeInterfaceTrait.
@@ -14,7 +15,7 @@ trait AbstractTypeInterfaceTrait
 {
     protected $inputType = 'input';
 
-    protected $inputRole = 'custom';
+    protected $inputRole = FormFieldsDesigner::ROLE_CUSTOM;
 
     protected $canDelete = true;
 
