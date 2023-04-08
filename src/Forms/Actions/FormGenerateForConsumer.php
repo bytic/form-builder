@@ -62,6 +62,7 @@ class FormGenerateForConsumer extends Action
         $form->name = 'Form '.$this->consumer->getName();
         $form->tenant_id = $this->consumer->getTenantId();
         $form->tenant = $this->consumer->getTenant();
+        $form->setConsumerClass($consumerType);
         $form->save();
 
         $formConsumersRelation = $form->getRelation($consumerType);

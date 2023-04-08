@@ -3,6 +3,8 @@
 namespace ByTIC\FormBuilder\Forms\Models;
 
 use ByTIC\DataObjects\Behaviors\Timestampable\TimestampableTrait;
+use ByTIC\DataObjects\Casts\Metadata\AsMetadataObject;
+use ByTIC\DataObjects\Casts\Metadata\Metadata;
 use ByTIC\FormBuilder\Models\FormsFields\FormsField;
 use Nip\Records\Collections\Associated;
 
@@ -15,6 +17,8 @@ use Nip\Records\Collections\Associated;
  * @property int $tenant_id
  *
  * @method FormsField[]|Associated getFormFields
+ *
+ * @property Metadata $metadata
  */
 trait FormTrait
 {
@@ -33,6 +37,21 @@ trait FormTrait
      * @var string
      */
     static protected $updateTimestamps = ['modified'];
+
+    public function bootFormFieldTrait()
+    {
+        $this->addCast('metadata', AsMetadataObject::class.':json');
+    }
+
+    public function setConsumerClass($consumerClass)
+    {
+        $this->metadata->set('consumer_class', $consumerClass);
+    }
+
+    public function getConsumerClass($default = null)
+    {
+        return $this->metadata->get('consumer_class', $default);
+    }
 
     public function getName(): string
     {

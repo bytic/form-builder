@@ -5,6 +5,7 @@ namespace ByTIC\FormBuilder\FormFields\Actions;
 use Bytic\Actions\Action;
 use ByTIC\FormBuilder\Consumers\Models\Consumer;
 use ByTIC\FormBuilder\FormFields\Dto\FormFieldsDesigner;
+use ByTIC\FormBuilder\Forms\Actions\GetConsumerForForm;
 use ByTIC\FormBuilder\Forms\Models\Form;
 
 /**
@@ -20,7 +21,7 @@ class GenerateFormFieldsDesigner extends Action
     /**
      * @param FormFieldsDesigner|null $fieldsList
      */
-    public function __construct(?FormFieldsDesigner $fieldsList = null)
+    protected function __construct(?FormFieldsDesigner $fieldsList = null)
     {
         $this->fieldsList = $fieldsList ?? new FormFieldsDesigner();
     }
@@ -29,7 +30,7 @@ class GenerateFormFieldsDesigner extends Action
     {
         $action = new static($fieldList);
         $action->setForm($form);
-        $action->setConsumer($form->getConsumer());
+        $action->setConsumer(GetConsumerForForm::for($form)->handle());
 
         return $action;
     }
@@ -47,6 +48,7 @@ class GenerateFormFieldsDesigner extends Action
     public function handle(): FormFieldsDesigner
     {
         $this->findFieldTypes();
+
         return $this->fieldsList;
     }
 
@@ -67,6 +69,7 @@ class GenerateFormFieldsDesigner extends Action
     {
         if (method_exists($this->consumer, 'getFormBuilderFieldTypeAvailable')) {
             $fields = $this->consumer->getFormBuilderFieldTypeAvailable();
+
             return $fields;
         }
 

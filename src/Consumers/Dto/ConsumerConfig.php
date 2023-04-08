@@ -2,6 +2,9 @@
 
 namespace ByTIC\FormBuilder\Consumers\Dto;
 
+/**
+ *
+ */
 class ConsumerConfig
 {
     protected $name;
@@ -25,6 +28,7 @@ class ConsumerConfig
         }
         $this->setName($config['name'] ?? null);
         $this->setRepositoryClass($config['repository'] ?? null);
+        $this->setRoles($config['roles'] ?? []);
 
         return $this;
     }
@@ -59,5 +63,21 @@ class ConsumerConfig
     public function setRepositoryClass($repositoryClass): void
     {
         $this->repositoryClass = $repositoryClass;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRoles(): array
+    {
+        return $this->roles;
+    }
+
+    /**
+     * @param array $roles
+     */
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
     }
 }
