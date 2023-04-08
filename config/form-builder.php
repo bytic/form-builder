@@ -1,8 +1,8 @@
 <?php
 
-use ByTIC\FormBuilder\Models\FormsFields\FormsFields;
-use ByTIC\FormBuilder\Models\Forms\Forms;
+use ByTIC\FormBuilder\Forms\Models\Forms;
 use ByTIC\FormBuilder\Models\FieldsValues\FieldsValues;
+use ByTIC\FormBuilder\Models\FormsFields\FormsFields;
 use ByTIC\FormBuilder\Utility\PathsHelpers;
 
 return [

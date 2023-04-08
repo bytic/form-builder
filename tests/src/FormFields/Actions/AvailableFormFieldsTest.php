@@ -3,7 +3,8 @@
 namespace ByTIC\FormBuilder\Tests\Fixtures\FormFields\Actions;
 
 use ByTIC\FormBuilder\FormFields\Actions\GenerateFormFieldsDesigner;
-use ByTIC\FormBuilder\Models\Forms\Form;
+use ByTIC\FormBuilder\FormFields\Dto\FormFieldsDesigner;
+use ByTIC\FormBuilder\Forms\Models\Form;
 use ByTIC\FormBuilder\Tests\AbstractTest;
 
 class AvailableFormFieldsTest extends AbstractTest
@@ -16,7 +17,7 @@ class AvailableFormFieldsTest extends AbstractTest
         $list = GenerateFormFieldsDesigner::forForm($form)
             ->handle();
         self::assertInstanceOf(
-            \ByTIC\FormBuilder\FormFields\Dto\FormFieldsDesigner::class,
+            FormFieldsDesigner::class,
             $list
         );
     }
