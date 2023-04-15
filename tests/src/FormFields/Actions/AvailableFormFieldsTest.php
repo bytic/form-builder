@@ -13,7 +13,9 @@ class AvailableFormFieldsTest extends AbstractTest
     public function test_getAvailableTypes()
     {
         $form = new Form();
-        $list = GenerateFormFieldsDesigner::forForm($form)
+        $form->get('metadata')->set('consumer_class', 'Donation');
+        $list = GenerateFormFieldsDesigner
+            ::forForm($form)
             ->handle();
         self::assertInstanceOf(
             FormFieldsDesigner::class,

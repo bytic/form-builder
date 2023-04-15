@@ -3,9 +3,9 @@
 namespace ByTIC\FormBuilder\Utility;
 
 use ByTIC\FormBuilder\FormBuilderServiceProvider;
+use ByTIC\FormBuilder\FormFields\Models\FormFields\FormsFields;
 use ByTIC\FormBuilder\Forms\Models\Forms;
 use ByTIC\FormBuilder\Models\FieldsValues\FieldsValues;
-use ByTIC\FormBuilder\Models\FormsFields\FormsFields;
 use ByTIC\PackageBase\Utility\ModelFinder;
 use Nip\Records\RecordManager;
 

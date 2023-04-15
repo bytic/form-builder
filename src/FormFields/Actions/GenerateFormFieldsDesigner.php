@@ -42,6 +42,7 @@ class GenerateFormFieldsDesigner extends Action
     {
         $this->fieldsList->setRoles($this->consumerConfig->getRoles());
         $this->findFieldTypes();
+        $this->findFieldExisting();
 
         return $this->fieldsList;
     }
@@ -86,6 +87,24 @@ class GenerateFormFieldsDesigner extends Action
         }
 
         return $this->consumerConfig->getFields();
+    }
+
+    protected function findFieldExisting()
+    {
+        $fields = $this->guardFieldExisting();
+        foreach ($fields as $field) {
+            $this->fieldsList->addExisting($field);
+        }
+    }
+
+    protected function guardFieldExisting()
+    {
+        $fields = $this->form->getFormFields();
+        if (count($fields) > 0) {
+            return $fields;
+        }
+
+        return GenerateInitialFormFields::forForm($this->form)->handle();
     }
 }
 

@@ -4,6 +4,7 @@ namespace ByTIC\FormBuilder\Forms\Actions;
 
 use Bytic\Actions\Action;
 use ByTIC\FormBuilder\Forms\Models\Form;
+use Exception;
 
 class GetConsumerForForm extends Action
 {

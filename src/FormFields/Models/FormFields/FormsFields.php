@@ -1,16 +1,14 @@
 <?php
 
-namespace ByTIC\FormBuilder\Models\FormsFields;
+namespace ByTIC\FormBuilder\FormFields\Models\FormFields;
 
 use Nip\Records\RecordManager;
-use Nip\Utility\Traits\SingletonTrait;
 
 /**
  * Class FormsFields.
  */
 class FormsFields extends RecordManager
 {
-    use SingletonTrait;
     use FormFieldsTrait;
 
     public const TABLE = 'formbuilder-fields';

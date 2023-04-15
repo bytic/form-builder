@@ -95,4 +95,10 @@ class FormFieldsDesigner
             $this->available[$role] = new FormFieldsList();
         }
     }
+
+    public function addExisting(AbstractType $field, $role = null)
+    {
+        $role = $role ?? self::ROLE_DEFAULT;
+        $this->available[$role]->add($field);
+    }
 }

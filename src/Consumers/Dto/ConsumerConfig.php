@@ -16,6 +16,7 @@ class ConsumerConfig
     protected ?array $roles = null;
 
     protected ?array $fields = null;
+    protected ?array $mandatoryFields = null;
 
     public static function fromConfig($config): self
     {
@@ -36,6 +37,7 @@ class ConsumerConfig
         $this->setRepositoryClass($config['repository'] ?? null);
         $this->setRoles($config['roles'] ?? null);
         $this->setFields($config['fields'] ?? null);
+        $this->setMandatoryFields($config['mandatoryFields'] ?? null);
 
         return $this;
     }
@@ -96,5 +98,15 @@ class ConsumerConfig
     public function getFields(): ?array
     {
         return $this->fields;
+    }
+
+    public function setMandatoryFields(?array $param)
+    {
+        $this->mandatoryFields = $param;
+    }
+
+    public function getMandatoryFields(): ?array
+    {
+        return $this->mandatoryFields;
     }
 }

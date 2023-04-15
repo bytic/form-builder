@@ -5,7 +5,7 @@ namespace ByTIC\FormBuilder\Forms\Models;
 use ByTIC\DataObjects\Behaviors\Timestampable\TimestampableTrait;
 use ByTIC\DataObjects\Casts\Metadata\AsMetadataObject;
 use ByTIC\DataObjects\Casts\Metadata\Metadata;
-use ByTIC\FormBuilder\Models\FormsFields\FormsField;
+use ByTIC\FormBuilder\FormFields\Models\FormFields\FormsField;
 use Nip\Records\Collections\Associated;
 
 /**

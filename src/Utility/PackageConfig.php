@@ -4,9 +4,9 @@ namespace ByTIC\FormBuilder\Utility;
 
 use ByTIC\FormBuilder\Consumers\Dto\ConsumersList;
 use ByTIC\FormBuilder\FormBuilderServiceProvider;
+use ByTIC\FormBuilder\FormFields\Models\FormFields\FormsFields;
 use ByTIC\FormBuilder\Forms\Models\Forms;
 use ByTIC\FormBuilder\Models\FieldsValues\FieldsValues;
-use ByTIC\FormBuilder\Models\FormsFields\FormsFields;
 use Exception;
 use Nip\Config\Config;
 use Nip\Utility\Traits\SingletonTrait;
