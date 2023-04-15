@@ -2,7 +2,7 @@
 
 namespace ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\Types;
 
-use ByTIC\FormBuilder\FormFields\Types\Behaviours\HtmlElements\CheckboxElementTrait;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HtmlElements\CheckboxElementTrait;
 
 /**
  * Class Checkbox.

@@ -2,7 +2,7 @@
 
 namespace ByTIC\FormBuilder\FormFields\Models\FormFields;
 
-use ByTIC\FormBuilder\FormFields\Types\Behaviours\AbstractTypeTrait;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeTrait;
 use ByTIC\FormBuilder\Utility\PackageConfig;
 use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordsTrait as HasTypesTrait;
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;

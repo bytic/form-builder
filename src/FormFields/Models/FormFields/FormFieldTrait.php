@@ -4,7 +4,7 @@ namespace ByTIC\FormBuilder\FormFields\Models\FormFields;
 
 use ByTIC\Common\Records\Record;
 use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsRecordTrait;
-use ByTIC\FormBuilder\FormFields\Types\Behaviours\AbstractTypeTrait;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeTrait;
 use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordTrait;
 use ByTIC\Records\Behaviors\HasSerializedOptions\HasSerializedOptionsRecordTrait;
 
@@ -58,11 +58,6 @@ trait FormFieldTrait
         return $label ? $label : $this->getType()->getLabel();
     }
 
-    public function populateFromForm($form)
-    {
-        $this->id_form = $form->id;
-    }
-
     /**
      * @return string
      */
@@ -91,6 +86,11 @@ trait FormFieldTrait
         $value = $this->getType()->printItemValue($model);
 
         return $value;
+    }
+
+    public function populateFromForm($form)
+    {
+        $this->id_form = $form->id;
     }
 
     /**

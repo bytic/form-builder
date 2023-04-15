@@ -1,7 +1,7 @@
 <?php
 
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait;
-use ByTIC\FormBuilder\FormFields\Types\AbstractType;
+use ByTIC\FormBuilder\FormFieldTypes\Types\AbstractType;
 use Nip\Records\RecordManager;
 
 /** @var FormFieldsTrait|RecordManager $manager */

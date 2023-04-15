@@ -14,6 +14,7 @@
   "require": {
     "bytic/models-smart-properties": "^1.0",
     "bytic/orm-behaviors": "^1.0",
+    "bytic/cache": "^1.0",
     "bytic/orm-filters": "^1.0",
     "bytic/package-base": "^1.0",
     "bytic/translation": "^1.0",

@@ -1,11 +1,12 @@
 <?php
 
-namespace ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\Types;
+namespace ByTIC\FormBuilder\FormFieldTypes\Types\Custom;
 
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HtmlElements\CheckboxGroupElementTrait;
 
 /**
- * Class CheckboxGroup.
+ * Class CustomCheckboxGroup
+ * @package KM42\Register\Models\Races\FormFields\Types
  */
 class CheckboxGroup extends AbstractType
 {

@@ -3,7 +3,7 @@
 namespace ByTIC\FormBuilder\FormFields\Actions;
 
 use Bytic\Actions\Action;
-use ByTIC\FormBuilder\FormFields\Dto\FormFieldsList;
+use ByTIC\FormBuilder\FormFieldTypes\Dto\FormFieldsList;
 use ByTIC\FormBuilder\Utility\PackageConfig;
 
 class FormFieldsAvailable extends Action

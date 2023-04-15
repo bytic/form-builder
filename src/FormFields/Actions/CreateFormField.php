@@ -3,6 +3,7 @@
 namespace ByTIC\FormBuilder\FormFields\Actions;
 
 use Bytic\Actions\Action;
+use ByTIC\FormBuilder\FormFieldTypes\Actions\InstanceFormFieldType;
 use ByTIC\FormBuilder\Utility\FormsBuilderModels;
 
 class CreateFormField extends Action
@@ -28,7 +29,7 @@ class CreateFormField extends Action
     public function setType($type)
     {
         if (is_string($type)) {
-            $type = new $type();
+            $type = InstanceFormFieldType::forForm($this->form, $type)->handle();
         }
         $this->type = $type;
     }

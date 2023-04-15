@@ -2,14 +2,15 @@
 
 namespace ByTIC\FormBuilder\FormFields\Dto;
 
-use ByTIC\FormBuilder\FormFields\Types\AbstractType;
-use ByTIC\FormBuilder\FormFields\Types\Custom\Checkbox;
-use ByTIC\FormBuilder\FormFields\Types\Custom\CheckboxGroup;
-use ByTIC\FormBuilder\FormFields\Types\Custom\RadioGroup;
-use ByTIC\FormBuilder\FormFields\Types\Custom\Select;
-use ByTIC\FormBuilder\FormFields\Types\Custom\Text;
-use ByTIC\FormBuilder\FormFields\Types\Custom\Textarea;
-use ByTIC\FormBuilder\FormFields\Types\Custom\Timeselect;
+use ByTIC\FormBuilder\FormFieldTypes\Dto\FormFieldsList;
+use ByTIC\FormBuilder\FormFieldTypes\Types\AbstractType;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\Checkbox;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\CheckboxGroup;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\RadioGroup;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\Select;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\Text;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\Textarea;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\Timeselect;
 
 class FormFieldsDesigner
 {

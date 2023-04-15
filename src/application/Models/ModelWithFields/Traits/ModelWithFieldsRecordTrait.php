@@ -5,7 +5,11 @@ namespace ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits;
 use ByTIC\Common\Records\Records;
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait;
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
+use ByTIC\FormBuilder\FormFields\Actions\CreateFormField;
+use Exception;
 use Nip\Records\Collections\Associated as AssociatedCollection;
+use Nip\Records\Collections\Collection;
+use Nip\Records\RecordManager;
 use Nip\Records\Relations\HasMany;
 
 /**
@@ -21,7 +25,7 @@ trait ModelWithFieldsRecordTrait
     /**
      * @return array
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function getFormFieldsList()
     {
@@ -33,7 +37,7 @@ trait ModelWithFieldsRecordTrait
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     protected function initFormFieldsList()
     {
@@ -43,7 +47,7 @@ trait ModelWithFieldsRecordTrait
     /**
      * @return array
      *
-     * @throws \Exception
+     * @throws Exception
      */
     protected function generateFormFieldsList()
     {
@@ -70,7 +74,7 @@ trait ModelWithFieldsRecordTrait
     /**
      * @return AssociatedCollection|FormFieldTrait[]
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function getFormFields()
     {
@@ -87,9 +91,9 @@ trait ModelWithFieldsRecordTrait
     }
 
     /**
-     * @return \Nip\Records\Collections\Collection
+     * @return Collection
      *
-     * @throws \Exception
+     * @throws Exception
      */
     protected function initDefaultFormFields()
     {
@@ -103,20 +107,16 @@ trait ModelWithFieldsRecordTrait
     /**
      * @param array $types
      *
-     * @return AssociatedCollection|\Nip\Records\Collections\Collection
+     * @return AssociatedCollection|Collection
      *
-     * @throws \Exception
+     * @throws Exception
      */
     protected function checkHasFieldsTypes($types)
     {
-        $fieldsManager = $this->getFormFieldsManager();
         $fieldsRelation = $this->getFormFieldsRelation();
         $fields = $fieldsRelation->getResults();
         foreach ($types as $type) {
-            $field = $fieldsManager->getNew();
-            $field->setType($type);
-            $field->populateFromParent($this);
-            $field->populateFromType();
+            $field = CreateFormField::forForm($this, $type);
 
             if ($this->isInDB()) {
                 $field->insert();
@@ -128,9 +128,9 @@ trait ModelWithFieldsRecordTrait
     }
 
     /**
-     * @return FormFieldsTrait|\Nip\Records\RecordManager
+     * @return FormFieldsTrait|RecordManager
      *
-     * @throws \Exception
+     * @throws Exception
      */
     protected function getFormFieldsManager()
     {

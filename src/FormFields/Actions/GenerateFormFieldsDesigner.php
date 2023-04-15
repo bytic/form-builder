@@ -33,14 +33,13 @@ class GenerateFormFieldsDesigner extends Action
     {
         $action = new static($fieldList);
         $action->setForm($form);
-        $action->setConsumer(GetConsumerForForm::for($form)->handle());
 
         return $action;
     }
 
     public function handle(): FormFieldsDesigner
     {
-        $this->fieldsList->setRoles($this->consumerConfig->getRoles());
+        $this->findRoles();
         $this->findFieldTypes();
         $this->findFieldExisting();
 
@@ -55,19 +54,47 @@ class GenerateFormFieldsDesigner extends Action
     public function setConsumer(Consumer $consumer)
     {
         $this->consumer = $consumer;
-        $this->consumerConfig = GetConsumerConfig::forConsumer($consumer)->handle();
     }
 
     public function getConsumer(): Consumer
     {
+        if ($this->consumer === null) {
+            $this->consumer = GetConsumerForForm::for($this->form)->handle();
+        }
+
         return $this->consumer;
     }
 
+    public function getConsumerConfig(): ConsumerConfig
+    {
+        if ($this->consumerConfig === null) {
+            $this->consumerConfig = GetConsumerConfig::forConsumer($this->getConsumer())->handle();
+        }
+
+        return $this->consumerConfig;
+    }
+
+    public function setConsumerConfig(ConsumerConfig $consumerConfig): void
+    {
+        $this->consumerConfig = $consumerConfig;
+    }
+
+    protected function findRoles(): void
+    {
+        $roles = $this->getConsumerConfig()->getRoles();
+        $this->fieldsList->setRoles($roles);
+    }
 
     protected function findFieldTypes()
     {
         $roles = $this->findFieldTypesNames();
+        if (!is_array($roles)) {
+            return;
+        }
         foreach ($roles as $role => $names) {
+            if (!is_array($names)) {
+                continue;
+            }
             foreach ($names as $name) {
                 $type = new $name();
                 $this->fieldsList->addAvailable($type, $role);
@@ -80,13 +107,14 @@ class GenerateFormFieldsDesigner extends Action
      */
     protected function findFieldTypesNames()
     {
-        if (method_exists($this->consumer, 'getFormBuilderFieldTypeAvailable')) {
-            $fields = $this->consumer->getFormBuilderFieldTypeAvailable();
+        $consumer = $this->getConsumer();
+        if (method_exists($consumer, 'getFormBuilderFieldTypeAvailable')) {
+            $fields = $consumer->getFormBuilderFieldTypeAvailable();
 
             return $fields;
         }
 
-        return $this->consumerConfig->getFields();
+        return $this->getConsumerConfig()->getFields();
     }
 
     protected function findFieldExisting()
@@ -100,7 +128,8 @@ class GenerateFormFieldsDesigner extends Action
     protected function guardFieldExisting()
     {
         $fields = $this->form->getFormFields();
-        if (count($fields) > 0) {
+        $count = is_object($fields) ? $fields->count() : count($fields);
+        if ($count > 0) {
             return $fields;
         }
 
