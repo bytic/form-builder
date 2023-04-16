@@ -9,6 +9,7 @@ use ByTIC\FormBuilder\Base\Actions\Behaviours\HasForm;
 use ByTIC\FormBuilder\Consumers\Actions\GetConsumerConfig;
 use ByTIC\FormBuilder\FormFields\Dto\FormFieldsDesigner;
 use ByTIC\FormBuilder\FormFieldTypes\Actions\FindFieldTypeForConsumer;
+use ByTIC\FormBuilder\FormFieldTypes\Dto\FormFieldsList;
 use ByTIC\FormBuilder\Forms\Actions\GetConsumerForForm;
 use ByTIC\FormBuilder\Forms\Models\Form;
 
@@ -64,17 +65,17 @@ class GenerateFormFieldsDesigner extends Action
 
     protected function findFieldTypes()
     {
-        $roles = FindFieldTypeForConsumer::forConsumer($this->getConsumer(), $this->getConsumerConfig());
-        if (!is_array($roles)) {
-            return;
-        }
-        foreach ($roles as $role => $names) {
-            if (!is_array($names)) {
-                continue;
-            }
-            foreach ($names as $name) {
-                $type = new $name();
-                $this->fieldsList->addAvailable($type, $role);
+        /** @var FormFieldsList $fieldList */
+        $fieldList = FindFieldTypeForConsumer
+            ::forConsumer($this->getConsumer(), $this->getConsumerConfig())
+            ->handle();
+
+        $roles = $this->fieldsList->getRoles();
+
+        foreach ($roles as $role) {
+            $fields = $fieldList->forRole($role);
+            foreach ($fields as $field) {
+                $this->fieldsList->addAvailable($field, $role);
             }
         }
     }

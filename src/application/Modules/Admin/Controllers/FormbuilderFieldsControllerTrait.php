@@ -2,7 +2,10 @@
 
 namespace ByTIC\FormBuilder\Application\Modules\Admin\Controllers;
 
+use ByTIC\FormBuilder\Application\Modules\Admin\Forms\FormFields\FormFieldsAdminForm;
 use ByTIC\FormBuilder\FormFields\Models\FormFields\FormFieldTrait;
+use ByTIC\FormBuilder\FormFields\Models\FormFields\FormsField;
+use ByTIC\FormBuilder\Utility\ViewHelper;
 use Nip\Controllers\Traits\AbstractControllerTrait;
 
 /**
@@ -45,5 +48,54 @@ trait FormbuilderFieldsControllerTrait
         }
 
         $this->Async()->sendMessage('Fields reordered');
+    }
+
+    /**
+     * @param FormsField $item
+     * @return void
+     */
+    protected function deleteRedirect($item)
+    {
+        $form = $item->getFormBuilder();
+
+        $this->setAfterUrlFlash(
+            $form->getURL(),
+            $form->getManager()->getController(),
+            'after-delete'
+        );
+
+        $this->afterActionRedirect('delete', $item);
+    }
+
+    /**
+     * @param FormsField $model
+     * @param string $action
+     * @return string
+     */
+    public function getModelForm($model, $action = null)
+    {
+        if ($action == null || in_array($action, ['edit', 'view'])) {
+            $form = new FormFieldsAdminForm();
+            $form->setModel($model);
+
+            return $form;
+        }
+
+        return parent::getModelForm($model, $action);
+    }
+
+    protected function bootFormbuilderFieldsControllerTrait()
+    {
+        $this->after(
+            function () {
+                $this->registerFormbuilderViewPaths();
+            }
+        );
+    }
+
+    protected function registerFormbuilderViewPaths()
+    {
+        $view = $this->getView();
+        ViewHelper::registerAdminPaths($view);
     }
 }

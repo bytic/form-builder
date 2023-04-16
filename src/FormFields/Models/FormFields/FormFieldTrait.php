@@ -6,6 +6,7 @@ use ByTIC\Common\Records\Record;
 use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsRecordTrait;
 use ByTIC\FormBuilder\FormFields\Models\FormFields\Behaviours\HasTypes\HasTypesRecordTrait;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeTrait;
+use ByTIC\Records\Behaviors\HasForms\HasFormsRecordTrait;
 use ByTIC\Records\Behaviors\HasSerializedOptions\HasSerializedOptionsRecordTrait;
 
 /**
@@ -20,13 +21,18 @@ use ByTIC\Records\Behaviors\HasSerializedOptions\HasSerializedOptionsRecordTrait
  * @property string $listing
  * @property string $filter
  *
- * @method string            getName()
  * @method AbstractTypeTrait getType()
  */
 trait FormFieldTrait
 {
     use HasTypesRecordTrait;
+    use HasFormsRecordTrait;
     use HasSerializedOptionsRecordTrait;
+
+    public function getName()
+    {
+        return $this->getLabel();
+    }
 
     /**
      * @param $form
@@ -214,5 +220,10 @@ trait FormFieldTrait
         }
 
         return $this->getRegistry()->get('filterArray');
+    }
+
+    public function getFormBuilder()
+    {
+        return $this->getRelation('FormBuilder')->getResults();
     }
 }

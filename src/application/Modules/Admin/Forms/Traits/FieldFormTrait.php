@@ -15,9 +15,15 @@ use Nip\Records\RecordManager;
  */
 trait FieldFormTrait
 {
-    public function init()
+    public function initialize()
     {
-        parent::init();
+        parent::initialize();
+        $this->initializeFieldForm();
+    }
+
+    protected function initializeFieldForm()
+    {
+        $this->setAttrib('id', 'form-builder-fields');
 
         $this->addSelect('type', translator()->trans('type'), false);
         $this->getElement('type')->setAttrib('disabled', 'disabled');
@@ -43,7 +49,7 @@ trait FieldFormTrait
 
     protected function initVisibleElement()
     {
-        $this->addBsRadioGroup('visible', translator()->trans('visible'), true);
+        $this->addRadioGroup('visible', translator()->trans('visible'), true);
         $this->visible->addOption('yes', translator()->trans('yes'))
             ->addOption('no', translator()->trans('no'))
             ->getRenderer()->setSeparator('');
@@ -51,7 +57,7 @@ trait FieldFormTrait
 
     protected function initMandatoryElement()
     {
-        $this->addBsRadioGroup('mandatory', translator()->trans('mandatory'), true);
+        $this->addRadioGroup('mandatory', translator()->trans('mandatory'), true);
         $this->mandatory->addOption('yes', translator()->trans('yes'))
             ->addOption('no', translator()->trans('no'))
             ->getRenderer()->setSeparator('');

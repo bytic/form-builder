@@ -31,6 +31,16 @@ class FormFieldsList implements Serializable
         return $this;
     }
 
+    public function remove($field): self
+    {
+        $class = get_class($field);
+        unset($this->classmap[$field->getName()]);
+        unset($this->all[$class]);
+        unset($this->role[$field->getRole()][$field->getName()]);
+
+        return $this;
+    }
+
     /**
      * @param $name
      * @return mixed|null
@@ -56,6 +66,11 @@ class FormFieldsList implements Serializable
     public function all(): array
     {
         return $this->all;
+    }
+
+    public function forRole($role): array
+    {
+        return $this->role[$role] ?? [];
     }
 
     public function count(): ?int

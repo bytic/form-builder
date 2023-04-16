@@ -81,7 +81,7 @@ class FormFieldsDesigner
      */
     public function getRoles(): array
     {
-        return count($this->roles) ? $this->roles : [self::ROLE_DEFAULT];
+        return is_array($this->roles) && count($this->roles) ? $this->roles : [self::ROLE_DEFAULT];
     }
 
     /**
@@ -108,9 +108,15 @@ class FormFieldsDesigner
         }
     }
 
-    public function addExisting(Record $field, $role = null)
+    public function addExisting(Record $field, $role = null): void
     {
         $role = $role ?? self::ROLE_DEFAULT;
+
+        /** @var AbstractType $type */
+        $type = $field->getType();
+        if ($type->isUnique()) {
+            $this->getAvailable($role)->remove($type);
+        }
         $this->guardExisting($role);
         $this->existing[$role]->add($field);
     }

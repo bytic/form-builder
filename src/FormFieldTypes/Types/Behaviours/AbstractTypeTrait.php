@@ -228,6 +228,11 @@ trait AbstractTypeTrait
         return true === $this->canDelete;
     }
 
+    public function isUnique(): bool
+    {
+        return false;
+    }
+
     // --------------------------------------------- //
     // ---------------      DEFAULTS     ----------- //
     // --------------------------------------------- //

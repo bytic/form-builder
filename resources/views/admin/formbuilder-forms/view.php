@@ -14,7 +14,7 @@ $this->Scripts()->addRaw(FormBuilder::loadAssetContent('/js/sortable.js'));
         'designer' => $this->designer,
         'fields' => $this->fields,
         'manager' => $this->modelManager,
-        'withParams' => ['id_race' => $this->_race->id],
+        'withParams' => $this->addWithParams,
         'importLinks' => [],
     ]
 ); ?>

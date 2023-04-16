@@ -25,6 +25,7 @@ trait FormbuilderFormsControllerTrait
                 'fields' => $item->getFormFields(),
                 'designer' => $designer,
                 'consumer' => $action->getConsumer(),
+                'addWithParams' => [],
                 'fieldsRoles' => $designer->getRoles(),
             ]
         );
