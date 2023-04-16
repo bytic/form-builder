@@ -20,7 +20,12 @@ class PackageConfig extends \ByTIC\PackageBase\Utility\PackageConfig
 
     protected $name = FormBuilderServiceProvider::NAME;
 
-    public static function modelsForms($default = null)
+    /**
+     * @param $default
+     * @return mixed|Config|string|null
+     * @throws Exception
+     */
+    public static function modelsForms($default = Forms::class)
     {
         return self::instance()->get('models.forms', $default);
     }

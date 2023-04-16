@@ -7,6 +7,7 @@ use ByTIC\FormBuilder\Forms\Actions\GetConsumerForForm;
 
 class InstanceFormFieldType extends Action
 {
+
     protected $form;
 
     protected $consumer;

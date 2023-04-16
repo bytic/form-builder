@@ -7,6 +7,7 @@ use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\FormField;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\Types\Select as SelectType;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Modules\AbstractModule\Forms\DynamicForm;
 use Mockery;
+use Nip\Form\FormModel;
 use Nip_Form_Element_Select as SelectElement;
 use Nip_Form_Element_Textarea;
 
@@ -95,13 +96,13 @@ class SelectElementTraitTest extends AbstractTest
             $record->setOption($name, $value);
         }
 
-        $form = Mockery::mock(DynamicForm::class)->makePartial();
+        $form = Mockery::mock(FormModel::class)->makePartial();
         $form->shouldReceive('getModel')->andReturn($record);
 
         $type->adminGetDataFromModel($form);
 
         $elements = $form->getElements();
-        self::assertCount(6, $elements);
+        self::assertCount(4, $elements);
 
         foreach (['select_options', 'select_options_disabled'] as $fieldName) {
             $elementOptions = $elements[$fieldName];

@@ -25,9 +25,9 @@ trait AbstractCustomElementTrait
         $form = $input->getForm();
         $model = $this->getModelFromForm($form);
 
-        $fields = $model->getFormFields();
+        $fields = $model ? $model->getFormFields() : [];
 
-        if (is_object($fields[$this->getItem()->id])) {
+        if ($this->getItem()->id && is_object($fields[$this->getItem()->id])) {
             $input->getData($this->getItemValue($model), 'model');
         }
 
@@ -118,6 +118,6 @@ trait AbstractCustomElementTrait
      */
     public function getFormName()
     {
-        return $this->getName().'-'.sha1($this->getItem()->id);
+        return $this->getName().'-'.sha1($this->getItem()->id ?? '');
     }
 }

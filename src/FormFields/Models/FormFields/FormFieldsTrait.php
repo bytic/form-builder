@@ -2,9 +2,9 @@
 
 namespace ByTIC\FormBuilder\FormFields\Models\FormFields;
 
+use ByTIC\FormBuilder\FormFields\Models\FormFields\Behaviours\HasTypes\HasTypesRecordsTrait;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeTrait;
 use ByTIC\FormBuilder\Utility\PackageConfig;
-use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordsTrait as HasTypesTrait;
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
 use ByTIC\Records\Behaviors\I18n\I18nRecordsTrait;
 
@@ -15,7 +15,7 @@ use ByTIC\Records\Behaviors\I18n\I18nRecordsTrait;
  */
 trait FormFieldsTrait
 {
-    use HasTypesTrait;
+    use HasTypesRecordsTrait;
     use HasFormsRecordsTrait;
     use I18nRecordsTrait;
 
@@ -23,6 +23,24 @@ trait FormFieldsTrait
      * @var array|null
      */
     protected $typesMatrix = null;
+
+    protected function initRelations()
+    {
+        parent::initRelations();
+
+        $this->initRelationsCommon();
+    }
+
+    protected function initRelationsCommon()
+    {
+        $this->initRelationsForm();
+    }
+
+    protected function initRelationsForm()
+    {
+        $this->belongsTo('FormBuilder', ['class' => PackageConfig::modelsForms()]);
+    }
+
 
     /**
      * @param string $role

@@ -10,5 +10,7 @@ use ByTIC\Models\SmartProperties\Properties\Types\Generic;
  */
 abstract class AbstractType extends Generic
 {
+    public const TYPES_DIR = __DIR__;
+
     use AbstractTypeTrait;
 }

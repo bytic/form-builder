@@ -4,8 +4,8 @@ namespace ByTIC\FormBuilder\FormFields\Models\FormFields;
 
 use ByTIC\Common\Records\Record;
 use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsRecordTrait;
+use ByTIC\FormBuilder\FormFields\Models\FormFields\Behaviours\HasTypes\HasTypesRecordTrait;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeTrait;
-use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordTrait;
 use ByTIC\Records\Behaviors\HasSerializedOptions\HasSerializedOptionsRecordTrait;
 
 /**
@@ -25,7 +25,7 @@ use ByTIC\Records\Behaviors\HasSerializedOptions\HasSerializedOptionsRecordTrait
  */
 trait FormFieldTrait
 {
-    use RecordTrait;
+    use HasTypesRecordTrait;
     use HasSerializedOptionsRecordTrait;
 
     /**

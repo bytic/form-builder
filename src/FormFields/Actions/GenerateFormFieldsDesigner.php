@@ -3,10 +3,12 @@
 namespace ByTIC\FormBuilder\FormFields\Actions;
 
 use Bytic\Actions\Action;
+use ByTIC\FormBuilder\Base\Actions\Behaviours\HasConsumer;
+use ByTIC\FormBuilder\Base\Actions\Behaviours\HasConsumerConfig;
+use ByTIC\FormBuilder\Base\Actions\Behaviours\HasForm;
 use ByTIC\FormBuilder\Consumers\Actions\GetConsumerConfig;
-use ByTIC\FormBuilder\Consumers\Dto\ConsumerConfig;
-use ByTIC\FormBuilder\Consumers\Models\Consumer;
 use ByTIC\FormBuilder\FormFields\Dto\FormFieldsDesigner;
+use ByTIC\FormBuilder\FormFieldTypes\Actions\FindFieldTypeForConsumer;
 use ByTIC\FormBuilder\Forms\Actions\GetConsumerForForm;
 use ByTIC\FormBuilder\Forms\Models\Form;
 
@@ -15,9 +17,9 @@ use ByTIC\FormBuilder\Forms\Models\Form;
  */
 class GenerateFormFieldsDesigner extends Action
 {
-    protected ?Form $form = null;
-    protected ?Consumer $consumer = null;
-    protected ?ConsumerConfig $consumerConfig = null;
+    use HasForm;
+    use HasConsumer;
+    use HasConsumerConfig;
 
     protected FormFieldsDesigner $fieldsList;
 
@@ -33,6 +35,13 @@ class GenerateFormFieldsDesigner extends Action
     {
         $action = new static($fieldList);
         $action->setForm($form);
+        $action->setConsumerGenerateCallback(function () use ($form) {
+            return GetConsumerForForm::for($form)->handle();
+        });
+
+        $action->setConsumerConfigGenerateCallback(function () use ($action) {
+            return GetConsumerConfig::forConsumer($action->getConsumer())->handle();
+        });
 
         return $action;
     }
@@ -46,38 +55,6 @@ class GenerateFormFieldsDesigner extends Action
         return $this->fieldsList;
     }
 
-    public function setForm(Form $form)
-    {
-        $this->form = $form;
-    }
-
-    public function setConsumer(Consumer $consumer)
-    {
-        $this->consumer = $consumer;
-    }
-
-    public function getConsumer(): Consumer
-    {
-        if ($this->consumer === null) {
-            $this->consumer = GetConsumerForForm::for($this->form)->handle();
-        }
-
-        return $this->consumer;
-    }
-
-    public function getConsumerConfig(): ConsumerConfig
-    {
-        if ($this->consumerConfig === null) {
-            $this->consumerConfig = GetConsumerConfig::forConsumer($this->getConsumer())->handle();
-        }
-
-        return $this->consumerConfig;
-    }
-
-    public function setConsumerConfig(ConsumerConfig $consumerConfig): void
-    {
-        $this->consumerConfig = $consumerConfig;
-    }
 
     protected function findRoles(): void
     {
@@ -87,7 +64,7 @@ class GenerateFormFieldsDesigner extends Action
 
     protected function findFieldTypes()
     {
-        $roles = $this->findFieldTypesNames();
+        $roles = FindFieldTypeForConsumer::forConsumer($this->getConsumer(), $this->getConsumerConfig());
         if (!is_array($roles)) {
             return;
         }
@@ -102,20 +79,6 @@ class GenerateFormFieldsDesigner extends Action
         }
     }
 
-    /**
-     * @return array
-     */
-    protected function findFieldTypesNames()
-    {
-        $consumer = $this->getConsumer();
-        if (method_exists($consumer, 'getFormBuilderFieldTypeAvailable')) {
-            $fields = $consumer->getFormBuilderFieldTypeAvailable();
-
-            return $fields;
-        }
-
-        return $this->getConsumerConfig()->getFields();
-    }
 
     protected function findFieldExisting()
     {
