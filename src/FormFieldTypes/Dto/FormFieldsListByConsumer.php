@@ -22,21 +22,26 @@ class FormFieldsListByConsumer extends AbstractLazyCollection
         return $this;
     }
 
+    /**
+     * @param $consumer
+     * @return FormFieldsList
+     */
     public function forConsumer($consumer): FormFieldsList
     {
-        $this->guardConsumerList($consumer);
-
-        return $this->get($consumer);
+        return $this->guardConsumerList($consumer);
     }
 
-    protected function guardConsumerList($consumer): void
+    protected function guardConsumerList($consumer): FormFieldsList
     {
         $consumer = $this->consumerKey($consumer);
         if ($this->has($consumer)) {
-            return;
+            return $this->get($consumer);
         }
 
-        $this->set($consumer, new FormFieldsList());
+        $list = new FormFieldsList();
+        $this->set($consumer, $list);
+
+        return $list;
     }
 
     /**

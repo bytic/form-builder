@@ -57,4 +57,9 @@ class FormFieldsList implements Serializable
     {
         return $this->all;
     }
+
+    public function count(): ?int
+    {
+        return count($this->all);
+    }
 }

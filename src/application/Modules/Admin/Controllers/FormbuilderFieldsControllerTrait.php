@@ -1,14 +1,14 @@
 <?php
 
-namespace ByTIC\FormBuilder\Application\Modules\Admin\Controllers\Traits;
+namespace ByTIC\FormBuilder\Application\Modules\Admin\Controllers;
 
-use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
+use ByTIC\FormBuilder\FormFields\Models\FormFields\FormFieldTrait;
 use Nip\Controllers\Traits\AbstractControllerTrait;
 
 /**
  * Class FormFieldsControllerTrait.
  */
-trait FormFieldsControllerTrait
+trait FormbuilderFieldsControllerTrait
 {
     use AbstractControllerTrait;
 

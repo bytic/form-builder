@@ -174,7 +174,8 @@ trait FormFieldTrait
     public function getListingArray()
     {
         if (!$this->getRegistry()->has('listingArray')) {
-            $this->getRegistry()->set('listingArray', explode(',', $this->listing));
+            $listingArray = empty($this->listing) ? [] : explode(',', $this->listing);
+            $this->getRegistry()->set('listingArray', $listingArray);
         }
 
         return $this->getRegistry()->get('listingArray');
@@ -208,7 +209,8 @@ trait FormFieldTrait
     public function getFilterArray()
     {
         if (!$this->getRegistry()->has('filterArray')) {
-            $this->getRegistry()->set('filterArray', explode(',', $this->filter));
+            $filterArray = empty($this->filter) ? [] : explode(',', $this->filter);
+            $this->getRegistry()->set('filterArray', $filterArray);
         }
 
         return $this->getRegistry()->get('filterArray');

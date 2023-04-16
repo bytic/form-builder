@@ -10,7 +10,7 @@ trait HasConsumerConfig
 
     protected $consumerConfigGenerateCallback = null;
 
-    public function getConsumerConfig(): ConsumerConfig
+    public function getConsumerConfig(): ?ConsumerConfig
     {
         if ($this->consumerConfig === null && $this->consumerConfigGenerateCallback !== null) {
             $this->consumerConfig = call_user_func($this->consumerConfigGenerateCallback);
@@ -19,7 +19,7 @@ trait HasConsumerConfig
         return $this->consumerConfig;
     }
 
-    public function setConsumerConfig(ConsumerConfig $consumerConfig)
+    public function setConsumerConfig(?ConsumerConfig $consumerConfig)
     {
         $this->consumerConfig = $consumerConfig;
     }

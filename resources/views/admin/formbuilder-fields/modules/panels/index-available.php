@@ -11,7 +11,7 @@ $manager = $this->manager;
 $designer = $this->designer;
 
 /** @var array $roles */
-$roles = $designer->getRoles();
+$roles = $this->fieldsRoles ?? $designer->getRoles();
 ?>
 
 <div class="card">

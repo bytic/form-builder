@@ -11,6 +11,8 @@ use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\Select;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\Text;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\Textarea;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\Timeselect;
+use Nip\Records\AbstractModels\Record;
+use Nip\Records\Collections\Collection;
 
 class FormFieldsDesigner
 {
@@ -42,7 +44,7 @@ class FormFieldsDesigner
      */
     protected $custom = [];
 
-    protected $roles = null;
+    protected $roles = [];
 
     public function __construct()
     {
@@ -79,7 +81,7 @@ class FormFieldsDesigner
      */
     public function getRoles(): array
     {
-        return $this->roles ?? [self::ROLE_DEFAULT];
+        return count($this->roles) ? $this->roles : [self::ROLE_DEFAULT];
     }
 
     /**
@@ -90,16 +92,36 @@ class FormFieldsDesigner
         $this->roles = $roles;
     }
 
+    public function addRole($role): self
+    {
+        $this->roles[] = $role;
+        $this->roles = array_unique($this->roles);
+
+        return $this;
+    }
+
     protected function guardAvailable($role)
     {
         if (!isset($this->available[$role])) {
+            $this->addRole($role);
             $this->available[$role] = new FormFieldsList();
         }
     }
 
-    public function addExisting(AbstractType $field, $role = null)
+    public function addExisting(Record $field, $role = null)
     {
         $role = $role ?? self::ROLE_DEFAULT;
-        $this->available[$role]->add($field);
+        $this->guardExisting($role);
+        $this->existing[$role]->add($field);
     }
+
+
+    protected function guardExisting($role)
+    {
+        if (!isset($this->existing[$role])) {
+            $this->addRole($role);
+            $this->existing[$role] = new Collection();
+        }
+    }
+
 }

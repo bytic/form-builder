@@ -25,7 +25,7 @@ trait FormbuilderFormsControllerTrait
                 'fields' => $item->getFormFields(),
                 'designer' => $designer,
                 'consumer' => $action->getConsumer(),
-                'fieldsRoles' => [],
+                'fieldsRoles' => $designer->getRoles(),
             ]
         );
     }

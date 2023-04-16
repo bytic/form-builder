@@ -2,18 +2,24 @@
 /** @var FormFieldsTrait $manager */
 
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait;
+use ByTIC\FormBuilder\FormFields\Dto\FormFieldsDesigner;
 
 $manager = $this->manager;
 
+/** @var FormFieldsDesigner $designer */
+$designer = $this->designer;
+
 /** @var array $roles */
-$roles = $this->roles;
+$roles = $this->fieldsRoles ?? $designer->getRoles();
 ?>
 <?php foreach ($roles as $role) { ?>
-    <?php $fields = $this->fields['existing.' . $role] ?? $this->fields['existing']; ?>
+    <?php
+    $fields = $designer->getExisting($role)->all();
+    ?>
     <?php if ($fields) { ?>
         <div class="form-panel">
             <div class="header">
-                <?php echo $manager->getLabel('existing.' . $role) ?>
+                <?php echo $manager->getLabel('existing.'.$role) ?>
             </div>
             <div class="fields-body">
                 <?php

@@ -36,6 +36,18 @@ class FindFieldTypeForConsumer extends Action
         return self::forConsumer($consumer);
     }
 
+    public static function forConsumer($consumer, $consumerConfig = null)
+    {
+        $action = new static();
+        $action->setConsumer($consumer);
+        $action->setConsumerConfig($consumerConfig);
+        $action->setConsumerConfigGenerateCallback(function () use ($consumer) {
+            return GetConsumerConfig::forConsumer($consumer)->handle();
+        });
+
+        return $action;
+    }
+
     public function handle(): FormFieldsList
     {
         $list = $this->fieldListByConsumer->forConsumer($this->getConsumer());
@@ -60,17 +72,6 @@ class FindFieldTypeForConsumer extends Action
         return $list;
     }
 
-    public static function forConsumer($consumer, $consumerConfig = null)
-    {
-        $action = new static();
-        $action->setConsumer($consumer);
-        $action->setConsumerConfig($consumerConfig);
-        $action->setConsumerGenerateCallback(function () use ($consumer) {
-            return GetConsumerConfig::forConsumer($consumer)->handle();
-        });
-
-        return $action;
-    }
 
     /**
      * @return array
