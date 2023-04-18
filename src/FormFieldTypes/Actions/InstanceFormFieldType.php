@@ -3,7 +3,6 @@
 namespace ByTIC\FormBuilder\FormFieldTypes\Actions;
 
 use Bytic\Actions\Action;
-use ByTIC\FormBuilder\Forms\Actions\GetConsumerForForm;
 
 class InstanceFormFieldType extends Action
 {
@@ -40,8 +39,8 @@ class InstanceFormFieldType extends Action
             return new $this->type;
         }
 
-        $consumer = GetConsumerForForm::for($this->form)->handle();
+        $list = FindFieldTypeForConsumer::forForm($this->form)->handle();
+
+        return $list->get($this->type);
     }
-
-
 }

@@ -22,6 +22,7 @@ trait FormbuilderFormsControllerTrait
 
         $this->payload()->with(
             [
+                'formBuilder' => $item,
                 'fields' => $item->getFormFields(),
                 'designer' => $designer,
                 'consumer' => $action->getConsumer(),

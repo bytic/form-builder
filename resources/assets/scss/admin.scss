@@ -18,8 +18,17 @@
   border-top-right-radius: 6px;
 }
 
-#fields-available {
+.fields-body .field {
+  .field-icon {
+    display: inline-block;
+    height: 2em;
+    width: 2em;
+    padding: 3px;
+    background-color: $amber-200;
+  }
+}
 
+#fields-available {
   &.sortable .field {
     cursor: move;
   }
@@ -29,14 +38,6 @@
 
     &:hover {
       background-color: $gray-100;
-    }
-
-    .field-icon {
-      display: inline-block;
-      height: 2em;
-      width: 2em;
-      padding: 3px;
-      background-color: $amber-200;
     }
 
     .btn-group {

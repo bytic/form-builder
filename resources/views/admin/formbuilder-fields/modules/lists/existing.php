@@ -6,46 +6,62 @@
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
 
 ?>
-<ul class='list-unstyled sortable fields-container' data-url="<?= $updateUrl; ?>">
+<div class='sortable fields-container' data-url="<?= $updateUrl; ?>">
     <?php foreach ($fields as $field) { ?>
-        <li id="field_<?php echo $field->id; ?>"
-            class="field field-<?php echo $field->getRole(); ?>-<?php echo $field->getType()->getName(); ?>">
-            <div class="row row-fluid">
-                <div class="name col-7 col-xs-7">
-                    <div class="field-icons d-inline-block">
-                        <?php $visibleIcons = ($field->visible == 'no') ? 'field-invisible fas fa-eye-slash' : 'field-visible far fa-eye' ?>
-                        <i class=" <?php echo $visibleIcons; ?>"></i>
+        <?php
+        $listIcons = ($field->hasListing('public')) ? 'field-visible' : 'field-invisible';
+        $filterIcons = ($field->hasFilter('public')) ? 'field-visible' : 'field-invisible';
+        $visibleIcons = ($field->visible == 'no') ? 'field-invisible fas fa-eye-slash' : 'field-visible far fa-eye';
+        $fieldType = $field->getType();
+        ?>
+        <div id="field_<?= $field->id; ?>"
+             class="field field-<?= $field->getRole(); ?>-<?= $fieldType->getName(); ?> p-2">
+            <div class="d-flex gap-3">
+                <div class="field-icon">
+                    <?= $fieldType->getIcon(); ?>
+                </div>
+                <div class="field-flags">
+                    <i class="<?= $visibleIcons; ?>"></i>
+                    <i class="far fa-list-alt <?= $listIcons; ?>"></i>
+                    <i class=" fas fa-filter <?= $filterIcons; ?>"></i>
+                </div>
 
-                        <?php $listIcons = ($field->hasListing('public')) ? 'field-visible' : 'field-invisible' ?>
-                        <i class="far fa-list-alt <?php echo $listIcons; ?>"></i>
-
-                        <?php $filterIcons = ($field->hasFilter('public')) ? 'field-visible' : 'field-invisible' ?>
-                        <i class=" fas fa-filter <?php echo $filterIcons; ?>"></i>
-                    </div>
-
+                <div class="name flex-grow-1">
                     <?= $field->getLabel(); ?>
                     <?= $field->isMandatory() ? '*' : ''; ?>
                 </div>
 
-                <div class="col-3 col-xs-3">
+                <div class="mx-2">
                     <span style="font-size:9px;">
-                        [<?php echo $field->getType()->getLabel(); ?>]
+                        [<?= $fieldType->getLabel(); ?>]
                     </span>
                 </div>
-                <div class="col-2 col-xs-2">
-                    <div class="pull-right btn-group">
-                        <a href="<?php echo $field->getURL(); ?>" class="btn btn-success btn-xs">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <?php if ($field->getType()->canDelete()) { ?>
-                            <a href="<?php echo $field->compileURL('delete'); ?>" class="btn btn-danger btn-xs"
-                               onclick="return confirm('<?php echo translator()->trans('general.messages.confirm'); ?>');">
-                                <i class="far fa-trash-alt"></i>
+                <div class="btn-group">
+                    <button class="btn btn-primary btn-flat btn-xs dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="<?= $field->getURL(); ?>" class="dropdown-item">
+                                <i class="fas fa-edit"></i>
+                                <?= translator()->trans('edit'); ?>
                             </a>
+                        </li>
+                        <?php if ($field->getType()->canDelete()) { ?>
+                            <li>
+                                <a href="<?= $field->compileURL('delete'); ?>" class="dropdown-item"
+                                   onclick="return confirm('<?= translator()->trans(
+                                       'general.messages.confirm'
+                                   ); ?>');">
+                                    <i class="far fa-trash-alt"></i>
+                                    <?= translator()->trans('delete'); ?>
+                                </a>
+                            </li>
                         <?php } ?>
-                    </div>
+                    </ul>
                 </div>
             </div>
-        </li>
+        </div>
     <?php } ?>
-</ul>
+</div>
