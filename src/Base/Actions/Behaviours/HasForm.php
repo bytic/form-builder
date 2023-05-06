@@ -12,4 +12,9 @@ trait HasForm
     {
         $this->form = $form;
     }
+
+    public function getForm(): Form
+    {
+        return $this->form;
+    }
 }

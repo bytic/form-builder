@@ -56,11 +56,16 @@ trait DynamicFormTrait
         }
     }
 
-    public function process()
+    public function getData()
     {
-        $this->saveToModel();
-        $this->getModel()->save();
-        $this->saveFormFields();
+        $data = parent::getData();
+
+        $fields = $this->getFields();
+        foreach ($fields as $field) {
+            $data = $field->getType()->getFormData($this, $data);
+        }
+
+        return $data;
     }
 
     public function saveToModel()
@@ -81,6 +86,12 @@ trait DynamicFormTrait
      * @return Record
      */
     abstract public function getModel();
+
+    public function saveModel()
+    {
+        parent::saveModel();
+        $this->saveFormFields();
+    }
 
     public function saveFormFields()
     {

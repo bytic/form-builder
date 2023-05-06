@@ -7,6 +7,7 @@ use ByTIC\FormBuilder\Base\Actions\Behaviours\HasConsumer;
 use ByTIC\FormBuilder\Base\Actions\Behaviours\HasConsumerConfig;
 use ByTIC\FormBuilder\Base\Actions\Behaviours\HasForm;
 use ByTIC\FormBuilder\Consumers\Actions\GetConsumerConfig;
+use ByTIC\FormBuilder\FormFields\Actions\Existing\FindOrCreateExistingFields;
 use ByTIC\FormBuilder\FormFields\Dto\FormFieldsDesigner;
 use ByTIC\FormBuilder\FormFieldTypes\Actions\FindFieldTypeForConsumer;
 use ByTIC\FormBuilder\FormFieldTypes\Dto\FormFieldsList;
@@ -83,21 +84,9 @@ class GenerateFormFieldsDesigner extends Action
 
     protected function findFieldExisting()
     {
-        $fields = $this->guardFieldExisting();
+        $fields = FindOrCreateExistingFields::forForm($this->form)->handle();
         foreach ($fields as $field) {
             $this->fieldsList->addExisting($field);
         }
     }
-
-    protected function guardFieldExisting()
-    {
-        $fields = $this->form->getFormFields();
-        $count = is_object($fields) ? $fields->count() : count($fields);
-        if ($count > 0) {
-            return $fields;
-        }
-
-        return GenerateInitialFormFields::forForm($this->form)->handle();
-    }
 }
-

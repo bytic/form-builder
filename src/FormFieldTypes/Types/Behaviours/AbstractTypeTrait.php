@@ -261,4 +261,9 @@ trait AbstractTypeTrait
         return [];
     }
 
+    public function getFormData($form, mixed $data)
+    {
+        return $data;
+    }
+
 }

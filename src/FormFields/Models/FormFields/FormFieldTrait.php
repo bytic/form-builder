@@ -4,6 +4,7 @@ namespace ByTIC\FormBuilder\FormFields\Models\FormFields;
 
 use ByTIC\Common\Records\Record;
 use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsRecordTrait;
+use ByTIC\FormBuilder\FormFields\Models\FormFields\Behaviours\FormActions\FormActionsRecordTrait;
 use ByTIC\FormBuilder\FormFields\Models\FormFields\Behaviours\HasTypes\HasTypesRecordTrait;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeTrait;
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordTrait;
@@ -28,6 +29,7 @@ trait FormFieldTrait
     use HasTypesRecordTrait;
     use HasFormsRecordTrait;
     use HasSerializedOptionsRecordTrait;
+    use FormActionsRecordTrait;
 
     public function getName()
     {
@@ -44,15 +46,6 @@ trait FormFieldTrait
         return $this->getType()->addFormInput($form);
     }
 
-    /**
-     * @param $form
-     *
-     * @return void
-     */
-    public function processValidation($form)
-    {
-        $this->getType()->processValidation($form);
-    }
 
     /**
      * @return string
@@ -142,6 +135,14 @@ trait FormFieldTrait
     public function isVisible()
     {
         return 'no' != $this->visible;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFormVisible()
+    {
+        return $this->visible != 'hidden';
     }
 
     /**
