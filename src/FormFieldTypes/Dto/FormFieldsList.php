@@ -10,7 +10,7 @@ class FormFieldsList implements Serializable
 {
     use SerializableTrait;
 
-    protected $serializable = ['classmap', 'all'];
+    protected $serializable = ['classmap', 'all', 'role'];
 
     protected $classmap = [];
 

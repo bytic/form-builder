@@ -9,6 +9,7 @@ use ByTIC\FormBuilder\FormFields\Dto\FormFieldsDesigner;
 use ByTIC\FormBuilder\Forms\Models\Form;
 use ByTIC\FormBuilder\Tests\AbstractTest;
 use Mockery;
+use Nip\Records\Collections\Associated;
 
 class AvailableFormFieldsTest extends AbstractTest
 {
@@ -19,7 +20,7 @@ class AvailableFormFieldsTest extends AbstractTest
         $form->get('metadata')->set('consumer_class', 'Donation');
 
         $form = Mockery::mock($form)->makePartial();
-        $existingFields = Mockery::mock(Collection::class)->makePartial();
+        $existingFields = Mockery::mock(Associated::class)->makePartial();
         $existingFields->shouldReceive('count')->andReturn(1);
         $form->shouldReceive('getFormFields')->andReturn($existingFields);
 
@@ -27,6 +28,7 @@ class AvailableFormFieldsTest extends AbstractTest
         $action->setConsumerConfig(new ConsumerConfig());
 
         $consumer = Mockery::mock(Consumer::class)->makePartial();
+        $consumer->shouldReceive('getName')->andReturn('Model');
         $action->setConsumer($consumer);
 
         $actionMock = Mockery::mock($action)->makePartial();

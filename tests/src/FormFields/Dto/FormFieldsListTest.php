@@ -13,12 +13,18 @@ class FormFieldsListTest extends TestCase
     {
         $list = new FormFieldsList();
         $list->add(new Checkbox());
-        $list->add(new Select());
+
+        $field = new Select();
+        $field->setRole('test');
+        $list->add($field);
+
+        self::assertCount(1, $list->forRole('test'));
 
         $serialized = serialize($list);
         $unserialized = unserialize($serialized);
 
         self::assertInstanceOf(FormFieldsList::class, $unserialized);
         self::assertCount(2, $unserialized->all());
+        self::assertCount(1, $unserialized->forRole('test'));
     }
 }

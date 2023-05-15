@@ -82,9 +82,9 @@ class FindFieldTypeForConsumer extends Action
         if (method_exists($consumer, 'getFormBuilderFieldTypeAvailable')) {
             $fields = $consumer->getFormBuilderFieldTypeAvailable();
 
-            return $fields;
+            return $fields ?? [];
         }
 
-        return $this->getConsumerConfig()->getFields();
+        return $this->getConsumerConfig()->getFields() ?? [];
     }
 }
