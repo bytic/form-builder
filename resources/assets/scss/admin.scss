@@ -25,6 +25,11 @@
     width: 2em;
     padding: 3px;
     background-color: $amber-200;
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
   }
 }
 

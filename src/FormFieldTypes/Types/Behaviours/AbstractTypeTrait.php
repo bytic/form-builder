@@ -4,8 +4,11 @@ namespace ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours;
 
 use ByTIC\FormBuilder\Application\Modules\Admin\Forms\Traits\FieldFormTrait;
 use ByTIC\FormBuilder\Application\Modules\Frontend\Forms\Traits\DynamicFormTrait;
-use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\Generic\HasIconTrait;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\CanDelete\CanDeleteTrait;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\Generic\HasLabelTrait;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HasIcon\HasIconTrait;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\IsUnique\UniqueTrait;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\Mandatory\DefaultMandatoryTrait;
 use Nip\Records\Record;
 use Nip_Form_Element_Abstract as FormElement;
 use Nip_Form_Model as Form;
@@ -18,6 +21,9 @@ trait AbstractTypeTrait
     use AbstractTypeInterfaceTrait;
     use HasLabelTrait;
     use HasIconTrait;
+    use CanDeleteTrait;
+    use UniqueTrait;
+    use DefaultMandatoryTrait;
 
     /**
      * AbstractTypeTrait constructor.
@@ -212,27 +218,6 @@ trait AbstractTypeTrait
         $this->inputRole = $role;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setCanDelete(bool $canDelete)
-    {
-        $this->canDelete = $canDelete;
-    }
-
-    /**
-     * @return bool
-     */
-    public function canDelete()
-    {
-        return true === $this->canDelete;
-    }
-
-    public function isUnique(): bool
-    {
-        return false;
-    }
-
     // --------------------------------------------- //
     // ---------------      DEFAULTS     ----------- //
     // --------------------------------------------- //
@@ -245,13 +230,6 @@ trait AbstractTypeTrait
         return 'yes';
     }
 
-    /**
-     * @return string
-     */
-    public function getDefaultMandatory()
-    {
-        return 'no';
-    }
 
     /**
      * @return array

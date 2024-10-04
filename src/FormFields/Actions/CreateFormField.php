@@ -59,9 +59,12 @@ class CreateFormField extends Action
         return $this;
     }
 
-    public function handle(): Record
+    public function handle(): ?Record
     {
         $this->newField();
+        if (false == $this->canCreate()) {
+            return null;
+        }
         $this->field->save();
 
         return $this->field;
@@ -78,5 +81,20 @@ class CreateFormField extends Action
         }
 
         return $this->field;
+    }
+
+    protected function canCreate(): bool
+    {
+        $type = $this->type;
+        if (false == $type->isUnique()) {
+            return true;
+        }
+        $fields = $this->form->getFormFields();
+        $types = $fields->pluck('type')->toArray();
+        if (in_array($type->getName(), $types)) {
+            return false;
+        }
+
+        return true;
     }
 }

@@ -17,8 +17,6 @@ trait AbstractTypeInterfaceTrait
 
     protected $inputRole = FormFieldsDesigner::ROLE_CUSTOM;
 
-    protected $canDelete = true;
-
     protected $modelValues = [];
 
     /**
