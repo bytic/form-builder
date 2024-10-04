@@ -2,6 +2,7 @@
 
 namespace ByTIC\FormBuilder\FormFields\Dto;
 
+use ByTIC\FormBuilder\FormFields\Models\FormFields\FormsField;
 use ByTIC\FormBuilder\FormFieldTypes\Dto\FormFieldsList;
 use ByTIC\FormBuilder\FormFieldTypes\Types\AbstractType;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\Checkbox;
@@ -56,7 +57,7 @@ class FormFieldsDesigner
      */
     public function getExisting($role)
     {
-        return $this->existing[$role] ?? [];
+        return $this->existing[$role] ?? new FormFieldsList();
     }
 
     public function getAvailable($role): FormFieldsList
@@ -92,8 +93,15 @@ class FormFieldsDesigner
         $this->roles = $roles;
     }
 
+    /**
+     * @param $role
+     * @return $this
+     */
     public function addRole($role): self
     {
+        if (in_array($role, $this->roles)) {
+            return $this;
+        }
         $this->roles[] = $role;
         $this->roles = array_unique($this->roles);
 
@@ -108,8 +116,14 @@ class FormFieldsDesigner
         }
     }
 
+    /**
+     * @param Record|FormsField $field
+     * @param $role
+     * @return void
+     */
     public function addExisting(Record $field, $role = null): void
     {
+        $role = $role ?? $field->getRole();
         $role = $role ?? self::ROLE_DEFAULT;
 
         /** @var AbstractType $type */

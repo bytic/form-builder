@@ -28,9 +28,9 @@ $roles = $this->roles;
 <p>&nbsp;</p>
 
 <form method="post"
-      action="<?= $manager->compileURL('reset', $this->withParams); ?>"
+      action="<?= $this->formBuilder->compileURL('reset', $this->withParams); ?>"
       onsubmit="return confirm('<?= translator()->trans('general.messages.confirm'); ?>');">
     <button type="submit" class="btn btn-danger">
-        <?= $manager->getLabel('reset-race'); ?>
+        <?= $manager->getLabel('reset-form'); ?>
     </button>
 </form>

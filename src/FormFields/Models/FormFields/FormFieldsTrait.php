@@ -111,4 +111,14 @@ trait FormFieldsTrait
     {
         return FormsFields::TABLE;
     }
+
+    /**
+     * @inheritDoc
+     */
+    protected function injectParams(&$params = [])
+    {
+        $params['order'][] = ['pos', 'asc'];
+
+        parent::injectParams($params);
+    }
 }

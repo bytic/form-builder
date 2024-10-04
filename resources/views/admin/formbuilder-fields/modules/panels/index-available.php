@@ -8,7 +8,9 @@ use ByTIC\FormBuilder\Utility\FormsBuilderModels;
 $manager = $this->manager;
 
 /** @var FormFieldsDesigner $designer */
-$designer = $this->designer;
+$designer = $designer ?? $this->designer;
+
+$consumer = $consumer ?? $this->consumer;
 
 /** @var array $roles */
 $roles = $this->fieldsRoles ?? $designer->getRoles();
@@ -30,7 +32,7 @@ $roles = $this->fieldsRoles ?? $designer->getRoles();
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#<?= $id; ?>" aria-expanded="true" aria-controls="<?= $id; ?>">
-                                <?= $this->consumer->getManager()->getLabel('forms.role.'.$role) ?>
+                                <?= $consumer->getManager()->getLabel('forms.role.'.$role) ?>
                             </button>
                         </h2>
                         <div id="<?= $id; ?>" class="accordion-collapse collapse show"

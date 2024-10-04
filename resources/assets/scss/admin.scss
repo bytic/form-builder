@@ -51,14 +51,22 @@
   }
 }
 
+#form-fields-container .existing {
+  .form-pane {
+    margin-bottom: $spacer;
+  }
+}
+
 #form-fields-container .existing .fields-body .fields-container {
 
   .field {
     background-color: #F3F3D1;
+    border-color: #DBDBB0;
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+    border-bottom-color: #c3c3c3;
 
-    border-bottom-color: #DBDBB0;
-    border-left-color: #DBDBB0;
-    border-right-color: #DBDBB0;
+    margin-bottom: 3px;
 
     &:hover {
       background-color: #EDEDAF;

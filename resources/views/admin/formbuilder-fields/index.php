@@ -1,8 +1,8 @@
 <?php
 
-/** @var FormFieldsTrait $manager */
+use ByTIC\FormBuilder\FormFields\Models\FormFields\FormFieldsTrait;
 
-use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldsTrait;
+/** @var FormFieldsTrait $manager */
 
 $this->set('manager', $manager);
 
@@ -13,13 +13,15 @@ $this->set('importLinks', $importLinks);
 $this->set('withParams', $withParams);
 ?>
 <div id="form-fields-container" class="row">
-    <div class="col-sm-3 available">
-        <?= $this->load('modules/panels/index-available'); ?>
+    <div class="col-lg-3 order-lg-last">
+        <?= $this->load('modules/panels/index-actions'); ?>
     </div>
-    <div class="col-sm-7 existing">
+
+    <div class="col-lg-6 existing">
         <?= $this->load('modules/panels/index-existing'); ?>
     </div>
-    <div class="col-sm-2">
-        <?= $this->load('modules/panels/index-actions'); ?>
+
+    <div class="col-lg-3 available order-lg-first">
+        <?= $this->load('modules/panels/index-available'); ?>
     </div>
 </div>

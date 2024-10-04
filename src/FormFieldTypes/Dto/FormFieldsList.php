@@ -68,6 +68,11 @@ class FormFieldsList implements Serializable
         return $this->all;
     }
 
+    public function classmap(): array
+    {
+        return $this->classmap;
+    }
+
     public function forRole($role): array
     {
         return $this->role[$role] ?? [];

@@ -19,15 +19,14 @@ $roles = $this->fieldsRoles ?? $designer->getRoles();
     <?php if ($fields) { ?>
         <div class="form-panel">
             <div class="header">
-                <?php echo $manager->getLabel('existing.'.$role) ?>
+                <?= $manager->getLabel('existing.'.$role) ?>
             </div>
             <div class="fields-body">
-                <?php
-                echo $this->load(
+                <?= $this->load(
                     '../lists/existing',
                     [
                         'fields' => $fields,
-                        'updateUrl' => $manager->compileURL('order', $this->withParams)
+                        'updateUrl' => $this->formBuilder->compileURL('order', $this->withParams),
                     ]
                 ); ?>
             </div>

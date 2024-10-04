@@ -37,7 +37,7 @@ use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
                     </span>
                 </div>
                 <div class="btn-group">
-                    <button class="btn btn-primary btn-flat btn-xs dropdown-toggle" type="button"
+                    <button class="btn btn-outline-primary btn-xs dropdown-toggle" type="button"
                             data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v"></i>
                     </button>

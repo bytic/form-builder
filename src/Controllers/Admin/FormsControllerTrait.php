@@ -9,6 +9,7 @@ use ByTIC\FormBuilder\Utility\FormsBuilderModels;
  */
 trait FormsControllerTrait
 {
+
     protected function generateModelName(): string
     {
         return get_class(FormsBuilderModels::forms());
