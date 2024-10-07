@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    $("#form-fields-container ul.sortable").sortable({
+    $("#form-fields-container .sortable").sortable({
         update: function (event, ui) {
             var order = $(this).sortable('serialize');
 
