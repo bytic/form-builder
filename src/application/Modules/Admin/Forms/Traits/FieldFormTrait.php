@@ -25,7 +25,7 @@ trait FieldFormTrait
     {
         $this->setAttrib('id', 'form-builder-fields');
 
-        $this->addSelect('type', translator()->trans('type'), false);
+        $this->addInput('type', translator()->trans('type'), false);
         $this->getElement('type')->setAttrib('disabled', 'disabled');
 
         $this->addInput('label', translator()->trans('name'), true);
@@ -118,10 +118,8 @@ trait FieldFormTrait
 
     public function getDataFromModel()
     {
-        $fields = $this->getModel()->getManager()->getTypes();
-        foreach ($fields as $field) {
-            $this->getElement('type')->addOption($field->getName(), $field->getLabel());
-        }
+        $type = $this->getModel()->getType();
+        $this->getElement('type')->setValue($type->getLabel());
 
         parent::getDataFromModel();
 

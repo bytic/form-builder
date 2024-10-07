@@ -3,6 +3,7 @@
 namespace ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HtmlElements;
 
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
+use ByTIC\FormBuilder\FormFieldTypes\Icons\FieldIcons;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeInterfaceTrait;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HasElementOptions;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HasHtmlLabel;
@@ -123,5 +124,10 @@ trait SelectElementTrait
 
         $model->setOption('hide_disabled', $form->getElement('hide_disabled')->getValue());
         $model->setOption('select_no_value', $form->getElement('select_no_value')->getValue());
+    }
+
+    protected function getDefaultIcon(): string
+    {
+        return FieldIcons::SELECT_DROPDOWN;
     }
 }

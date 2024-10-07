@@ -227,4 +227,26 @@ trait FormFieldTrait
     {
         return $this->getRelation('FormBuilder')->getResults();
     }
+
+    /**
+     * @return bool
+     */
+    public function insert()
+    {
+        $this->serializeOptions();
+        $return = parent::insert();
+
+        return $return;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function update()
+    {
+        $this->serializeOptions();
+        $return = parent::update();
+
+        return $return;
+    }
 }

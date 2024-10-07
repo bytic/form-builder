@@ -2,6 +2,7 @@
 
 namespace ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HtmlElements;
 
+use ByTIC\FormBuilder\FormFieldTypes\Icons\FieldIcons;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeInterfaceTrait;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HasElementOptions;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HasHtmlLabel;
@@ -71,5 +72,10 @@ trait RadioGroupElementTrait
 
         $autoSelectFirst = $form->getElement('autoSelectFirst')->getValue();
         $form->getModel()->setOption('autoSelectFirst', $autoSelectFirst ? 'true' : 'false');
+    }
+
+    protected function getDefaultIcon(): string
+    {
+        return FieldIcons::RADIO_GROUP;
     }
 }

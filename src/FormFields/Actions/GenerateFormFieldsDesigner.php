@@ -61,6 +61,11 @@ class GenerateFormFieldsDesigner extends Action
     protected function findRoles(): void
     {
         $roles = $this->getConsumerConfig()->getRoles();
+
+        if (is_array($roles) && is_callable($roles)) {
+            $roles = $roles($this->getConsumer());
+        }
+
         $this->fieldsList->setRoles($roles);
     }
 

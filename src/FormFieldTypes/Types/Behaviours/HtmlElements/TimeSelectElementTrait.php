@@ -2,6 +2,7 @@
 
 namespace ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HtmlElements;
 
+use ByTIC\FormBuilder\FormFieldTypes\Icons\FieldIcons;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeInterfaceTrait;
 
 /**
@@ -27,5 +28,10 @@ trait TimeSelectElementTrait
         $this->htmlDecodeLabel($input);
 
         return parent::initFormInput($input);
+    }
+
+    protected function getDefaultIcon(): string
+    {
+        return FieldIcons::TIMEPICKER;
     }
 }

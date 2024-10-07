@@ -2,6 +2,7 @@
 
 namespace ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HtmlElements;
 
+use ByTIC\FormBuilder\FormFieldTypes\Icons\FieldIcons;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeInterfaceTrait;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HasHtmlLabel;
 use Nip_Form_Element_Input_Abstract;
@@ -53,5 +54,10 @@ trait CheckboxElementTrait
         }
 
         return $value;
+    }
+
+    protected function getDefaultIcon(): string
+    {
+        return FieldIcons::CHECKBOX;
     }
 }
