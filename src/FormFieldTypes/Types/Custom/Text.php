@@ -12,4 +12,6 @@ use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HtmlElements\TextElementTr
 class Text extends AbstractType
 {
     use TextElementTrait;
+
+    protected $aliases = ['custom_text'];
 }

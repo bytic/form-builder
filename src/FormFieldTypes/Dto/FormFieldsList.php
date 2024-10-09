@@ -25,7 +25,13 @@ class FormFieldsList implements Serializable
     {
         $class = get_class($field);
         $this->classmap[$field->getName()] = $class;
+
         $this->all[$class] = $field;
+        $aliases = $field->getAliases();
+        foreach ($aliases as $alias) {
+            $this->classmap[$alias] = $class;
+        }
+
         $this->role[$field->getRole()][$field->getName()] = $field;
 
         return $this;

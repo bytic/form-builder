@@ -12,4 +12,5 @@ class Select extends Text
 {
     use SelectElementTrait;
 
+    protected $aliases = ['custom_select'];
 }

@@ -11,4 +11,6 @@ use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HtmlElements\CheckboxGroup
 class CheckboxGroup extends AbstractType
 {
     use CheckboxGroupElementTrait;
+
+    protected $aliases = ['custom_checkbox_group'];
 }

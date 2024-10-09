@@ -11,4 +11,6 @@ use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HtmlElements\RadioGroupEle
 class RadioGroup extends AbstractType
 {
     use RadioGroupElementTrait;
+
+    protected $aliases = ['custom_radio_group'];
 }

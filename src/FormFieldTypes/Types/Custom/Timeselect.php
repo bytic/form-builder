@@ -8,4 +8,6 @@ use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HtmlElements\TimeSelectEle
 class Timeselect extends AbstractType
 {
     use TimeSelectElementTrait;
+
+    protected $aliases = ['custom_timeselect'];
 }

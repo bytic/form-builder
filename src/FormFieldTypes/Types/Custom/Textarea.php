@@ -13,4 +13,5 @@ class Textarea extends Text
 {
     use TextareaElementTrait;
 
+    protected $aliases = ['custom_textarea'];
 }
