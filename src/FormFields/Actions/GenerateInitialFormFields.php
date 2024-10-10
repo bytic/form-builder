@@ -2,9 +2,10 @@
 
 namespace ByTIC\FormBuilder\FormFields\Actions;
 
+use ByTIC\FormBuilder\Base\Actions\Behaviours\HasConsumer;
+use ByTIC\FormBuilder\Base\Actions\Behaviours\HasConsumerConfig;
+use ByTIC\FormBuilder\Base\Actions\Behaviours\HasForm;
 use ByTIC\FormBuilder\Consumers\Actions\GetConsumerConfig;
-use ByTIC\FormBuilder\Consumers\Dto\ConsumerConfig;
-use ByTIC\FormBuilder\Consumers\Models\Consumer;
 use ByTIC\FormBuilder\Forms\Actions\GetConsumerForForm;
 use ByTIC\FormBuilder\Forms\Models\Form;
 use Nip\Records\Collections\Associated;
@@ -12,9 +13,11 @@ use Nip\Records\Collections\Collection;
 
 class GenerateInitialFormFields
 {
-    protected ?Form $form = null;
-    protected ?Consumer $consumer = null;
-    protected ?ConsumerConfig $consumerConfig = null;
+
+    use HasForm;
+    use HasConsumer;
+    use HasConsumerConfig;
+
     /**
      */
     protected mixed $fieldsCollection;
@@ -28,23 +31,15 @@ class GenerateInitialFormFields
         $this->fieldsCollection = $fieldsCollection ?? $this->form->getFormFields();
     }
 
-    public function setForm(Form $form): void
-    {
-        $this->form = $form;
-    }
-
     public static function forForm(Form $form, $fieldsCollection = null): static
     {
         $action = new static($form, $fieldsCollection);
         $action->setConsumer(GetConsumerForForm::for($form)->handle());
+        $action->setConsumerConfigGenerateCallback(function () use ($action) {
+            return GetConsumerConfig::forConsumer($action->getConsumer())->handle();
+        });
 
         return $action;
-    }
-
-    public function setConsumer(Consumer $consumer)
-    {
-        $this->consumer = $consumer;
-        $this->consumerConfig = GetConsumerConfig::forConsumer($consumer)->handle();
     }
 
     public function handle(): Associated
@@ -56,16 +51,25 @@ class GenerateInitialFormFields
 
     protected function generateFromConsumerConfig()
     {
-        $mandatoryFields = $this->consumerConfig->getMandatoryFields();
+        $mandatoryFields = $this->getConsumerConfig()->getMandatoryFields();
+
+        if (is_array($mandatoryFields) && is_callable($mandatoryFields)) {
+            $mandatoryFields = $mandatoryFields($this->getConsumer());
+        }
+
         foreach ($mandatoryFields as $role => $names) {
             foreach ($names as $fieldType) {
-                $this->fieldsCollection->add($this->generateField($fieldType));
+                $this->fieldsCollection->add(
+                    $this->generateField($fieldType, $role),
+                );
             }
         }
     }
 
-    protected function generateField($fieldType)
+    protected function generateField($fieldType, $role = null)
     {
-        return CreateFormField::forForm($this->form, $fieldType)->handle();
+        return CreateFormField::forForm($this->getForm(), $fieldType)
+            ->setRole($role)
+            ->handle();
     }
 }

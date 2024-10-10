@@ -85,6 +85,11 @@ class FindFieldTypeForConsumer extends Action
             return $fields ?? [];
         }
 
-        return $this->getConsumerConfig()->getFields() ?? [];
+        $fieldsConfig = $this->getConsumerConfig()->getFields();
+        if (is_array($fieldsConfig) && is_callable($fieldsConfig)) {
+            $fieldsConfig = $fieldsConfig($this->getConsumer());
+        }
+
+        return $fieldsConfig ?? [];
     }
 }
