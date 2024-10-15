@@ -7,9 +7,9 @@ use Nip\Records\RecordManager;
 
 trait HasRepository
 {
-    use HasRepository;
+    use \Bytic\Actions\Behaviours\Entities\HasRepository;
 
-    protected function generateRepository(): BillingStatuses|RecordManager
+    protected function generateRepository(): RecordManager
     {
         return FormsBuilderModels::values();
     }

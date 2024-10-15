@@ -37,9 +37,11 @@ class FindValuesByFormConsumer extends Action
         $consumer = $this->list->getConsumer();
 
         return [
-            'id_form' => $this->list->getForm()->id,
-            'consumer' => $consumer - getManager()->getMorphName(),
-            'consumer_id' => $consumer->id,
+            'where' => [
+                ['id_form = ?', $this->list->getForm()->id,],
+                ['consumer = ?', $consumer->getManager()->getMorphName(),],
+                ['consumer_id = ?', $consumer->id,],
+            ],
         ];
     }
 

@@ -6,6 +6,8 @@ use ByTIC\FormBuilder\Application\Models\Form\Traits\HasFieldsRecordTrait;
 use ByTIC\FormBuilder\Application\Models\ModelFields\Traits\ModelFieldsRecordTrait;
 use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsRecordTrait;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeInterfaceTrait;
+use ByTIC\FormBuilder\FormResponseValues\Actions\FindOrCreateFormValueFromList;
+use ByTIC\FormBuilder\FormResponseValues\Actions\FindValuesByFormConsumer;
 use Nip\Form\Elements\AbstractElement as FormElement;
 
 /**
@@ -45,15 +47,10 @@ trait AbstractCustomElementTrait
      */
     public function getItemValue($model)
     {
-        $values = $model->getFormBuilderValues();
-        die('++');
+        $values = FindValuesByFormConsumer::for($this->getItem()->getFormBuilder(), $model)->handle();
+        $valueRecord = FindOrCreateFormValueFromList::for($values)->fieldValue($this->getItem());
 
-        $fields = $model->getFormFields();
-        if (is_object($fields[$this->getItem()->id])) {
-            return $fields[$this->getItem()->id]->getValue();
-        }
-
-        return false;
+        return $valueRecord->value;
     }
 
     /**
@@ -119,7 +116,7 @@ trait AbstractCustomElementTrait
     /**
      * {@inheritdoc}
      */
-    public function getFormName()
+    public function getFormName(): string
     {
         return $this->getName().'-'.sha1($this->getItem()->id ?? '');
     }
