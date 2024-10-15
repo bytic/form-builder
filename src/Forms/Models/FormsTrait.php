@@ -23,6 +23,7 @@ trait FormsTrait
         $this->initRelationsTenant();
         $this->initRelationsFormFields();
         $this->initRelationsConsumers();
+        $this->initRelationsValues();
     }
 
     protected function initRelationsTenant()
@@ -42,6 +43,11 @@ trait FormsTrait
         foreach ($consumers as $name => $config) {
             $this->initRelationConsumer($name, $config->getRepositoryClass());
         }
+    }
+
+    protected function initRelationsValues()
+    {
+        $this->hasMany('FormValues', ['class' => get_class(FormsBuilderModels::values())]);
     }
 
     /**

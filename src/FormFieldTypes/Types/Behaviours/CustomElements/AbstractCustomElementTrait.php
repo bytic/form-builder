@@ -45,6 +45,9 @@ trait AbstractCustomElementTrait
      */
     public function getItemValue($model)
     {
+        $values = $model->getFormBuilderValues();
+        die('++');
+
         $fields = $model->getFormFields();
         if (is_object($fields[$this->getItem()->id])) {
             return $fields[$this->getItem()->id]->getValue();

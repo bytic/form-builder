@@ -5,8 +5,8 @@ namespace ByTIC\FormBuilder\Utility;
 use ByTIC\FormBuilder\Consumers\Dto\ConsumersList;
 use ByTIC\FormBuilder\FormBuilderServiceProvider;
 use ByTIC\FormBuilder\FormFields\Models\FormFields\FormsFields;
+use ByTIC\FormBuilder\FormResponseValues\Models\FormResponseValues;
 use ByTIC\FormBuilder\Forms\Models\Forms;
-use ByTIC\FormBuilder\Models\FieldsValues\FieldsValues;
 use Exception;
 use Nip\Config\Config;
 use Nip\Utility\Traits\SingletonTrait;
@@ -35,6 +35,16 @@ class PackageConfig extends \ByTIC\PackageBase\Utility\PackageConfig
      * @return mixed|Config|string|null
      * @throws Exception
      */
+    public static function modelsValues(string $default = FormResponseValues::class)
+    {
+        return self::instance()->get('models.values', $default);
+    }
+
+    /**
+     * @param string $default
+     * @return mixed|Config|string|null
+     * @throws Exception
+     */
     public static function tablesForms(string $default = Forms::TABLE): string
     {
         return self::instance()->get('tables.forms', $default);
@@ -55,11 +65,10 @@ class PackageConfig extends \ByTIC\PackageBase\Utility\PackageConfig
      * @return mixed|Config|string|null
      * @throws Exception
      */
-    public static function tablesValues(string $default = FieldsValues::TABLE): string
+    public static function tablesValues(string $default = FormResponseValues::TABLE): string
     {
         return self::instance()->get('tables.values', $default);
     }
-
 
     /**
      * @param $default

@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\FormBuilder\Forms\Models;
+namespace ByTIC\FormBuilder\FormResponseValues\Models;
 
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
 use ByTIC\Records\Behaviors\I18n\I18nRecordsTrait;
@@ -9,20 +9,19 @@ use Nip\Records\RecordManager;
 
 /**
  * Class Forms.
- * @method Form getNew()
+ * @method FormResponseValue getNew()
  */
-class Forms extends RecordManager
+class FormResponseValues extends RecordManager
 {
     use HasFormsRecordsTrait;
     use I18nRecordsTrait;
     use HasFiltersRecordsTrait;
-    use FormsTrait;
+    use FormResponseValuesTrait;
 
-    public const TABLE = 'formbuilder-forms';
+    public const TABLE = 'formbuilder-response_values';
 
     public function getRootNamespace()
     {
         return 'ByTIC\FormBuilder\Forms\Models\\';
     }
-
 }

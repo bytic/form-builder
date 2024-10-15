@@ -1,20 +1,20 @@
 <?php
 
 use ByTIC\FormBuilder\FormFields\Models\FormFields\FormsFields;
+use ByTIC\FormBuilder\FormResponseValues\Models\FormResponseValues;
 use ByTIC\FormBuilder\Forms\Models\Forms;
-use ByTIC\FormBuilder\Models\FieldsValues\FieldsValues;
 use ByTIC\FormBuilder\Utility\PathsHelpers;
 
 return [
     'models' => [
         'forms' => Forms::class,
         'fields' => FormsFields::class,
-        'values' => FieldsValues::class,
+        'values' => FormResponseValues::class,
     ],
     'tables' => [
         'forms' => Forms::TABLE,
         'fields' => FormsFields::TABLE,
-        'values' => FieldsValues::TABLE,
+        'values' => FormResponseValues::TABLE,
     ],
     'consumers' => [
     ],

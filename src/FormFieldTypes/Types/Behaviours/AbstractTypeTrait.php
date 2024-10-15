@@ -54,7 +54,7 @@ trait AbstractTypeTrait
     /**
      * @return string
      */
-    public function getFormName()
+    public function getFormName(): string
     {
         return $this->getName();
     }
@@ -62,7 +62,7 @@ trait AbstractTypeTrait
     /**
      * @return string
      */
-    public function getInputType()
+    public function getInputType(): string
     {
         return $this->inputType;
     }
@@ -225,7 +225,7 @@ trait AbstractTypeTrait
     /**
      * @return string
      */
-    public function getDefaultVisible()
+    public function getDefaultVisible(): string
     {
         return 'yes';
     }
@@ -234,7 +234,7 @@ trait AbstractTypeTrait
     /**
      * @return array
      */
-    public function getDefaultOptions()
+    public function getDefaultOptions(): array
     {
         return [];
     }

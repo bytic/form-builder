@@ -36,6 +36,11 @@ class FormFieldsDesigner
     protected $existing = [];
 
     /**
+     * @var Collection|null
+     */
+    protected $existingAll = null;
+
+    /**
      * @var FormFieldsList[]
      */
     protected $available = [];
@@ -49,15 +54,25 @@ class FormFieldsDesigner
 
     public function __construct()
     {
+        $this->existingAll = new Collection();
     }
 
     /**
      * @param $role
      * @return array|mixed
      */
-    public function getExisting($role)
+    public function getExisting($role = null)
     {
+        if ($role == null) {
+            return $this->existing;
+        }
+
         return $this->existing[$role] ?? new FormFieldsList();
+    }
+
+    public function getExistingAll(): ?Collection
+    {
+        return $this->existingAll;
     }
 
     public function getAvailable($role): FormFieldsList
@@ -133,10 +148,11 @@ class FormFieldsDesigner
         }
         $this->guardExisting($role);
         $this->existing[$role]->add($field);
+        $this->existingAll->add($field);
     }
 
 
-    protected function guardExisting($role)
+    protected function guardExisting($role = null)
     {
         if (!isset($this->existing[$role])) {
             $this->addRole($role);

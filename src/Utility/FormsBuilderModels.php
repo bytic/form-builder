@@ -4,8 +4,8 @@ namespace ByTIC\FormBuilder\Utility;
 
 use ByTIC\FormBuilder\FormBuilderServiceProvider;
 use ByTIC\FormBuilder\FormFields\Models\FormFields\FormsFields;
+use ByTIC\FormBuilder\FormResponseValues\Models\FormResponseValues;
 use ByTIC\FormBuilder\Forms\Models\Forms;
-use ByTIC\FormBuilder\Models\FieldsValues\FieldsValues;
 use ByTIC\PackageBase\Utility\ModelFinder;
 use Nip\Records\RecordManager;
 
@@ -35,7 +35,7 @@ class FormsBuilderModels extends ModelFinder
      */
     public static function values()
     {
-        return static::getModels('values', FieldsValues::class);
+        return static::getModels('values', FormResponseValues::class);
     }
 
     protected static function packageName(): string

@@ -21,7 +21,14 @@ trait ConsumersRepositoryTrait
 
     protected function initRelationsFormBuilderForms()
     {
-        $this->morphToMany('FormBuilderForms', ['class' => PackageConfig::modelsForms(), 'pivotForeignKey' => 'id_form']);
-    }
+        $this->morphToMany(
+            'FormBuilderForms',
+            ['class' => PackageConfig::modelsForms(), 'pivotForeignKey' => 'id_form']
+        );
 
+        $this->morphMany(
+            'FormBuilderValues',
+            ['class' => PackageConfig::modelsValues(), 'morphPrefix' => 'consumer', 'morphTypeField' => 'consumer']
+        );
+    }
 }
