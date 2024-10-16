@@ -15,6 +15,8 @@ trait DynamicFormTrait
      */
     protected $_fields;
 
+    protected $_formValues = [];
+
     public function getDataFromModel()
     {
         $this->getDataFromModelFields();
@@ -27,6 +29,11 @@ trait DynamicFormTrait
         foreach ($fields as $field) {
             $field->addFormInput($this);
         }
+    }
+
+    public function getModelForRole($role = null)
+    {
+        return $this->getModel();
     }
 
     /**
@@ -78,7 +85,10 @@ trait DynamicFormTrait
     {
         $fields = $this->getFields();
         foreach ($fields as $field) {
-            $field->getType()->saveToModel($this);
+            $formValue = $field->getType()->saveToModel($this);
+            if ($formValue) {
+                $this->_formValues[] = $formValue;
+            }
         }
     }
 
@@ -95,7 +105,9 @@ trait DynamicFormTrait
 
     public function saveFormFields()
     {
-        $this->getModel()->getRelation('FormFields')->save();
+        foreach ($this->_formValues as $formValue) {
+            $formValue->save();
+        }
     }
 
     /**

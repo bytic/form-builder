@@ -128,7 +128,7 @@ trait AbstractTypeTrait
      */
     protected function getModelFromForm($form)
     {
-        return $form->getModel();
+        return $form->getModelForRole($this->getItem()->getRole());
     }
 
     /**

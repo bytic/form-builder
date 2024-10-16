@@ -19,9 +19,9 @@ class FindOrCreateFormValueFromList
 
     public function fieldValue($field)
     {
-        $field = $this->list->getValues()->get($field->id);
-        if ($field) {
-            return $field;
+        $value = $this->list->getValues()->get($field->id);
+        if ($value) {
+            return $value;
         }
 
         return $this->createValue($field);

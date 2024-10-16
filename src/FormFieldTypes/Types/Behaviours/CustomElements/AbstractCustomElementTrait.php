@@ -2,13 +2,12 @@
 
 namespace ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\CustomElements;
 
-use ByTIC\FormBuilder\Application\Models\Form\Traits\HasFieldsRecordTrait;
+use ByTIC\FormBuilder\Application\Models\Forms\Traits\HasFieldsRecordTrait;
 use ByTIC\FormBuilder\Application\Models\ModelFields\Traits\ModelFieldsRecordTrait;
 use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsRecordTrait;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeInterfaceTrait;
 use ByTIC\FormBuilder\FormResponseValues\Actions\FindOrCreateFormValueFromList;
 use ByTIC\FormBuilder\FormResponseValues\Actions\FindValuesByFormConsumer;
-use Nip\Form\Elements\AbstractElement as FormElement;
 
 /**
  * Trait AbstractCustomElementTrait.
@@ -18,37 +17,13 @@ trait AbstractCustomElementTrait
     use AbstractTypeInterfaceTrait;
 
     /**
-     * @param FormElement $input
-     *
-     * @return mixed
-     */
-    public function initFormInput($input)
-    {
-        $form = $input->getForm();
-        $model = $this->getModelFromForm($form);
-
-        $fields = $model ? $model->getFormFields() : [];
-
-        if ($this->getItem()->id && is_object($fields[$this->getItem()->id])) {
-            $input->getData($this->getItemValue($model), 'model');
-        }
-
-        if ($this->getItem()->help) {
-            $input->setOption('form-help', html_entity_decode($this->getItem()->help));
-        }
-
-        return $input;
-    }
-
-    /**
      * @param HasFieldsRecordTrait $model
      *
      * @return bool
      */
     public function getItemValue($model)
     {
-        $values = FindValuesByFormConsumer::for($this->getItem()->getFormBuilder(), $model)->handle();
-        $valueRecord = FindOrCreateFormValueFromList::for($values)->fieldValue($this->getItem());
+        $valueRecord = $this->getFormValueRecord($model);
 
         return $valueRecord->value;
     }
@@ -59,8 +34,17 @@ trait AbstractCustomElementTrait
     public function saveToModel($form)
     {
         $model = $this->getModelFromForm($form);
-        $field = $this->initModelField($model);
-        $field->value = $this->getFormValue($form);
+        $valueRecord = $this->getFormValueRecord($model);
+        $valueRecord->value = $this->getFormValue($form);
+
+        return $valueRecord;
+    }
+
+    protected function getFormValueRecord($model)
+    {
+        $values = FindValuesByFormConsumer::for($this->getItem()->getFormBuilder(), $model)->handle();
+
+        return FindOrCreateFormValueFromList::for($values)->fieldValue($this->getItem());
     }
 
     /**
