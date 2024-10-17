@@ -33,6 +33,7 @@ trait DynamicFormTrait
 
     public function getModelForRole($role = null)
     {
+        var_dump($role);
         return $this->getModel();
     }
 

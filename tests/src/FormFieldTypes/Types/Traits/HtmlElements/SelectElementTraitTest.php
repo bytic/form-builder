@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\FormBuilder\Tests\Application\Models\Fields\Types\Traits\HtmlElements;
+namespace ByTIC\FormBuilder\Tests\FormFieldTypes\Types\Traits\HtmlElements;
 
 use ByTIC\FormBuilder\Tests\AbstractTest;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\FormField;

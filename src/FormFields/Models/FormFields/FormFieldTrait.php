@@ -5,10 +5,12 @@ namespace ByTIC\FormBuilder\FormFields\Models\FormFields;
 use ByTIC\Common\Records\Record;
 use ByTIC\FormBuilder\Application\Models\ModelWithFields\Traits\ModelWithFieldsRecordTrait;
 use ByTIC\FormBuilder\FormFields\Models\FormFields\Behaviours\FormActions\FormActionsRecordTrait;
+use ByTIC\FormBuilder\FormFields\Models\FormFields\Behaviours\HasLabel\HasLabelRecordTrait;
 use ByTIC\FormBuilder\FormFields\Models\FormFields\Behaviours\HasTypes\HasTypesRecordTrait;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeTrait;
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordTrait;
 use ByTIC\Records\Behaviors\HasSerializedOptions\HasSerializedOptionsRecordTrait;
+use KM42\Register\Models\Races\FormFields\RacesFormField;
 
 /**
  * Trait FormFieldsTrait.
@@ -30,6 +32,7 @@ trait FormFieldTrait
     use HasFormsRecordTrait;
     use HasSerializedOptionsRecordTrait;
     use FormActionsRecordTrait;
+    use HasLabelRecordTrait;
 
     public function getName()
     {
@@ -46,16 +49,6 @@ trait FormFieldTrait
         return $this->getType()->addFormInput($form);
     }
 
-
-    /**
-     * @return string
-     */
-    public function getLabel()
-    {
-        $label = $this->getAttributeFromArray('label');
-
-        return $label ? $label : $this->getType()->getLabel();
-    }
 
     /**
      * @return string
@@ -104,10 +97,33 @@ trait FormFieldTrait
     public function populateFromType()
     {
         $type = $this->getType();
-        $this->label = $type->getDefaultLabel();
+        $this->initLabelFromType($type);
         $this->visible = $type->getDefaultVisible();
         $this->mandatory = $type->getDefaultMandatory();
         $this->role = $type->getRole();
+    }
+
+    /**
+     * @param RacesFormField $sibling
+     */
+    public function populateFromSibling($sibling)
+    {
+        foreach ([
+                     'role',
+                     'label',
+                     'label_intern',
+                     'help',
+                     'options',
+                     'type',
+                     'listing',
+                     'visible',
+                     'mandatory',
+                     'filter',
+                     'pos',
+                 ] as $col) {
+            $this->setPropertyValue($col, $sibling->getPropertyRaw($col));
+        }
+        $this->initOptions();
     }
 
     /**

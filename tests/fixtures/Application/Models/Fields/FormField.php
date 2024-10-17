@@ -2,7 +2,7 @@
 
 namespace ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields;
 
-use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
+use ByTIC\FormBuilder\FormFields\Models\FormFields\FormFieldTrait;
 use Nip\Records\Record;
 use Nip\Records\RecordManager;
 

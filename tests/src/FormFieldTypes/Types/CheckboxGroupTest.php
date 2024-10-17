@@ -1,11 +1,9 @@
 <?php
 
-namespace ByTIC\FormBuilder\Tests\Application\Models\Fields\Types;
+namespace ByTIC\FormBuilder\Tests\FormFieldTypes\Types;
 
-use ByTIC\FormBuilder\Tests\AbstractTest;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\FormField;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\Types\CheckboxGroup as CheckboxGroupType;
-use Nip\Form\FormModel;
 use Nip\Records\Record;
 use Nip_Form_Element_Checkbox;
 use Nip_Form_Element_CheckboxGroup as CheckboxGroupElement;
@@ -13,7 +11,7 @@ use Nip_Form_Element_CheckboxGroup as CheckboxGroupElement;
 /**
  * Class CheckboxGroupTest.
  */
-class CheckboxGroupTest extends AbstractTest
+class CheckboxGroupTest extends AbstractTypeTest
 {
     public function testInitFormInput()
     {
@@ -28,7 +26,7 @@ class CheckboxGroupTest extends AbstractTest
         $item->setOption('check_options', $options);
         $type->setItem($item);
 
-        $form = new FormModel();
+        $form = $this->generateFormMock();
         $input = new CheckboxGroupElement($form);
 
         $type->initFormInput($input);

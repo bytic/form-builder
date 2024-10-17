@@ -1,17 +1,15 @@
 <?php
 
-namespace ByTIC\FormBuilder\Tests\Application\Models\Fields\Types;
+namespace ByTIC\FormBuilder\Tests\FormFieldTypes\Types;
 
-use ByTIC\FormBuilder\Tests\AbstractTest;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\FormField;
 use ByTIC\FormBuilder\Tests\Fixtures\Application\Models\Fields\Types\Checkbox as CheckboxType;
 use Nip_Form_Element_Checkbox as CheckboxElement;
-use Nip_Form_Model;
 
 /**
  * Class CheckboxTest.
  */
-class CheckboxTest extends AbstractTest
+class CheckboxTest extends AbstractTypeTest
 {
     /**
      * @dataProvider data_init_form_input_label_decode
@@ -22,7 +20,7 @@ class CheckboxTest extends AbstractTest
         $item = new FormField();
         $type->setItem($item);
 
-        $form = new Nip_Form_Model();
+        $form = $this->generateFormMock();
         $input = new CheckboxElement($form);
         $input->setLabel($label_in);
 
