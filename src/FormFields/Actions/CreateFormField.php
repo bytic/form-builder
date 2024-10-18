@@ -33,6 +33,7 @@ class CreateFormField extends Action
     public function setField($field): static
     {
         $this->field = $field;
+        $this->populateField();
 
         return $this;
     }
@@ -59,31 +60,63 @@ class CreateFormField extends Action
         return $this;
     }
 
+    public function getField()
+    {
+        if ($this->field === null) {
+            $this->newField();
+        }
+
+        return $this->field;
+    }
+
     public function handle(): ?Record
     {
-        $this->newField();
+        return $this->createWithSave();
+    }
+
+    public function createUnsaved(): ?Record
+    {
+        $field = $this->getField();
         if (false == $this->canCreate()) {
             return null;
         }
-        $this->field->save();
 
-        return $this->field;
+        return $field;
     }
 
-    protected function newField(): Record
+    /**
+     * @return mixed|null
+     */
+    public function createWithSave(): ?Record
+    {
+        $field = $this->createUnsaved();
+        $field?->save();
+
+        return $field;
+    }
+
+    protected function initField(): Record
     {
         $this->field = $this->field ?? FormsBuilderModels::fields()->getNew();
-        $this->field->populateFromForm($this->form);
-        $this->field->setType($this->type->getName());
-        $this->field->populateFromType();
-        if ($this->role) {
-            $this->field->role = $this->role;
-        }
+        $this->populateField();
 
         return $this->field;
     }
 
-    protected function canCreate(): bool
+    protected function populateField($field = null)
+    {
+        $field = $field ?? $this->field;
+        $field->populateFromForm($this->form);
+        $field->setType($this->type->getName());
+        $field->populateFromType();
+        if ($this->role) {
+            $field->role = $this->role;
+        }
+
+        return $field;
+    }
+
+    public function canCreate(): bool
     {
         $type = $this->type;
         if (false == $type->isUnique()) {

@@ -17,11 +17,11 @@ trait FormbuilderFieldsControllerTrait
 {
     use AbstractControllerTrait;
 
-    public function add()
-    {
-        $record = $this->addNewModel();
-        $this->addRedirect($record);
-    }
+//    public function add()
+//    {
+//        $record = $this->addNewModel();
+//        $this->addRedirect($record);
+//    }
 
     /**
      * {@inheritdoc}
@@ -37,10 +37,10 @@ trait FormbuilderFieldsControllerTrait
             [$formsRepository->getPrimaryFK(), 'id']
         );
         $action = CreateFormField::forForm($form, $this->getRequest()->query->get('type'));
-        $action->setField($item);
         $action->setRole($this->getRequest()->query->get('role'));
+        $action->setField($item);
 
-        return $action->handle();
+        return $action->createUnsaved();
     }
 
 
