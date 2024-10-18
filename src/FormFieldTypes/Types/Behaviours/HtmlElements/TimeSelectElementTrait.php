@@ -4,6 +4,7 @@ namespace ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HtmlElements;
 
 use ByTIC\FormBuilder\FormFieldTypes\Icons\FieldIcons;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeInterfaceTrait;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HasHtmlLabel;
 
 /**
  * Trait TimeSelectElementTrait.
@@ -11,6 +12,7 @@ use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeInterfaceTrait
 trait TimeSelectElementTrait
 {
     use AbstractTypeInterfaceTrait;
+    use HasHtmlLabel;
 
     /**
      * Constructor.
