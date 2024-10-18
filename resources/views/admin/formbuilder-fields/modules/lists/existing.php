@@ -43,14 +43,14 @@ use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
                     </button>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="<?= $field->getURL(); ?>" class="dropdown-item">
+                            <a href="<?= $field->getURL(); ?>" class="dropdown-item action-edit">
                                 <i class="fas fa-edit"></i>
                                 <?= translator()->trans('edit'); ?>
                             </a>
                         </li>
                         <?php if ($field->getType()->canDelete()) { ?>
                             <li>
-                                <a href="<?= $field->compileURL('delete'); ?>" class="dropdown-item"
+                                <a href="<?= $field->compileURL('delete'); ?>" class="dropdown-item action-delete"
                                    onclick="return confirm('<?= translator()->trans(
                                        'general.messages.confirm'
                                    ); ?>');">

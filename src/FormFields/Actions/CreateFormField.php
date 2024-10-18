@@ -63,7 +63,7 @@ class CreateFormField extends Action
     public function getField()
     {
         if ($this->field === null) {
-            $this->newField();
+            $this->initField();
         }
 
         return $this->field;
