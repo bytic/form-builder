@@ -24,7 +24,7 @@ trait FormTrait
 {
     use TimestampableTrait;
 
-    protected string $name = '';
+    protected ?string $name = null;
 
     public $timestamps = true;
 
@@ -55,7 +55,7 @@ trait FormTrait
 
     public function getName(): string
     {
-        return $this->name;
+        return $this->name ?? '';
     }
 
     public function hasResponses(): bool

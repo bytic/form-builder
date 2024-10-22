@@ -2,8 +2,8 @@
 
 namespace ByTIC\FormBuilder\FormFields\Models\FormFields;
 
+use ByTIC\FormBuilder\Base\Models\Record;
 use Nip\Collections\Registry;
-use Nip\Records\Record;
 
 /**
  * Class Field.

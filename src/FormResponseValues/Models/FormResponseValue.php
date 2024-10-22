@@ -2,8 +2,8 @@
 
 namespace ByTIC\FormBuilder\FormResponseValues\Models;
 
+use ByTIC\FormBuilder\Base\Models\Record;
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordTrait;
-use Nip\Records\Record;
 
 /**
  * Class Form.

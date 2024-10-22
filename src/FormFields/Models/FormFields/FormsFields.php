@@ -2,7 +2,7 @@
 
 namespace ByTIC\FormBuilder\FormFields\Models\FormFields;
 
-use Nip\Records\RecordManager;
+use ByTIC\FormBuilder\Base\Models\RecordManager;
 
 /**
  * Class FormsFields.

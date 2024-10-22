@@ -2,10 +2,10 @@
 
 namespace ByTIC\FormBuilder\FormResponseValues\Models;
 
+use ByTIC\FormBuilder\Base\Models\RecordManager;
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
 use ByTIC\Records\Behaviors\I18n\I18nRecordsTrait;
 use Nip\Records\Filters\Records\HasFiltersRecordsTrait;
-use Nip\Records\RecordManager;
 
 /**
  * Class Forms.
