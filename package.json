@@ -12,8 +12,8 @@
     "production": "yarn encore prod"
   },
   "dependencies": {
+    "intl-tel-input": "^24.7.0",
     "jgrowl": "^1.4"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

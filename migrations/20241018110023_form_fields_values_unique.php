@@ -24,5 +24,6 @@ final class FormFieldsValuesUnique extends AbstractMigration
 
         $table = $this->table($table_name);
         $table->addIndex(['id_form', 'id_field', 'consumer', 'consumer_id'], ['unique' => true]);
+        $table->save();
     }
 }
