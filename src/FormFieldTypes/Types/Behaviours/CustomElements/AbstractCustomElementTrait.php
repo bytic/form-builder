@@ -100,7 +100,7 @@ trait AbstractCustomElementTrait
     /**
      * {@inheritdoc}
      */
-    public function getFormName(): string
+    public function generateFormName(): string
     {
         return $this->getName().'-'.sha1($this->getItem()->id ?? '');
     }

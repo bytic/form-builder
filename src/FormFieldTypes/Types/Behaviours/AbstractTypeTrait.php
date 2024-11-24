@@ -5,6 +5,7 @@ namespace ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours;
 use ByTIC\FormBuilder\Application\Modules\Admin\Forms\Traits\FieldFormTrait;
 use ByTIC\FormBuilder\Application\Modules\Frontend\Forms\Traits\DynamicFormTrait;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\CanDelete\CanDeleteTrait;
+use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\Generic\HasFormName;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\Generic\HasLabelTrait;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HasIcon\HasIconTrait;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\IsUnique\UniqueTrait;
@@ -21,6 +22,7 @@ trait AbstractTypeTrait
     use AbstractTypeInterfaceTrait;
     use HasLabelTrait;
     use HasIconTrait;
+    use HasFormName;
     use CanDeleteTrait;
     use UniqueTrait;
     use DefaultMandatoryTrait;
@@ -49,14 +51,6 @@ trait AbstractTypeTrait
         $this->initFormInput($input);
 
         return $input;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFormName(): string
-    {
-        return $this->getName();
     }
 
     /**
