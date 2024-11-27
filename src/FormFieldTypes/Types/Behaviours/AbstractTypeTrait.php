@@ -120,7 +120,7 @@ trait AbstractTypeTrait
      *
      * @return Record
      */
-    protected function getModelFromForm($form)
+    public function getModelFromForm($form)
     {
         return $form->getModelForRole($this->getItem()->getRole());
     }

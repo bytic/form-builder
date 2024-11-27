@@ -36,7 +36,10 @@ trait FormResponseValuesTrait
 
     public function initRelationsFormField()
     {
-        $this->belongsTo('FormFields', ['class' => get_class(FormsBuilderModels::fields())]);
+        $this->belongsTo(
+            'FormField',
+            ['class' => get_class(FormsBuilderModels::fields()), 'fk' => 'id_field']
+        );
     }
 
     protected function initRelationsConsumers()

@@ -97,15 +97,18 @@ trait DynamicFormTrait
      */
     abstract public function getModel();
 
-    public function saveModel()
+    public function process()
     {
-        parent::saveModel();
+        parent::process();
         $this->saveFormFields();
     }
 
     public function saveFormFields()
     {
         foreach ($this->_formValues as $formValue) {
+            $field = $formValue->getFormField();
+            $model = $field->getType()->getModelFromForm($this);
+            $formValue->consumer_id = $model->id;
             $formValue->save();
         }
     }
