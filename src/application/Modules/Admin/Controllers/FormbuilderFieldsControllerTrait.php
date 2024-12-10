@@ -61,17 +61,35 @@ trait FormbuilderFieldsControllerTrait
         $this->afterActionRedirect('delete', $item);
     }
 
-    public function addRedirect($item)
+    /**
+     * @param $type
+     * @param $item
+     * @return mixed|string|null
+     */
+    protected function afterActionUrlDefault($type, $item = null)
     {
-        $form = $item->getFormBuilder();
+        switch ($type) {
+            case 'add':
+            case 'edit':
+            case 'delete':
+                $form = $item->getFormBuilder();
 
-        $this->setAfterUrlFlash(
-            $form->getURL(),
-            $form->getManager()->getController(),
-            ['after-add']
-        );
+                return $form->getURL();
+        }
 
-        parent::addRedirect($item);
+        return parent::afterActionUrlDefault($type, $item);
+    }
+
+    protected function getAfterFlashName($key, $default = null)
+    {
+        switch ($key) {
+            case 'after-add':
+            case 'after-edit':
+            case 'after-delete':
+                return FormsBuilderModels::forms()->getController();
+        }
+
+        return parent::getAfterFlashName($key, $default);
     }
 
     /**

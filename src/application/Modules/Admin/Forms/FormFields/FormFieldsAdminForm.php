@@ -20,7 +20,7 @@ class FormFieldsAdminForm extends FormModel
      */
     protected function getListingFlags(): array
     {
-        return [];
+        return ['public', 'admin'];
     }
 
     /**
@@ -28,6 +28,6 @@ class FormFieldsAdminForm extends FormModel
      */
     protected function getFilterFlags(): array
     {
-        return [];
+        return ['public', 'admin'];
     }
 }
