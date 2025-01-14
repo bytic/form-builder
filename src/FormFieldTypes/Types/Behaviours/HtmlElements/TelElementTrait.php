@@ -6,6 +6,7 @@ use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeInterfaceTrait
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HasHtmlLabel;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HasIcon\HasPhoneIconTrait;
 use libphonenumber\NumberParseException;
+use libphonenumber\PhoneNumberFormat;
 use libphonenumber\PhoneNumberUtil;
 
 /**
@@ -49,7 +50,9 @@ trait TelElementTrait
         $errorMessage = $this->getErrorMessageInvalid();
         try {
             $phoneNumber = $phoneNumberUtil->parse($value, 'RO');
-            if (!$phoneNumberUtil->isValidNumber($phoneNumber)) {
+            if ($phoneNumberUtil->isValidNumber($phoneNumber)) {
+                $input->setValue($phoneNumberUtil->format($phoneNumber, PhoneNumberFormat::E164));
+            } else {
                 $input->addError($errorMessage, 'invalid');
             }
         } catch (NumberParseException $e) {
