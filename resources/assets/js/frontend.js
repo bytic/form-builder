@@ -1,8 +1,6 @@
-import intlTelInput from 'intl-tel-input';
-
 const inputTels = document.querySelector('input[type="tel"]');
 inputTels.forEach(input => function () {
-    intlTelInput(input, {
+    window.intlTelInput(input, {
         initialCountry: "auto",
         geoIpLookup: function (success, failure) {
             fetch("https://ipapi.co/json")
