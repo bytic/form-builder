@@ -16,6 +16,7 @@ inputTels.forEach(function (input) {
                     failure();
                 });
         },
+        separateDialCode: true,
         loadUtilsOnInit: () => import("intl-tel-input/utils")
     });
     var form = input.closest('form');
