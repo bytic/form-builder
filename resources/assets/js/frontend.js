@@ -1,4 +1,4 @@
-const inputTels = document.querySelector('input[type="tel"]');
+const inputTels = document.querySelectorAll('input[type="tel"]');
 inputTels.forEach(input => function () {
     window.intlTelInput(input, {
         initialCountry: "auto",
