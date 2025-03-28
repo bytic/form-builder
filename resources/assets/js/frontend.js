@@ -1,6 +1,8 @@
+import intlTelInput from 'intl-tel-input';
+
 const inputTels = document.querySelectorAll('input[type="tel"]');
-inputTels.forEach(input => function () {
-    window.intlTelInput(input, {
+inputTels.forEach(function (input) {
+    const iti = intlTelInput(input, {
         initialCountry: "auto",
         geoIpLookup: function (success, failure) {
             fetch("https://ipapi.co/json")
@@ -19,7 +21,7 @@ inputTels.forEach(input => function () {
     var form = input.closest('form');
     if (form) {
         form.addEventListener('submit', function () {
-            input.value = input.getNumber();
+            input.value = iti.getNumber(intlTelInput.utils.numberFormat.E164);
         });
     }
 });
