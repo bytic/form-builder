@@ -10,7 +10,6 @@ use ByTIC\FormBuilder\FormFields\Models\FormFields\Behaviours\HasTypes\HasTypesR
 use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\AbstractTypeTrait;
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordTrait;
 use ByTIC\Records\Behaviors\HasSerializedOptions\HasSerializedOptionsRecordTrait;
-use KM42\Register\Models\Races\FormFields\RacesFormField;
 
 /**
  * Trait FormFieldsTrait.
@@ -98,13 +97,22 @@ trait FormFieldTrait
     {
         $type = $this->getType();
         $this->initLabelFromType($type);
+
+        $this->listing = $type->getDefaultListing();
         $this->visible = $type->getDefaultVisible();
         $this->mandatory = $type->getDefaultMandatory();
+        $this->filter = $type->getDefaultFilter();
+
         $this->role = $type->getRole();
+
+        $options = $type->getDefaultOptions();
+        foreach ($options as $option => $value) {
+            $this->setOption($option, $value);
+        }
     }
 
     /**
-     * @param RacesFormField $sibling
+     * @param FormFieldTrait $sibling
      */
     public function populateFromSibling($sibling)
     {

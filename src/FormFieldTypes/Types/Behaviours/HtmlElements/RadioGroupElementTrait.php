@@ -54,11 +54,7 @@ trait RadioGroupElementTrait
         parent::adminGetDataFromModel($form);
 
         $this->adminFormAddOptionsFromModel($form);
-
-        $form->addCheckbox('autoSelectFirst', 'AutoSelectFirst', false);
-        if ('false' !== $form->getModel()->getOption('autoSelectFirst')) {
-            $form->getElement('autoSelectFirst')->setChecked(true);
-        }
+        $this->adminFormAddAutoselectFirstFromModel($form);
     }
 
     /**
@@ -69,7 +65,19 @@ trait RadioGroupElementTrait
         parent::adminSaveToModel($form);
 
         $this->adminSaveToModelInputOptions($form);
+        $this->adminSaveToModelAutoselectFirst($form);
+    }
 
+    protected function adminFormAddAutoselectFirstFromModel($form)
+    {
+        $form->addCheckbox('autoSelectFirst', 'AutoSelectFirst', false);
+        if ('false' !== $form->getModel()->getOption('autoSelectFirst')) {
+            $form->getElement('autoSelectFirst')->setChecked(true);
+        }
+    }
+
+    protected function adminSaveToModelAutoselectFirst($form)
+    {
         $autoSelectFirst = $form->getElement('autoSelectFirst')->getValue();
         $form->getModel()->setOption('autoSelectFirst', $autoSelectFirst ? 'true' : 'false');
     }

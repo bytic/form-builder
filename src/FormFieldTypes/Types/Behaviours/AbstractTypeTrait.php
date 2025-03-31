@@ -224,6 +224,21 @@ trait AbstractTypeTrait
         return 'yes';
     }
 
+    /**
+     * @return string
+     */
+    public function getDefaultListing()
+    {
+        return '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultFilter()
+    {
+        return '';
+    }
 
     /**
      * @return array
