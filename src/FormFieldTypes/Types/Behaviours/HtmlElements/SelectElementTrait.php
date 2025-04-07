@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\HtmlElements;
 
 use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
@@ -30,8 +32,6 @@ trait SelectElementTrait
 
     /**
      * @param FormSelect $input
-     *
-     * @return mixed
      */
     public function initFormInput($input)
     {
@@ -63,18 +63,18 @@ trait SelectElementTrait
         $isInAdmin = $input->getForm()->isInAdmin();
         $hideDisabled = 'yes' == $this->getItem()->getOption('hide_disabled');
         $optionsDisabled = $this->getItem()->getOption('select_options_disabled');
-        $optionsDisabled = is_array($optionsDisabled) ? $optionsDisabled : [];
+        $optionsDisabled = \is_array($optionsDisabled) ? $optionsDisabled : [];
 
-        if (is_array($options)) {
+        if (\is_array($options)) {
             foreach ($options as $value) {
                 $attribs = [
                     'label' => $value,
                 ];
-                if (in_array($value, $optionsDisabled)) {
+                if (\in_array($value, $optionsDisabled)) {
                     if ($hideDisabled && !$isInAdmin) {
                         continue;
                     }
-                    $attribs['label'] .= ' ('.translator()->trans('unavailable').')';
+                    $attribs['label'] .= ' (' . translator()->trans('unavailable') . ')';
 
                     if (!$isInAdmin) {
                         $attribs['disabled'] = 'disabled';
@@ -92,26 +92,41 @@ trait SelectElementTrait
     {
         parent::adminGetDataFromModel($form);
 
-        /** @var FormFieldTrait $model */
-        $model = $form->getModel();
+        $this->adminFormAddSelelectOptionsFromModel($form);
+        $this->adminFormAddSelelectOptionsDisabledFromModel($form);
+        $this->adminFormAddHideDisabledFromModel($form);
+        $this->adminFormAddNoValueFromModel($form);
+    }
 
+    public function adminFormAddSelelectOptionsFromModel($form)
+    {
         $this->adminFormAddOptionsFromModel($form, 'select_options', 'Select Options', true);
-        $this->adminFormAddOptionsFromModel($form, 'select_options_disabled', 'Disabled Options', false);
+    }
 
+    public function adminFormAddSelelectOptionsDisabledFromModel($form)
+    {
+        $this->adminFormAddOptionsFromModel($form, 'select_options_disabled', 'Disabled Options', false);
+    }
+
+    protected function adminFormAddHideDisabledFromModel($form)
+    {
         $hideDisabledType = $form->isElementsType('BsRadioGroup') ? 'BsRadioGroup' : 'RadioGroup';
-        $form->{'add'.$hideDisabledType}('hide_disabled', translator()->trans('hide_disabled'), true);
+        $form->{'add' . $hideDisabledType}('hide_disabled', translator()->trans('hide_disabled'), true);
         $form->getElement('hide_disabled')
             ->addOption('yes', translator()->trans('yes'))
             ->addOption('no', translator()->trans('no'))
             ->getRenderer()->setSeparator('');
+    }
+
+    public function adminFormAddNoValueFromModel($form)
+    {
+        /** @var FormFieldTrait $model */
+        $model = $form->getModel();
 
         $form->addInput('select_no_value', 'Default NoValue', false);
         $form->getElement('select_no_value')->setValue($model->getOption('select_no_value'));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function adminSaveToModel($form)
     {
         parent::adminSaveToModel($form);
@@ -119,11 +134,21 @@ trait SelectElementTrait
         /** @var FormFieldTrait $model */
         $model = $form->getModel();
 
-        $this->adminSaveToModelInputOptions($form, 'select_options');
-        $this->adminSaveToModelInputOptions($form, 'select_options_disabled');
+        $this->adminSaveToModelSelectOptions($form);
+        $this->adminSaveToModelSelectOptionsDisabled($form);
 
-        $model->setOption('hide_disabled', $form->getElement('hide_disabled')->getValue());
-        $model->setOption('select_no_value', $form->getElement('select_no_value')->getValue());
+        $model->setOption('hide_disabled', $form->getElement('hide_disabled')?->getValue());
+        $model->setOption('select_no_value', $form->getElement('select_no_value')?->getValue());
+    }
+
+    protected function adminSaveToModelSelectOptions($form)
+    {
+        $this->adminSaveToModelInputOptions($form, 'select_options');
+    }
+
+    protected function adminSaveToModelSelectOptionsDisabled($form)
+    {
+        $this->adminSaveToModelInputOptions($form, 'select_options_disabled');
     }
 
     protected function getDefaultIcon(): string

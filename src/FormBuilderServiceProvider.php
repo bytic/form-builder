@@ -11,8 +11,9 @@ class FormBuilderServiceProvider extends BaseBootableServiceProvider
 {
     public const NAME = 'form-builder';
 
-    public function register()
+    public function boot(): void
     {
+        parent::boot();
         $this->registerResources();
     }
 
@@ -29,7 +30,6 @@ class FormBuilderServiceProvider extends BaseBootableServiceProvider
         $translator = $this->getContainer()->get('translator');
         $folder = dirname(__DIR__).'/resources/lang/';
         $languages = $this->getContainer()->get('translation.languages');
-
 
         foreach ($languages as $language) {
             $path = $folder.$language;

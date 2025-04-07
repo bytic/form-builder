@@ -8,7 +8,8 @@ use Nip\Records\RecordManager;
 /** @var FormFieldsTrait|RecordManager $manager */
 $manager = FormsBuilderModels::fields();
 
-$addUrlParams = $this->withParams + ['role' => $role];
+$withParams = is_array($this->withParams) ? $this->withParams : [];
+$addUrlParams = $withParams + ['role' => $role];
 if ($this->formBuilder) {
     $addUrlParams[$this->formBuilder->getManager()->getPrimaryFK()] = $this->formBuilder->getPrimaryKey();
 }
