@@ -30,7 +30,7 @@ final class FormsPivotTable extends AbstractMigration
 
         $table = $this->table($table_name);
         $table
-            ->addColumn('id_form', 'integer')
+            ->addColumn('id_form', 'integer', ['signed' => false])
             ->addColumn('pivotal_id', 'integer')
             ->addColumn('pivotal_type', 'string');
 
