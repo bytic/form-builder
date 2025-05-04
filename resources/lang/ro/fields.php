@@ -9,5 +9,7 @@ return [
     'formbuilder-fields.labels.form.filter.public' => 'Public',
     'formbuilder-fields.labels.form.filter.admin' => 'Admin',
 
+    'formbuilder-fields.labels.type.tshirt' => 'Tricou',
+
     'formbuilder-fields.messages.edit' => 'Câmpul a fost actualizat cu succes.',
 ];
