@@ -16,7 +16,7 @@ class FormFieldsTraitTest extends AbstractTest
         $types = $fields->getTypesByRole('custom');
 
         self::assertIsArray($types);
-        self::assertCount(8, $types);
+        self::assertCount(9, $types);
         self::assertArrayHasKey('custom-select', $types);
     }
 }

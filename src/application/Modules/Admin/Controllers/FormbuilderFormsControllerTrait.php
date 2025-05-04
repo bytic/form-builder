@@ -3,6 +3,7 @@
 namespace ByTIC\FormBuilder\Application\Modules\Admin\Controllers;
 
 use ByTIC\FormBuilder\FormFields\Actions\GenerateFormFieldsDesigner;
+use ByTIC\FormBuilder\Forms\Actions\ImportForm;
 use ByTIC\FormBuilder\Forms\Models\Form;
 use ByTIC\FormBuilder\Utility\ViewHelper;
 
@@ -23,6 +24,7 @@ trait FormbuilderFormsControllerTrait
 
         $action = GenerateFormFieldsDesigner::forForm($item);
         $designer = $action->handle();
+        $this->populateFormFieldsDesigner($designer);
 
         $this->payload()->with(
             [
@@ -32,6 +34,7 @@ trait FormbuilderFormsControllerTrait
                 'consumer' => $action->getConsumer(),
                 'addWithParams' => [],
                 'fieldsRoles' => $designer->getRoles(),
+                'importLinks' => $designer->getImportLinks(),
             ]
         );
     }
@@ -59,6 +62,28 @@ trait FormbuilderFormsControllerTrait
         }
 
         $this->Async()->sendMessage('Fields reordered');
+    }
+
+    public function import()
+    {
+        $form = $this->getModelFromRequest();
+        $fromFormId = $this->getRequest()->get('from_id');
+        $fromForm = $this->getModelManager()->findOne($fromFormId);
+        if (!$fromForm) {
+            $this->flashRedirect($this->getModelManager()->getMessage('import.error'), $form->getURL(), 'error');
+        }
+
+        ImportForm::for($form)->withSource($fromForm)->handle();
+
+        $this->flashRedirect($this->getModelManager()->getMessage('import.success'), $redirect);
+    }
+
+    /**
+     * @param $designer
+     * @return void
+     */
+    protected function populateFormFieldsDesigner($designer)
+    {
     }
 
     protected function bootFormbuilderFormsControllerTrait()

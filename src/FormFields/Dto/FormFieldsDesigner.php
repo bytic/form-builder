@@ -12,9 +12,13 @@ use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\Select;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\Text;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\Textarea;
 use ByTIC\FormBuilder\FormFieldTypes\Types\Custom\Timeselect;
+use ByTIC\FormBuilder\Forms\Actions\FormGenerateForConsumer;
 use Nip\Records\AbstractModels\Record;
 use Nip\Records\Collections\Collection;
 
+/**
+ *
+ */
 class FormFieldsDesigner
 {
 
@@ -30,6 +34,7 @@ class FormFieldsDesigner
         RadioGroup::class,
         Timeselect::class,
     ];
+
     /**
      * @var FormFieldsList[]
      */
@@ -51,6 +56,8 @@ class FormFieldsDesigner
     protected $custom = [];
 
     protected $roles = [];
+
+    protected array $importLinks = [];
 
     public function __construct()
     {
@@ -160,4 +167,14 @@ class FormFieldsDesigner
         }
     }
 
+    public function getImportLinks()
+    {
+        return $this->importLinks;
+    }
+
+    public function addImportLink($link): static
+    {
+        $this->importLinks[] = $link;
+        return $this;
+    }
 }

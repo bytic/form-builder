@@ -7,8 +7,6 @@ use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\IsUnique\IsUniqueTrait;
 
 trait TshirtElementTrait
 {
-    protected $aliases = ['tshirt'];
-
     use SelectElementTrait;
     use AbstractCustomElementTrait;
     use IsUniqueTrait;

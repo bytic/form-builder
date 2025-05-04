@@ -10,5 +10,7 @@ use ByTIC\FormBuilder\FormFieldTypes\Types\Behaviours\CustomElements\TshirtEleme
  */
 class Tshirt extends AbstractType
 {
+    protected $aliases = ['tshirt'];
+
     use TshirtElementTrait;
 }
