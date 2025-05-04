@@ -67,7 +67,7 @@ trait FormbuilderFormsControllerTrait
     public function import()
     {
         $form = $this->getModelFromRequest();
-        $fromFormId = $this->getRequest()->get('from_id');
+        $fromFormId = $this->getRequest()->get('form_id');
         $fromForm = $this->getModelManager()->findOne($fromFormId);
         if (!$fromForm) {
             $this->flashRedirect($this->getModelManager()->getMessage('import.error'), $form->getURL(), 'error');
@@ -75,6 +75,7 @@ trait FormbuilderFormsControllerTrait
 
         ImportForm::for($form)->withSource($fromForm)->handle();
 
+        $redirect = $form->getURL();
         $this->flashRedirect($this->getModelManager()->getMessage('import.success'), $redirect);
     }
 

@@ -28,7 +28,7 @@ class ImportForm extends Action
     protected function duplicateFields(): void
     {
         $form = $this->getSubject();
-        $fields = $this->getSubject()->getFormFields();
+        $fields = $this->getSource()->getFormFields();
         foreach ($fields as $field) {
             $field->duplicate(['id_form' => $form->id]);
         }
