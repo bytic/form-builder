@@ -32,7 +32,7 @@ final class FormsFieldsTable extends AbstractMigration
 
         $table = $this->table($table_name);
         $table
-            ->addColumn('id_form', 'integer')
+            ->addColumn('id_form', 'integer', ['signed' => false])
             ->addColumn('type', 'string')
             ->addColumn('role', 'string')
             ->addColumn('label', 'string', ['length' => 500])
