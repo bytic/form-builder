@@ -19,5 +19,6 @@ abstract class AbstractType extends \ByTIC\FormBuilder\FormFieldTypes\Types\Abst
         Text::class,
         Textarea::class,
         Timeselect::class,
+        Recaptcha::class,
     ];
 }

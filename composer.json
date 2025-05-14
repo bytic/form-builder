@@ -24,6 +24,7 @@
   },
   "require-dev": {
     "bytic/common": "^1.0|^2.0",
+    "bytic/google-recaptcha": "^1.0|^2.0",
     "bytic/phpqatools": "^1.0"
   },
   "minimum-stability": "dev",
