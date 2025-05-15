@@ -28,8 +28,13 @@ class Recaptcha extends AbstractType
         return FieldIcons::SHIELD;
     }
 
-    public function generateFormName() : string
+    public function generateFormName(): string
     {
         return \Nip_Form_Element_Recaptcha::FORM_NAME;
+    }
+
+    public function saveToModel($form)
+    {
+        return;
     }
 }
