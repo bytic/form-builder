@@ -11,32 +11,13 @@ class FormBuilderServiceProvider extends BaseBootableServiceProvider
 {
     public const NAME = 'form-builder';
 
-    public function boot(): void
-    {
-        parent::boot();
-        $this->registerResources();
-    }
-
     public function migrations(): string
     {
         return dirname(__DIR__).'/migrations/';
     }
 
-    protected function registerResources()
+    protected function translationsPath(): string
     {
-        if (false === $this->getContainer()->has('translator')) {
-            return;
-        }
-        $translator = $this->getContainer()->get('translator');
-        $folder = dirname(__DIR__).'/resources/lang/';
-        $languages = $this->getContainer()->get('translation.languages');
-
-        foreach ($languages as $language) {
-            $path = $folder.$language;
-            if (is_dir($path)) {
-                $translator->addResource('php', $path, $language);
-            }
-        }
+        return dirname(__DIR__).'/resources/lang/';
     }
-
 }
