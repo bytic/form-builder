@@ -18,7 +18,7 @@
     "bytic/cache": "^1.0|^2.0",
     "bytic/orm-filters": "^1.0|^2.0",
     "bytic/package-base": "^1.0|^2.0",
-    "bytic/translation": "^2.0",
+    "bytic/translation": "^1.0|^2.0",
     "bytic/actions": "^1.0|^2.0|dev-main",
     "giggsey/libphonenumber-for-php": "^8.13"
   },
