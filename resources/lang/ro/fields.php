@@ -10,6 +10,10 @@ return [
     'formbuilder-fields.labels.form.filter.admin' => 'Admin',
 
     'formbuilder-fields.labels.type.tshirt' => 'Tricou',
+    'formbuilder-fields.labels.form.visible' => 'Vizibilitate câmp',
+    'formbuilder-fields.labels.form.visible.yes' => 'Vizibil în lista publică',
+    'formbuilder-fields.labels.form.visible.no' => 'Date private',
+    'formbuilder-fields.labels.form.visible.hidden' => 'Câmp vizibil doar în admin',
 
     'formbuilder-fields.messages.edit' => 'Câmpul a fost actualizat cu succes.',
 ];
