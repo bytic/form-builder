@@ -49,17 +49,22 @@ trait FieldFormTrait
 
     protected function initVisibleElement()
     {
-        $this->addRadioGroup('visible', translator()->trans('visible'), true);
-        $this->visible->addOption('yes', translator()->trans('yes'))
-            ->addOption('no', translator()->trans('no'))
+        $this->addRadioGroup('visible', $this->getModelManager()->getLabel('form.visible'), true);
+        $this->visible
+            ->addOption('yes', $this->getModelManager()->getLabel('form.visible.yes'))
+            ->addOption('no', $this->getModelManager()->getLabel('form.visible.no'))
+            ->addOption('hidden', $this->getModelManager()->getLabel('form.visible.hidden'))
+            ->setOption('inline', true)
             ->getRenderer()->setSeparator('');
     }
 
     protected function initMandatoryElement()
     {
         $this->addRadioGroup('mandatory', translator()->trans('mandatory'), true);
-        $this->mandatory->addOption('yes', translator()->trans('yes'))
+        $this->mandatory
+            ->addOption('yes', translator()->trans('yes'))
             ->addOption('no', translator()->trans('no'))
+            ->setOption('inline', true)
             ->getRenderer()->setSeparator('');
     }
 
@@ -82,8 +87,10 @@ trait FieldFormTrait
     protected function initListingElement()
     {
         $this->addCheckboxGroup('listing', $this->getModelManager()->getLabel('form.listing'), false);
-        $this->listing->addOption('public', $this->getModelManager()->getLabel('form.listing.public'))
+        $this->listing
+            ->addOption('public', $this->getModelManager()->getLabel('form.listing.public'))
             ->addOption('admin', $this->getModelManager()->getLabel('form.listing.admin'))
+            ->setOption('inline', true)
             ->getRenderer()->setSeparator('');
     }
 
@@ -111,8 +118,10 @@ trait FieldFormTrait
     protected function initFilterElement()
     {
         $this->addCheckboxGroup('filter', $this->getModelManager()->getLabel('form.filter'), false);
-        $this->filter->addOption('public', $this->getModelManager()->getLabel('form.filter.public'))
+        $this->filter
+            ->addOption('public', $this->getModelManager()->getLabel('form.filter.public'))
             ->addOption('admin', $this->getModelManager()->getLabel('form.filter.admin'))
+            ->setOption('inline', true)
             ->getRenderer()->setSeparator('');
     }
 
