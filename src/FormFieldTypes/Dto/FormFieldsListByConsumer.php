@@ -92,6 +92,9 @@ class FormFieldsListByConsumer extends AbstractLazyCollection
         if ($data === null) {
             return;
         }
+        if (!is_array($data)) {
+            return;
+        }
         $this->setItems($data);
     }
 }
