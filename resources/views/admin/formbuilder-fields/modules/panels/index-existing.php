@@ -17,22 +17,24 @@ $roles = $this->fieldsRoles ?? $designer->getRoles();
     <?php foreach ($roles as $role) { ?>
         <?php
         $fields = $designer->getExisting($role)->all();
+        $count  = count($fields);
         ?>
-        <?php if ($fields) { ?>
-            <div class="form-panel">
-                <div class="header">
-                    <?= $manager->getLabel('existing.'.$role) ?>
-                </div>
-                <div class="fields-body">
-                    <?= $this->load(
-                        '../lists/existing',
-                        [
-                            'fields' => $fields,
-                            'updateUrl' => $this->formBuilder->compileURL('order', $this->withParams),
-                        ]
-                    ); ?>
-                </div>
+        <div class="form-panel">
+            <div class="header">
+                <span><?= $manager->getLabel('existing.' . $role) ?></span>
+                <?php if ($count > 0) { ?>
+                    <span class="badge bg-secondary bg-opacity-50 fw-normal"><?= $count ?></span>
+                <?php } ?>
             </div>
-        <?php } ?>
+            <div class="fields-body">
+                <?= $this->load(
+                    '../lists/existing',
+                    [
+                        'fields'    => $fields,
+                        'updateUrl' => $this->formBuilder->compileURL('order', $this->withParams),
+                    ]
+                ); ?>
+            </div>
+        </div>
     <?php } ?>
 </div>

@@ -17,27 +17,39 @@ $roles = $this->fieldsRoles ?? $designer->getRoles();
 ?>
 
 <div class="card">
-    <div class="card-header">
+    <div class="card-header fb-panel-header">
         <?= FormsBuilderModels::fields()->getLabel('available'); ?>
     </div>
+
+    <div class="p-2 border-bottom">
+        <input type="search" id="fb-field-search"
+               class="form-control form-control-sm"
+               placeholder="<?= translator()->trans('search') ?? 'Search fields…'; ?>"
+               aria-label="Search available fields"
+               autocomplete="off">
+    </div>
+
     <div class="fields-body" id="fields-available">
         <?php if (count($roles) > 1) { ?>
-            <div class='accordion'>
+            <div class='accordion' id="fb-fields-accordion">
                 <?php foreach ($roles as $role) { ?>
                     <?php
                     $fields = $designer->getAvailable($role)->all();
-                    $id = 'fields-available-'.$role;
+                    $id     = 'fields-available-' . $role;
                     ?>
-                    <div class="accordion-item">
+                    <div class="accordion-item border-0">
                         <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#<?= $id; ?>" aria-expanded="true" aria-controls="<?= $id; ?>">
-                                <?= $consumer->getManager()->getLabel('forms.role.'.$role) ?>
+                            <button class="accordion-button py-2 px-3" type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#<?= $id; ?>"
+                                    aria-expanded="true"
+                                    aria-controls="<?= $id; ?>">
+                                <?= $consumer->getManager()->getLabel('forms.role.' . $role) ?>
                             </button>
                         </h2>
                         <div id="<?= $id; ?>" class="accordion-collapse collapse show"
-                             data-bs-parent="#fields-available">
-                            <div class="accordion-body">
+                             data-bs-parent="#fb-fields-accordion">
+                            <div class="accordion-body p-2">
                                 <?= $this->load('../lists/available', ['fields' => $fields, 'role' => $role]); ?>
                             </div>
                         </div>
@@ -47,7 +59,7 @@ $roles = $this->fieldsRoles ?? $designer->getRoles();
         <?php } else { ?>
             <div class="p-2">
                 <?php
-                $role = current($roles);
+                $role   = current($roles);
                 $fields = $designer->getAvailable($role)->all();
                 ?>
                 <?= $this->load('../lists/available', ['fields' => $fields, 'role' => $role]); ?>
