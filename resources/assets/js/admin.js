@@ -82,10 +82,10 @@ class FormBuilderAdminUI
             right: "1.5rem",
             zIndex: 9999,
             background: FormBuilderAdminUI.getToastColor(type),
-            color: "#fff",
+            color: "var(--bs-white, #fff)",
             padding: ".75rem 1.25rem",
-            borderRadius: ".5rem",
-            boxShadow: "0 4px 12px rgba(0,0,0,.15)",
+            borderRadius: "var(--bs-border-radius, .5rem)",
+            boxShadow: "var(--bs-box-shadow, 0 4px 12px rgba(0,0,0,.15))",
             fontSize: ".875rem",
             maxWidth: "320px",
             transition: "opacity .3s"
@@ -100,13 +100,12 @@ class FormBuilderAdminUI
 
     static getToastColor(type)
     {
-        const toastColors = {
-            error: "#ef4444",
-            success: "#22c55e",
-            info: "#3b82f6"
-        };
+        // Map type names to Bootstrap 5 CSS custom properties so the toast
+        // colour automatically tracks the active theme.
+        const bsVar = type === "error" ? "--bs-danger" : `--bs-${type}`;
+        const fallbacks = {error: "#dc3545", success: "#198754", info: "#0dcaf0"};
 
-        return toastColors[type] || toastColors.info;
+        return `var(${bsVar}, ${fallbacks[type] || fallbacks.info})`;
     }
 }
 
