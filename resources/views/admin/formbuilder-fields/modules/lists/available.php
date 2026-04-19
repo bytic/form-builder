@@ -25,7 +25,7 @@ if ($this->formBuilder) {
             <span class="field-name"><?= htmlspecialchars((string)$field->getLabel()); ?></span>
             <div class="btn-group">
                 <a href="<?= $addUrl; ?>"
-                   class="btn add-<?= htmlspecialchars((string)$field->getName()); ?>"
+                   class="btn btn-outline-secondary btn-sm add-<?= htmlspecialchars((string)$field->getName()); ?>"
                    title="<?= translator()->trans('add'); ?>">
                     <i class="fas fa-plus"></i>
                 </a>

@@ -22,24 +22,37 @@ use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
         ?>
         <div id="field_<?= $field->id; ?>"
              class="field field-<?= $field->getRole(); ?>-<?= $fieldType->getName(); ?>">
-            <div class="field-icon">
-                <?= $fieldType->getIcon(); ?>
+            <div class="field-move-controls" role="group" aria-label="Move field">
+                <button type="button" class="btn btn-outline-secondary btn-sm field-move" data-direction="up" title="Move up">
+                    <i class="fas fa-chevron-up"></i>
+                </button>
+                <button type="button" class="btn btn-outline-secondary btn-sm field-move" data-direction="down" title="Move down">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
             </div>
 
-            <div class="field-flags" title="visible / listing / filter">
-                <i class="<?= $visibleIcons; ?>"></i>
-                <i class="<?= $listIcons; ?>"></i>
-                <i class="<?= $filterIcons; ?>"></i>
+            <div class="field-main">
+                <div class="field-icon">
+                    <?= $fieldType->getIcon(); ?>
+                </div>
+
+                <div class="name fw-medium text-truncate">
+                    <?= htmlspecialchars((string)$field->getLabel()); ?>
+                    <?= $field->isMandatory() ? '<span class="text-danger ms-1" title="Required">*</span>' : ''; ?>
+                </div>
             </div>
 
-            <div class="name flex-grow-1 fw-medium text-truncate">
-                <?= htmlspecialchars((string)$field->getLabel()); ?>
-                <?= $field->isMandatory() ? '<span class="text-danger ms-1" title="Required">*</span>' : ''; ?>
+            <div class="field-meta">
+                <span class="field-type-badge"><?= htmlspecialchars((string)$fieldType->getLabel()); ?></span>
+
+                <div class="field-flags" title="visible / listing / filter">
+                    <i class="<?= $visibleIcons; ?>"></i>
+                    <i class="<?= $listIcons; ?>"></i>
+                    <i class="<?= $filterIcons; ?>"></i>
+                </div>
             </div>
 
-            <span class="field-type-badge"><?= htmlspecialchars((string)$fieldType->getLabel()); ?></span>
-
-            <div class="btn-group">
+            <div class="btn-group field-actions">
                 <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false"
                         aria-label="<?= translator()->trans('actions'); ?>">

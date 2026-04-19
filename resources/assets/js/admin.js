@@ -3,6 +3,7 @@ class FormBuilderAdminUI
     init()
     {
         this.initSortable();
+        this.initMoveButtons();
         this.initLiveSearch();
     }
 
@@ -51,6 +52,31 @@ class FormBuilderAdminUI
         $searchInput.on("input", (event) => {
             const query = event.currentTarget.value.trim().toLowerCase();
             this.filterAvailableFields(query);
+        });
+    }
+
+    initMoveButtons()
+    {
+        $(document).on("click", "#form-fields-container .field-move", (event) => {
+            event.preventDefault();
+
+            const $button = $(event.currentTarget);
+            const direction = $button.data("direction");
+            const $field = $button.closest(".field");
+            const $list = $field.closest(".sortable");
+            const $target = direction === "up" ? $field.prev(".field") : $field.next(".field");
+
+            if (!$target.length) {
+                return;
+            }
+
+            if (direction === "up") {
+                $field.insertBefore($target);
+            } else {
+                $field.insertAfter($target);
+            }
+
+            this.persistSortableOrder($list);
         });
     }
 
