@@ -1,100 +1,311 @@
-/** FORM TAB */
-#form-fields-container .form-panel {
+// ─── Design tokens ──────────────────────────────────────────────────────────
+// Values are expressed via Bootstrap 5 CSS custom properties so that theme
+// overrides (e.g. dark-mode) propagate automatically.
+:root {
+  // Radii — map to Bootstrap border-radius scale
+  --fb-radius:    var(--bs-border-radius-lg,    0.5rem);
+  --fb-radius-sm: var(--bs-border-radius,        0.375rem);
 
+  // Shadows — map to Bootstrap shadow scale
+  --fb-shadow-sm: var(--bs-box-shadow-sm,  0 0.125rem 0.25rem rgba(0, 0, 0, .075));
+  --fb-shadow:    var(--bs-box-shadow,     0 0.5rem   1rem   rgba(0, 0, 0, .15));
+
+  // Transitions
+  --fb-transition: 150ms ease;
+
+  // Icon chip
+  --fb-icon-bg:   var(--bs-warning-bg-subtle,  #fff3cd);
+  --fb-icon-size: 2rem;
+
+  // Field card surfaces
+  --fb-field-bg:           var(--bs-body-bg,          #ffffff);
+  --fb-field-bg-hover:     var(--bs-tertiary-bg,       #f8f9fa);
+  --fb-field-border:       var(--bs-border-color,      #dee2e6);
+  --fb-field-border-hover: var(--bs-secondary-border-subtle, #c4c8cb);
+  --fb-drag-handle-color:  var(--bs-secondary-border-subtle, #c4c8cb);
+
+  // Type badge
+  --fb-badge-bg:    var(--bs-secondary-bg-subtle,   #e2e3e5);
+  --fb-badge-color: var(--bs-secondary-color,        #6c757d);
+
+  // Visibility flags
+  --fb-visible-color:   var(--bs-success-text-emphasis, #0a3622);
+  --fb-invisible-color: var(--bs-danger-text-emphasis,  #58151c);
+
+  // Panel header
+  --fb-panel-header-bg:    var(--bs-dark,  #212529);
+  --fb-panel-header-color: var(--bs-light, #f8f9fa);
+
+  // "Add" button in available-fields panel
+  --fb-available-add-bg:       var(--bs-success-bg-subtle,     #d1e7dd);
+  --fb-available-add-color:    var(--bs-success-text-emphasis,  #0a3622);
+  --fb-available-add-hover-bg: var(--bs-success-border-subtle,  #a3cfbb);
+
+  // Empty state
+  --fb-empty-state-color: var(--bs-secondary-color, #6c757d);
 }
 
-#form-fields-container .form-panel .header {
-  color: #fff;
-  background: #333;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 3px 10px;
-
-  -webkit-border-top-left-radius: 6px;
-  -webkit-border-top-right-radius: 6px;
-  -moz-border-radius-topleft: 6px;
-  -moz-border-radius-topright: 6px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+// ─── Container ──────────────────────────────────────────────────────────────
+#form-fields-container {
+  .col-lg-6.existing,
+  .col-lg-3.available,
+  .col-lg-3.order-lg-last {
+    padding-top: 0;
+  }
 }
 
-.fields-body .field {
-  .field-icon {
-    display: inline-block;
-    height: 2em;
-    width: 2em;
-    padding: 3px;
-    background-color: $amber-200;
+// ─── Panel (shared) ─────────────────────────────────────────────────────────
+.form-panel {
+  border: 1px solid var(--fb-field-border);
+  border-radius: var(--fb-radius);
+  overflow: hidden;
+  box-shadow: var(--fb-shadow-sm);
+  background: var(--bs-body-bg, #fff);
 
-    svg {
-      width: 100%;
-      height: auto;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--fb-panel-header-color);
+    background: var(--fb-panel-header-bg);
+    font-weight: 600;
+    font-size: .8125rem;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    padding: .625rem 1rem;
+  }
+
+  .fields-body {
+    padding: .5rem;
+  }
+}
+
+// ─── Existing fields ────────────────────────────────────────────────────────
+#form-fields-container .existing {
+  .form-panel {
+    margin-bottom: 1rem;
+  }
+
+  .fields-body .fields-container {
+    display: flex;
+    flex-direction: column;
+    gap: .375rem;
+    min-height: 3rem; // drop-target area
+
+    &.fb-drag-over {
+      background: var(--bs-info-bg-subtle, #cff4fc);
+      border-radius: var(--fb-radius-sm);
+      outline: 2px dashed var(--bs-info-border-subtle, #9eeaf9);
+    }
+
+    .field {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      padding: .5rem .75rem;
+      background: var(--fb-field-bg);
+      border: 1px solid var(--fb-field-border);
+      border-radius: var(--fb-radius-sm);
+      box-shadow: var(--fb-shadow-sm);
+      transition: box-shadow var(--fb-transition), border-color var(--fb-transition), background var(--fb-transition);
+      cursor: grab;
+
+      &:hover {
+        background: var(--fb-field-bg-hover);
+        border-color: var(--fb-field-border-hover);
+        box-shadow: var(--fb-shadow);
+      }
+
+      &:active {
+        cursor: grabbing;
+        box-shadow: var(--fb-shadow);
+      }
+
+      &.ui-sortable-placeholder {
+        visibility: visible !important;
+        border: 2px dashed var(--bs-info-border-subtle, #9eeaf9);
+        background: var(--bs-info-bg-subtle, #cff4fc);
+        border-radius: var(--fb-radius-sm);
+        box-shadow: none;
+      }
+
+      &.ui-sortable-helper {
+        box-shadow: var(--fb-shadow);
+        opacity: .9;
+        rotate: 1.5deg;
+      }
+
+      // Drag handle hint
+      &::before {
+        content: "⋮⋮";
+        font-size: .875rem;
+        letter-spacing: -2px;
+        color: var(--fb-drag-handle-color);
+        flex-shrink: 0;
+        user-select: none;
+      }
     }
   }
 }
 
+// ─── Field icon ─────────────────────────────────────────────────────────────
+.field-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: var(--fb-icon-size);
+  width: var(--fb-icon-size);
+  padding: .25rem;
+  background-color: var(--fb-icon-bg);
+  border-radius: var(--fb-radius-sm);
+
+  svg {
+    width: 100%;
+    height: auto;
+    max-height: 1.25rem;
+  }
+}
+
+// ─── Field flags (visibility / listing / filter) ─────────────────────────────
+.field-flags {
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+  flex-shrink: 0;
+
+  .field-invisible { color: var(--fb-invisible-color); }
+  .field-visible   { color: var(--fb-visible-color);   }
+}
+
+// ─── Field type badge ────────────────────────────────────────────────────────
+.field-type-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: .1875rem .5rem;
+  font-size: .6875rem;
+  font-weight: 500;
+  color: var(--fb-badge-color);
+  background: var(--fb-badge-bg);
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+// ─── Available fields panel ──────────────────────────────────────────────────
 #fields-available {
-  &.sortable .field {
-    cursor: move;
+  .fields-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .375rem;
   }
 
   .field {
-    padding: calc($spacer / 2);
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .5rem .625rem;
+    border: 1px solid var(--fb-field-border);
+    border-radius: var(--fb-radius-sm);
+    background: var(--fb-field-bg);
+    transition: background var(--fb-transition), border-color var(--fb-transition);
 
     &:hover {
-      background-color: $gray-100;
+      background: var(--fb-field-bg-hover);
+      border-color: var(--fb-field-border-hover);
+    }
+
+    .field-name {
+      flex: 1;
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--bs-body-color, #212529);
     }
 
     .btn-group {
-      width: 48px;
-      float: right;
-    }
+      flex-shrink: 0;
 
-    .btn-group .btn {
-      padding: 0 2px !important;
+      .btn {
+        padding: .25rem .5rem;
+        font-size: .8125rem;
+        font-weight: 700;
+        border-radius: var(--fb-radius-sm);
+        background: var(--fb-available-add-bg);
+        color: var(--fb-available-add-color);
+        border: 1px solid var(--bs-success-border-subtle, #a3cfbb);
+        line-height: 1;
+
+        &:hover {
+          background: var(--fb-available-add-hover-bg);
+        }
+      }
     }
   }
 }
 
-#form-fields-container .existing {
-  .form-pane {
-    margin-bottom: $spacer;
+// ─── Empty state ─────────────────────────────────────────────────────────────
+.fb-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  color: var(--fb-empty-state-color);
+  text-align: center;
+  gap: .5rem;
+
+  .fb-empty-state-icon {
+    font-size: 2rem;
+    opacity: .4;
+  }
+
+  p {
+    margin: 0;
+    font-size: .875rem;
   }
 }
 
-#form-fields-container .existing .fields-body .fields-container {
+// ─── Sticky sidebars ─────────────────────────────────────────────────────────
+.fb-sticky-sidebar {
+  position: sticky;
+  top: 1rem;
+}
 
-  .field {
-    background-color: #F3F3D1;
-    border-color: #DBDBB0;
-    border-style: solid;
-    border-width: 0px 1px 1px 1px;
-    border-bottom-color: #c3c3c3;
+// ─── Available-fields card header ────────────────────────────────────────────
+.fb-panel-header {
+  background: var(--fb-panel-header-bg) !important;
+  color: var(--fb-panel-header-color) !important;
+  font-weight: 600;
+  font-size: .8125rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
 
-    margin-bottom: 3px;
+// ─── Action panel ────────────────────────────────────────────────────────────
+.fb-actions-panel {
+  .card {
+    border-color: var(--fb-field-border);
+    border-radius: var(--fb-radius);
+    box-shadow: var(--fb-shadow-sm);
+  }
 
-    cursor: move; /* fallback if grab cursor is unsupported */
-    cursor: grab;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
+  .card-header {
+    background: var(--fb-panel-header-bg);
+    color: var(--fb-panel-header-color);
+    font-weight: 600;
+    font-size: .8125rem;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    border-radius: var(--fb-radius) var(--fb-radius) 0 0 !important;
+  }
 
-    /* (Optional) Apply a "closed-hand" cursor during drag operation. */
-    &:active {
-      cursor: grabbing;
-      cursor: -moz-grabbing;
-      cursor: -webkit-grabbing;
-    }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
 
-    &:hover {
-      background-color: #EDEDAF;
-    }
-
-    .field-invisible {
-      color: #ed513f;
-    }
-
-    .field-visible {
-      color: #45b035;
-    }
+  .btn-danger {
+    width: 100%;
   }
 }

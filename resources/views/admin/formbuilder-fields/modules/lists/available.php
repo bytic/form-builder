@@ -15,22 +15,19 @@ if ($this->formBuilder) {
 }
 /** @var AbstractType $fields */
 ?>
-<div class='fields-container d-grid grid gap-2'>
+<div class='fields-container d-grid gap-2'>
     <?php foreach ($fields as $field) { ?>
-        <div class="field border rounded">
-            <span class="field-icon">
+        <?php $addUrl = $manager->compileURL('add', $addUrlParams + ['type' => $field->getName()]); ?>
+        <div class="field">
+            <div class="field-icon">
                 <?= $field->getIcon(); ?>
-            </span>
-            <span class="field-name">
-                <?= $field->getLabel(); ?>
-            </span>
+            </div>
+            <span class="field-name"><?= htmlspecialchars((string)$field->getLabel()); ?></span>
             <div class="btn-group">
-                <?php
-                $addUrl = $manager->compileURL('add', $addUrlParams + ['type' => $field->getName()]);
-                ?>
                 <a href="<?= $addUrl; ?>"
-                   class="btn btn-success btn-xs pull-right add-<?= $field->getName(); ?>">
-                    +
+                   class="btn add-<?= htmlspecialchars((string)$field->getName()); ?>"
+                   title="<?= translator()->trans('add'); ?>">
+                    <i class="fas fa-plus"></i>
                 </a>
             </div>
         </div>
