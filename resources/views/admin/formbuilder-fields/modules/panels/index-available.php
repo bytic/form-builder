@@ -29,7 +29,7 @@ $roles = $this->fieldsRoles ?? $designer->getRoles();
                autocomplete="off">
     </div>
 
-    <div class="fields-body" id="fields-available">
+    <div class="fields-body rounded-bottom" id="fields-available">
         <?php if (count($roles) > 1) { ?>
             <div class='accordion' id="fb-fields-accordion">
                 <?php foreach ($roles as $role) { ?>

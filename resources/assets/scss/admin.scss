@@ -36,11 +36,6 @@
   --fb-panel-header-bg:    var(--bs-dark,  #212529);
   --fb-panel-header-color: var(--bs-light, #f8f9fa);
 
-  // "Add" button in available-fields panel
-  --fb-available-add-bg:       var(--bs-success-bg-subtle,     #d1e7dd);
-  --fb-available-add-color:    var(--bs-success-text-emphasis,  #0a3622);
-  --fb-available-add-hover-bg: var(--bs-success-border-subtle,  #a3cfbb);
-
   // Empty state
   --fb-empty-state-color: var(--bs-secondary-color, #6c757d);
 }
@@ -134,16 +129,6 @@
         opacity: .9;
         rotate: 1.5deg;
       }
-
-      // Drag handle hint
-      &::before {
-        content: "⋮⋮";
-        font-size: .875rem;
-        letter-spacing: -2px;
-        color: var(--fb-drag-handle-color);
-        flex-shrink: 0;
-        user-select: none;
-      }
     }
   }
 }
@@ -171,8 +156,12 @@
 .field-flags {
   display: inline-flex;
   align-items: center;
-  gap: .25rem;
+  gap: .375rem;
   flex-shrink: 0;
+  border: 1px solid var(--fb-field-border);
+  border-radius: 999px;
+  padding: .1875rem .4375rem;
+  background: var(--bs-tertiary-bg, #f8f9fa);
 
   .field-invisible { color: var(--fb-invisible-color); }
   .field-visible   { color: var(--fb-visible-color);   }
@@ -192,8 +181,45 @@
   flex-shrink: 0;
 }
 
+.field-main {
+  display: inline-flex;
+  align-items: center;
+  gap: .625rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.field-meta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .5rem;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.field-move-controls {
+  display: inline-flex;
+  flex-direction: column;
+  gap: .25rem;
+  flex-shrink: 0;
+
+  .btn {
+    line-height: 1;
+    padding: .125rem .35rem;
+  }
+}
+
+.field-actions {
+  margin-left: .25rem;
+  flex-shrink: 0;
+}
+
 // ─── Available fields panel ──────────────────────────────────────────────────
 #fields-available {
+  border-radius: 0 0 var(--fb-radius) var(--fb-radius);
+  overflow: hidden;
+
   .fields-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -224,21 +250,6 @@
 
     .btn-group {
       flex-shrink: 0;
-
-      .btn {
-        padding: .25rem .5rem;
-        font-size: .8125rem;
-        font-weight: 700;
-        border-radius: var(--fb-radius-sm);
-        background: var(--fb-available-add-bg);
-        color: var(--fb-available-add-color);
-        border: 1px solid var(--bs-success-border-subtle, #a3cfbb);
-        line-height: 1;
-
-        &:hover {
-          background: var(--fb-available-add-hover-bg);
-        }
-      }
     }
   }
 }
