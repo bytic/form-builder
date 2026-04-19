@@ -54,14 +54,13 @@ final class FormResponsesValues extends AbstractMigration
                 'id_form',
                 FormsBuilderModels::forms()->getFullNameTable(),
                 'id',
-                ['constraint' => 'forms_id_forms_values_id_form', 'delete' => 'RESTRICT', 'update' => 'NO_ACTION']
+                ['delete' => 'RESTRICT', 'update' => 'NO_ACTION']
             )
             ->addForeignKey(
                 'id_field',
                 FormsBuilderModels::fields()->getFullNameTable(),
                 'id',
                 [
-                    'constraint' => 'form_fields_id_forms_values_id_field',
                     'delete' => 'RESTRICT',
                     'update' => 'NO_ACTION',
                 ]
