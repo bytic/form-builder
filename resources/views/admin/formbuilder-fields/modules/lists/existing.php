@@ -31,11 +31,11 @@ use ByTIC\FormBuilder\Application\Models\Fields\Traits\FormFieldTrait;
                 </button>
             </div>
 
-            <div class="field-main">
-                <div class="field-icon">
-                    <?= $fieldType->getIcon(); ?>
-                </div>
+            <div class="field-icon">
+                <?= $fieldType->getIcon(); ?>
+            </div>
 
+            <div class="field-main">
                 <div class="name fw-medium text-truncate">
                     <?= htmlspecialchars((string)$field->getLabel()); ?>
                     <?= $field->isMandatory() ? '<span class="text-danger ms-1" title="Required">*</span>' : ''; ?>
