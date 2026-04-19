@@ -158,13 +158,30 @@
   align-items: center;
   gap: .375rem;
   flex-shrink: 0;
-  border: 1px solid var(--fb-field-border);
-  border-radius: 999px;
-  padding: .1875rem .4375rem;
-  background: var(--bs-tertiary-bg, #f8f9fa);
+  padding: .125rem 0;
 
-  .field-invisible { color: var(--fb-invisible-color); }
-  .field-visible   { color: var(--fb-visible-color);   }
+  i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 999px;
+    font-size: .75rem;
+    border: 1px solid transparent;
+  }
+
+  .field-invisible {
+    color: var(--bs-danger-text-emphasis, #58151c);
+    background: var(--bs-danger-bg-subtle, #f8d7da);
+    border-color: var(--bs-danger-border-subtle, #f1aeb5);
+  }
+
+  .field-visible {
+    color: var(--bs-success-text-emphasis, #0a3622);
+    background: var(--bs-success-bg-subtle, #d1e7dd);
+    border-color: var(--bs-success-border-subtle, #a3cfbb);
+  }
 }
 
 // ─── Field type badge ────────────────────────────────────────────────────────
@@ -182,31 +199,35 @@
 }
 
 .field-main {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: .625rem;
   flex: 1 1 auto;
   min-width: 0;
 }
 
 .field-meta {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: .5rem;
-  margin-left: auto;
   flex-shrink: 0;
 }
 
 .field-move-controls {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  gap: .25rem;
+  gap: .125rem;
   flex-shrink: 0;
 
   .btn {
     line-height: 1;
-    padding: .125rem .35rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    font-size: .625rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
