@@ -102,10 +102,13 @@ class FormBuilderAdminUI
     {
         // Map type names to Bootstrap 5 CSS custom properties so the toast
         // colour automatically tracks the active theme.
-        const bsVar = type === "error" ? "--bs-danger" : `--bs-${type}`;
-        const fallbacks = {error: "#dc3545", success: "#198754", info: "#0dcaf0"};
+        const map = {
+            error:   "var(--bs-danger,  #dc3545)",
+            success: "var(--bs-success, #198754)",
+            info:    "var(--bs-info,    #0dcaf0)"
+        };
 
-        return `var(${bsVar}, ${fallbacks[type] || fallbacks.info})`;
+        return map[type] || map.info;
     }
 }
 
